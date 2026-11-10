@@ -362,3 +362,5 @@ PRODUCT_VENDOR_PROPERTIES += \
 
 # OnePlus alert slider calibration and device key handling.
 PRODUCT_PACKAGES += tri-state-key-calibrate
+
+PRODUCT_PACKAGES += KebabKeyHandler
