@@ -84,6 +84,11 @@ PRODUCT_PACKAGES += \
     update_engine_sideload \
     update_verifier
 
+# A/B boot control: QTI AIDL services carry their own RC/VINTF in each image.
+PRODUCT_PACKAGES += \
+    android.hardware.boot-service.qti \
+    android.hardware.boot-service.qti.recovery
+
 # Firmware mount directories used by the OnePlus fstab.
 PRODUCT_PACKAGES += \
     vendor_bt_firmware_mountpoint \
