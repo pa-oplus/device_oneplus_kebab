@@ -285,3 +285,20 @@ PRODUCT_PROPERTY_OVERRIDES := $(filter-out $(addsuffix =%,$(kebab_audio_property
 PRODUCT_VENDOR_PROPERTIES += $(kebab_audio_vendor_properties)
 PRODUCT_ODM_PROPERTIES += $(kebab_audio_odm_properties)
 PRODUCT_SYSTEM_EXT_PROPERTIES += $(kebab_audio_system_ext_properties)
+
+# OnePlus power extension and common perf ownership.
+# The inspected calcite source defines the service, not power-impl from its
+# generic product recipe. Select the actual service explicitly.
+TARGET_PROVIDES_POWERHAL := true
+TARGET_USES_QTI_POWER_HAL := true
+TARGET_POWERHAL_MODE_EXT := device/oneplus/kebab/power/PowerModes.cpp
+
+PRODUCT_PACKAGES += \
+    android.hardware.power-service \
+    init.kebab.power.rc
+
+PRODUCT_COPY_FILES += \
+    vendor/qcom/opensource/power/config/kona/powerhint.xml:$(TARGET_COPY_OUT_VENDOR)/etc/powerhint.xml
+
+# Perf stays owned by the common QTI perf component. Do not set the stock-blob
+# override until a complete OnePlus perf ABI/configuration set has been verified.
