@@ -1,10 +1,52 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <manifest>
   <remote name="kebab-github" fetch="https://github.com/" />
-  <!-- Replace the differently located thermal service to avoid duplicate modules. -->
-  <remove-project name="AOSPA/android_hardware_qcom_thermal" />
+  <remove-project name="AOSPA/android_hardware_qcom_thermal" optional="true" />
+  <remove-project name="AOSPA/android_vendor_qcom-opensource_usb" path="vendor/qcom/opensource/usb" optional="true" />
+  <remove-project name="AOSPA/android_build" path="build/make" optional="true" />
+  <remove-project name="AOSPA/android_build_soong" path="build/soong" optional="true" />
+  <remove-project name="AOSPA/android_device_qcom_common" path="device/qcom/common" optional="true" />
+  <remove-project name="AOSPA/android_device_qcom_sepolicy_vndr" path="device/qcom/sepolicy_vndr" optional="true" />
+  <remove-project name="platform/system/libhwbinder" path="system/libhwbinder" optional="true" />
+  <remove-project name="AOSPA/android_frameworks_av" path="frameworks/av" optional="true" />
+  <remove-project name="AOSPA/android_frameworks_base" path="frameworks/base" optional="true" />
+  <remove-project name="AOSPA/android_frameworks_native" path="frameworks/native" optional="true" />
+  <remove-project name="platform/build/release" path="build/release" optional="true" />
+  <remove-project name="device/qcom/sepolicy" path="device/qcom/sepolicy" optional="true" />
+  <remove-project name="AOSPA/android_hardware_interfaces" path="hardware/interfaces" optional="true" />
+  <remove-project name="AOSPA/android_packages_modules_Connectivity" path="packages/modules/Connectivity" optional="true" />
+  <remove-project name="AOSPA/android_vendor_qcom-opensource_power" path="vendor/qcom/opensource/power" optional="true" />
+  <project path="hardware/qcom/gps" name="pa-sanji/android_hardware_qcom_gps" remote="kebab-github" revision="calcite" />
+  <project path="hardware/qcom/display" name="pa-sanji/android_hardware_qcom_display" remote="kebab-github" revision="calcite" />
+  <project path="hardware/qcom/media" name="pa-sanji/android_hardware_qcom_media" remote="kebab-github" revision="calcite" />
+  <project path="vendor/qcom/opensource/usb" name="pa-sanji/android_vendor_qcom-opensource_usb" remote="kebab-github" revision="calcite" />
+  <project path="vendor/qcom/opensource/audio-hal/primary-hal" name="pa-sanji/android_hardware_qcom_audio" remote="kebab-github" revision="calcite" />
+  <project path="build/make" name="pa-sanji/build_make" remote="kebab-github" revision="calcite">
+    <linkfile src="CleanSpec.mk" dest="build/CleanSpec.mk" />
+    <linkfile src="buildspec.mk.default" dest="build/buildspec.mk.default" />
+    <linkfile src="core" dest="build/core" />
+    <linkfile src="envsetup.sh" dest="build/envsetup.sh" />
+    <linkfile src="target" dest="build/target" />
+    <linkfile src="tools" dest="build/tools" />
+  </project>
+  <project path="build/soong" name="pa-sanji/build_soong" remote="kebab-github" revision="calcite">
+    <linkfile src="root.bp" dest="Android.bp" />
+    <linkfile src="bootstrap.bash" dest="bootstrap.bash" />
+  </project>
+  <project path="device/qcom/common" name="pa-sanji/android_device_qcom_common" remote="kebab-github" revision="calcite">
+    <linkfile dest="vendor/qcom/build/tasks/generate_extra_images.mk" src="generate_extra_images.mk" />
+  </project>
+  <project path="hardware/samsung-ext/interfaces" name="pa-sanji/hardware_samsung-extra_interfaces" remote="kebab-github" revision="calcite" />
+  <project path="device/qcom/sepolicy_vndr" name="pa-sanji/android_device_qcom_sepolicy_vndr" remote="kebab-github" revision="calcite" />
+  <project path="system/libhwbinder" name="pa-sanji/android_system_libhwbinder" remote="kebab-github" revision="calcite" />
+  <project path="frameworks/av" name="pa-sanji/frameworks_av" remote="kebab-github" revision="calcite" />
+  <project path="frameworks/base" name="pa-sanji/frameworks_basepengu" remote="kebab-github" revision="calcite" />
+  <project path="frameworks/native" name="pa-sanji/android_frameworks_nativepengu" remote="kebab-github" revision="calcite" />
+  <project path="build/release" name="pa-sanji/android_build_release" remote="kebab-github" revision="calcite" />
+  <project path="device/qcom/sepolicy" name="pa-sanji/device_qcom_sepolicy" remote="kebab-github" revision="calcite" />
+  <project path="hardware/interfaces" name="pa-sanji/hardware_interfaces" remote="kebab-github" revision="calcite" />
+  <project path="packages/modules/Connectivity" name="pa-sanji/packages_modules_Connectivity" remote="kebab-github" revision="calcite" />
+  <project path="vendor/qcom/opensource/power" name="pa-sanji/vendor_qcom_opensource_power" remote="kebab-github" revision="calcite" />
   <project path="hardware/oplus" name="clo-oscaro/hardware_oplus" remote="kebab-github" revision="calcite" />
   <project path="hardware/qcom/thermal" name="pa-sanji/android_hardware_qcom_thermal" remote="kebab-github" revision="calcite" />
-  <project path="hardware/qcom/display" name="pa-sanji/android_hardware_qcom_display" remote="kebab-github" revision="calcite" />
-  <project path="vendor/qcom/opensource/audio-hal/primary-hal" name="pa-sanji/android_hardware_qcom_audio" remote="kebab-github" revision="calcite" />
 </manifest>
