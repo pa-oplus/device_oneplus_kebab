@@ -177,3 +177,7 @@ DEVICE_MANIFEST_FILE += $(DEVICE_PATH)/configs/vintf/manifest-security.xml
 
 # The selected HIDL audio service has RC but no service-owned manifest fragment.
 DEVICE_MANIFEST_FILE += $(DEVICE_PATH)/configs/vintf/manifest-audio.xml
+
+# Framework-side optional Oplus/Pixelworks contracts from the selected PA hardware.
+DEVICE_FRAMEWORK_COMPATIBILITY_MATRIX_FILE += \
+    hardware/oplus/vintf/device_framework_matrix.xml
