@@ -3,3 +3,9 @@
 
 /vendor/bin/tri-state-key-calibrate    u:object_r:vendor_kebab_slider_exec:s0
 /mnt/vendor/persist/engineermode/tri_state_hall_data    u:object_r:vendor_kebab_slider_calibration_file:s0
+
+# PA wrapper and the OnePlus backend share the fingerprint HAL domain.
+/vendor/bin/hw/android\.hardware\.biometrics\.fingerprint@2\.3-service\.oplus    u:object_r:hal_fingerprint_default_exec:s0
+/(odm|vendor/odm)/bin/hw/vendor\.oplus\.hardware\.biometrics\.fingerprint@2\.1-service    u:object_r:hal_fingerprint_default_exec:s0
+/dev/oplus_display    u:object_r:vendor_kebab_oplus_display_device:s0
+/dev/goodix_fp    u:object_r:fingerprint_device:s0

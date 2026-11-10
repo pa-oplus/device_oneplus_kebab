@@ -1,0 +1,5 @@
+# Copyright (C) 2026 Paranoid Android
+# SPDX-License-Identifier: Apache-2.0
+
+persist.vendor.fingerprint.sensor_type    u:object_r:vendor_kebab_fingerprint_prop:s0 exact string
+persist.vendor.fingerprint.version    u:object_r:vendor_kebab_fingerprint_prop:s0 exact string

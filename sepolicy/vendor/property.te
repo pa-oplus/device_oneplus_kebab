@@ -1,0 +1,4 @@
+# Copyright (C) 2026 Paranoid Android
+# SPDX-License-Identifier: Apache-2.0
+
+vendor_internal_prop(vendor_kebab_fingerprint_prop)

@@ -27,3 +27,19 @@ label/access integration is still pending. Kernel UDFPS header/bit definitions,
 HBM behavior, generated_kernel_headers availability, framework registration,
 enrollment, unlock and screen-off behavior need full build/device validation.
 No Xiaomi fingerprint extension, side-sensor geometry or Xiaomi library is used.
+
+## Initial fingerprint policy
+
+The source wrapper and OnePlus backend receive hal_fingerprint_default executable
+labels and the vendor backend interface maps to the existing fingerprint hwservice
+type. Same-domain binder calls follow the selected PA Oplus policy contract.
+/dev/oplus_display has a device-specific type granted only to the HAL for its
+source-defined optical ioctls; the local SurfaceFlinger extension does not open
+that node. The historical OnePlus goodix_fp mapping uses fingerprint_device.
+
+Exact sensor_type/version properties use a local vendor-internal property type,
+with fingerprint HAL access and vendor-init setting access. No broad fingerprint
+property prefix or unrelated Oplus service policy is imported. Backend data,
+persist/TEE/device paths and remaining property requirements still need actual
+vendor/policy reconciliation. This initial slice does not validate enrollment,
+HBM, ioctl ABI or authentication on device.
