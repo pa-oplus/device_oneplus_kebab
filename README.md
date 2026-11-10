@@ -11,7 +11,9 @@ symlink modules and Qualcomm image-generation integration. OnePlus variant
 libinit, boot/init scripts, fstab installation and OTA postinstall configuration
 are defined. Device-owned source audio configuration is in [docs/audio.md](docs/audio.md).
 Power, display, optical fingerprint and legacy camera configuration are also
-defined. Remaining hardware integration, complete manifests/policy and proprietary
+defined. Alert slider calibration/PA key handling, the PA Oplus sensor multihal,
+OnePlus Codec2 configuration and QTI kona thermal reporting are now selected.
+Remaining hardware integration, complete manifests/policy and proprietary
 dependencies are pending, so the product is not buildable yet.
 
 See [BRINGUP.md](docs/BRINGUP.md) for source comparisons, checks and remaining work,

@@ -35,7 +35,8 @@ check the resulting configuration. Do not build this baseline without that step.
 - External PA libinit hook integration and validation of init dependencies against
   kernel/vendor outputs; see [INIT_OWNERSHIP.md](INIT_OWNERSHIP.md).
 - Source-audio dependencies, ABI/VINTF/policy and runtime checks; UDFPS, touch,
-  slider, sensors and other HALs.
+  slider, sensors and other HALs. Their initial configuration does not establish
+  working hardware.
 - Device manifests, property files, overlays and SELinux policies.
 - Vendor includes and extraction implementation; expected interfaces are recorded in
   [VENDOR_INTEGRATION.md](VENDOR_INTEGRATION.md).
@@ -161,3 +162,28 @@ AAPT2 compiled the overlay resources; XML/source checks and host init verificati
 passed. UDFPS compiled/linked against the real calcite extension header and passed
 fallback-behavior assertions. The power hook passed host tests with mocked Android
 APIs. None of these checks establish a complete Android build or hardware behavior.
+
+## Alert slider, sensors, media and thermal continuation
+
+The historical opkona tree supplies the OnePlus slider calibration contract and
+physical state mapping. Calibration is a vendor oneshot after persist mounts;
+the device-local Java handler uses PA's actual DeviceKeyHandler interface and
+framework overlay arrays. It applies the physical position at boot and on slider
+events. Gesture support and required SELinux access remain pending.
+
+Sensors select the platform AIDL multihal bridge with PA Oplus and SSC libraries.
+The UDFPS long-press sensor name matches the selected source. The optional SSC
+vtable modification is not enabled without vendor ABI evidence. Media removes
+the generic QTI media component and preserves four OnePlus Codec2 inputs, with
+vendor services/profiles deferred. Thermal selects the existing QTI kona reporter;
+the proprietary thermal controller remains a vendor dependency.
+
+Combined isolated Make checks now cover 84 unique direct copy destinations and
+check conflicting vendor, system-ext and ODM properties, package choices and
+selectors. External product inheritance is still recorded rather than expanded.
+The slider host harness compiles the real PA interface with mocked Android APIs;
+state mappings, event filtering and invalid inputs passed. Calibration shell
+checks, overlay AAPT2 compilation, source/XML comparisons and host init checks
+passed. Media performance entries were checked against both vendor and platform
+software Codec2 declarations. None establishes an Android build, SELinux access,
+vendor ABI compatibility or hardware behavior.

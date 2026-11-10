@@ -406,3 +406,9 @@ PRODUCT_SYSTEM_EXT_PROPERTIES += \
     ro.media.recorder-max-base-layer-fps=60
 PRODUCT_ODM_PROPERTIES += \
     ro.odm.build.media_performance_class=30
+
+# Kona thermal reporting through the QTI AIDL service.
+PRODUCT_PACKAGES += android.hardware.thermal-service.qti
+
+# Match the 4.19 common QTI path: sysfs/uevent monitoring, not netlink.
+$(call soong_config_set,qti_thermal,netlink,false)

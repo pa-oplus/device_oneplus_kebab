@@ -40,8 +40,10 @@ The PA Oplus source selected by the user is `aospa-trees/hardware/oplus`, remote
 `hardware/oplus`; it imports `hardware/google/interfaces`. Its fingerprint wrapper
 is selected. Its tree has no amplifier, UDFPS extension, KeyHandler package or
 Lineage touch HAL; do not assume the newer Lineage hardware checkout is a drop-in
-replacement. The amplifier and UDFPS extension are device-local; touch/slider
-integration remains pending a compatible PA implementation.
+replacement. The amplifier, UDFPS extension and alert slider handler are
+device-local. The slider uses the inspected PA DeviceKeyHandler hook; touch
+gestures still need a compatible implementation. Sensors use the selected PA
+Oplus module through the platform AIDL multihal bridge.
 
 The inspected native calcite CompositionEngine consumes
 `surfaceflinger/udfps_lib` through a direct Soong select; the device uses that API.
