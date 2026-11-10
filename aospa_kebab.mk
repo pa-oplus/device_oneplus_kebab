@@ -5,6 +5,19 @@
 # SPDX-License-Identifier: Apache-2.0
 #
 
+# Inherit the base product before the device and PA configuration.
+$(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
+$(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_base_telephony.mk)
+
+# Preserve the Lineage baseline until media integration is reviewed.
+TARGET_SUPPORTS_OMX_SERVICE := false
+
+$(call inherit-product, device/oneplus/kebab/device.mk)
+$(call inherit-product, vendor/aospa/target/product/aospa-target.mk)
+
+# Boot animation
+TARGET_BOOT_ANIMATION_RES := 1080
+
 PRODUCT_NAME := aospa_kebab
 PRODUCT_DEVICE := kebab
 PRODUCT_MANUFACTURER := OnePlus
