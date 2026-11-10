@@ -168,3 +168,6 @@ WPA_SUPPLICANT_VERSION := VER_0_8_X
 
 # OnePlus ODM secure-element service; NFC source HAL supplies its own fragment.
 DEVICE_MANIFEST_FILE += $(DEVICE_PATH)/configs/vintf/manifest-secure-element.xml
+
+# OnePlus vendor RIL registers legacy dual-SIM radio/SAP and radio-config instances.
+DEVICE_MANIFEST_FILE += $(DEVICE_PATH)/configs/vintf/manifest-radio.xml

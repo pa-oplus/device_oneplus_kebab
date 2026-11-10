@@ -1,0 +1,9 @@
+// Copyright (C) 2022 The LineageOS Project
+// Copyright (C) 2026 Paranoid Android
+// SPDX-License-Identifier: Apache-2.0
+
+runtime_resource_overlay {
+    name: "KebabCarrierConfig",
+    aaptflags: ["--keep-raw-values"],
+    product_specific: true,
+}
