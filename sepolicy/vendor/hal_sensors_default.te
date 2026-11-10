@@ -1,0 +1,6 @@
+# Copyright (C) 2026 Paranoid Android
+# SPDX-License-Identifier: Apache-2.0
+
+# PA sensors.oplus reads this synthetic UDFPS state in the multihal process.
+allow hal_sensors_default sysfs:dir search;
+allow hal_sensors_default vendor_kebab_fp_state:file r_file_perms;

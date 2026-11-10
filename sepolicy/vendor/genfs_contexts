@@ -4,3 +4,6 @@
 genfscon proc /tristatekey    u:object_r:vendor_kebab_slider_proc:s0
 genfscon proc /tristatekey/tri_state    u:object_r:vendor_kebab_slider_state:s0
 genfscon proc /tristatekey/hall_data_calib    u:object_r:vendor_kebab_slider_calibration:s0
+
+genfscon proc /touchpanel/double_tap_enable    u:object_r:vendor_kebab_double_tap:s0
+genfscon sysfs /kernel/oplus_display/fp_state    u:object_r:vendor_kebab_fp_state:s0
