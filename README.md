@@ -14,12 +14,14 @@ Power, display, optical fingerprint and legacy camera configuration are also
 defined. Alert slider calibration/PA key handling, the PA Oplus sensor multihal,
 OnePlus Codec2 configuration and QTI kona thermal reporting are now selected.
 QTI AIDL health/recovery, PA Oplus vibrator, OnePlus Bluetooth settings, qcwcn
-Wi-Fi and the ODM GNSS configuration are also defined. NFC/secure element,
+Wi-Fi and the ODM GNSS configuration are also defined. Fingerprint/vibrator and ODM-script policy, VINTF ownership
+audit tools, and two-producer extraction metadata are included. NFC/secure element,
 OnePlus USB compositions, A/B boot control, radio/carrier overlays and DRM service
 ownership are configured. Local audio/security manifests and OnePlus Wi-Fi,
 Settings and SystemUI overlays are included. The kebab power profile, initial
 device defaults, Oplus framework matrix and initial slider/power/sensor policy
-are also defined.
+are also defined. Fingerprint/vibrator and ODM-script policy, VINTF ownership
+audit tools, and two-producer extraction metadata are included.
 Remaining hardware integration, complete manifests/policy and proprietary
 dependencies are pending, so the product is not buildable yet.
 
@@ -30,7 +32,7 @@ See [BRINGUP.md](docs/BRINGUP.md) for source comparisons, checks and remaining w
 and [VENDOR_INTEGRATION.md](docs/VENDOR_INTEGRATION.md) for deferred vendor interfaces.
 
 The target PA branch and Android version remain to be confirmed. Kernel and
-proprietary vendor tree work is deferred.
+proprietary vendor acquisition/output generation remain deferred.
 
 ## Reference sources
 

@@ -299,3 +299,26 @@ harness. This is not a kebab build: final PA/QTI composition, mappings, backend
 policies and runtime labels/access remain pending. Common type/path searches,
 source node contracts, host init verification and standalone Make selection checks
 also pass. No reference source/build outputs or device data were modified.
+
+## Fingerprint/vibrator/init policy and extraction interfaces
+
+The next policy slice covers executable and node labels for the selected optical
+fingerprint wrapper/backend, Oplus LED vibrator and the device-owned ODM script.
+Exact fingerprint/radio property contexts and system-ext project-property policy
+are selected. The init script remains an explicit synchronous early-boot oneshot.
+Reference-policy compile/neverallow checks, file/hwbinder/property context checks,
+source-path matching and host init/shell checks pass; full target policy is pending.
+
+The VINTF audit records all 52 Lineage legacy records and twelve known source
+fragment providers. Eighteen local/source inputs merge with 28 declared instances;
+nine reference records are covered and 43 remain for vendor/WFD/provider review.
+The memtrack provider remains unverified in the complete source graph. Duplicate
+injection and strict incomplete-coverage checks fail as intended. This replaces
+an assumption of completeness with a concrete unresolved inventory.
+
+Extraction now hosts kebab and sm8250-common modules in the standalone tree.
+Their unchanged lists parse as 107 and 2,443 entries, with no overlapping
+destinations. Setup help/API registration and Python syntax pass without vendor
+output generation. Only reference library module-name suffix handling is adapted;
+binary/config/APK fixups are recorded for review rather than applied without
+inputs. No vendor/kernel checkout, dump or firmware was acquired.

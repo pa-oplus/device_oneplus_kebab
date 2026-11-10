@@ -113,8 +113,8 @@ matrices remain prerequisites for a full build.
 
 ## Initial policy ownership
 
-Device vendor policy supplies only the slider script/state/calibration and local
-power/sensor leaf integrations so far. PA's BoardConfigQcom must still select the
+Device vendor policy now supplies initial slider/power/sensor, fingerprint,
+vibrator and ODM-script integrations; it remains incomplete. PA's BoardConfigQcom must still select the
 common QTI policy correctly; it provides vendor_persist_type/vendor_persist_file
 and the Power HAL executable mapping. Platform policy supplies vendor shell/toybox,
 system_server, sensor executable and standard domain macros.
@@ -124,3 +124,17 @@ and resolving overlapping genfs labels/Lineage-specific dependencies. A successf
 reference-policy compile is not the final product policy test. Complete remaining
 service/property/device rules and validate with actual source/vendor policy and
 an enforcing device before considering SELinux integration complete.
+
+## Extraction and outstanding interface inventory
+
+The local Python extractor expects the inspected ExtractUtilsModule API, including
+device_rel_path and skip_main_proprietary_file, to host both vendor producers
+without a sibling common device checkout. Unported fixups and input pins are
+explicit dependencies, not verified by metadata parsing. No generated vendor
+makefiles are inherited yet.
+
+tools/check-vintf-ownership.py validates recorded declarations and prints unresolved
+reference/provider counts. Its strict coverage mode currently fails by design
+because vendor/WFD/common-provider reconciliation is unfinished. In particular,
+resolve the selected memtrack service's complete provider/fragment before treating
+the source graph as complete. See extraction.md and vintf.md for command scope.

@@ -3,7 +3,7 @@
 BoardConfig selects sepolicy/vendor. Common QTI policy remains owned by PA's
 BoardConfigQcom integration. The entire hardware/oplus policy product is not
 included: its platform-directory assumptions differ from this CLO layout and it
-contains unrelated service/Lineage policy dependencies. Local types have the
+contains unrelated service/Lineage policy dependencies. Local vendor types have the
 vendor_kebab prefix; do not select an overlapping slider genfs policy later.
 
 The slider policy follows the OnePlus/PA Oplus node contract but splits state,
@@ -47,3 +47,19 @@ source domains/transition rules and parent traversal must still be checked in
 the actual PA/QTI product; local rules do not complete fingerprint, sensors or
 power policy. Runtime labels, enforcing access, wake behavior and the remaining
 backend policies are device-validation work.
+
+## Fingerprint, vibrator and ODM-script additions
+
+Local policy now labels the PA fingerprint wrapper, OnePlus backend/display node,
+Oplus vibrator binary and reference physical LED paths. Fingerprint backend
+hwservice and exact optical/version properties have explicit contexts; the LED
+backend uses the platform sysfs_vibrator type. Full backend data/TEE/driver and
+vendor property requirements still need actual source/vendor integration.
+
+The ODM init script has a dedicated domain and exact radio mapping. A system-ext
+public config type plus private exact contexts handle retained legacy project/
+revision properties; vendor policy is not used to own non-vendor property names.
+Both system-ext policy directories are selected in BoardConfig. The reference
+compile includes these types, and property_info_checker/checkfc validate property,
+file and hwbinder contexts against that temporary policy. This remains a different-
+device reference check, not a final kebab compile or runtime authorization result.

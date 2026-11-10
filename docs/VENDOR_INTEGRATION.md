@@ -85,3 +85,12 @@ vendor inheritance is disabled to avoid competing producers. Their default
 instances are declared by manifest-security.xml. Source audio/effect 6.0 and
 sound-trigger 2.3 use manifest-audio.xml. Vendor extraction must not add duplicate
 fragments for these locally declared instances.
+
+## Standalone extraction module registration
+
+extract-files.py now registers the kebab and sm8250-common producers directly,
+with both metadata lists hosted in this repository. It does not discover or
+require a sibling common device checkout. The two product/board output interfaces
+above remain the intended contracts; this change does not activate their includes.
+See extraction.md for the raw-metadata/fixup boundary and read-only parser command.
+No extractor or makefile generator was run on proprietary files during this step.
