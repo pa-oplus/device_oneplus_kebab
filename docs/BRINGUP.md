@@ -15,7 +15,7 @@ build target remains open.
 | Product reserve | Preserve kebab's 800,000,000-byte vanilla product reserve, gated by PA's `TARGET_DISABLES_GMS`. Reassess image fit when the final product is assembled. |
 | QTI ownership | Select the same initial component list as alioth. PA's `vendor/aospa/target/product/aospa-target.mk` already inherits `device/qcom/common/common.mk`; avoid a second inheritance. |
 | Audio/perf | Initial common component selection only. No stock Xiaomi HAL, stub perf client, blob overrides, Dolby or framework workaround is imported. Final OnePlus implementations remain pending. |
-| Init/fstab | Fstab currently supplies the recovery reference. Its normal-boot and ramdisk modules, device init and boot control are not implemented yet. |
+| Init/fstab | OnePlus init and normal-boot/ramdisk fstab modules are defined. Recovery uses the same source through BoardConfig. Boot control HAL integration and runtime validation remain pending. |
 | Kernel | Record 4.19, `kernel/oneplus/sm8250`, base defconfig `vendor/kona-perf_defconfig` and LLVM support. No compiler version is selected without kernel evidence. |
 
 ## Kernel configuration blocker for later build integration
@@ -32,7 +32,8 @@ check the resulting configuration. Do not build this baseline without that step.
 ## Remaining integration
 
 - Complete hardware integration behind the registered PA product.
-- Normal boot/ramdisk fstab installation, OnePlus libinit and init services.
+- External PA libinit hook integration and validation of init dependencies against
+  kernel/vendor outputs; see [INIT_OWNERSHIP.md](INIT_OWNERSHIP.md).
 - OnePlus audio flags/configuration, UDFPS, touch, slider, sensors and other HALs.
 - Device manifests, property files, overlays and SELinux policies.
 - Vendor includes and extraction implementation; expected interfaces are recorded in
@@ -63,7 +64,8 @@ Checks performed for this foundation:
 64-bit-with-32-bit-support base, telephony base, kebab device configuration, then
 PA configuration. It retains Lineage's initial OMX-disable choice pending media
 integration. Identity uses Lineage's KB2005 default and OnePlus8T property names;
-regional variant handling still belongs to future libinit work.
+regional handling is in the device libinit, with external hook requirements
+recorded in [PA_SOURCE_REQUIREMENTS.md](PA_SOURCE_REQUIREMENTS.md).
 
 `AndroidProducts.mk` registers `aospa_kebab` locally so this repository is
 self-contained. Do not also register the same product in `vendor/aospa/products`.
@@ -86,3 +88,28 @@ Product checks evaluated local identity, registration and nested device
 inheritance while recording external base/PA inheritance calls. Their entry paths
 exist in the inspected PA checkout; their full transitive configuration was not
 evaluated. Blueprint formatting passed with the local prebuilt `bpfmt`.
+
+## Boot/init and OTA configuration
+
+The device libinit maps RF versions 11–15 to the same kebab model names as
+Lineage. A host compilation with mocked Android APIs tested all five mappings,
+invalid/missing RF versions, property add/update, and DDR input handling. This is
+not an Android init build or a device execution test. The inspected PA init lacks
+the hook wiring described in `docs/PA_SOURCE_REQUIREMENTS.md`.
+
+Normal boot uses the common QTI init plus OnePlus ODM actions and a target script.
+The local ueventd delta contains ten differences from the inspected QTI baseline.
+See `docs/INIT_OWNERSHIP.md` for ownership, removed duplicate starts and deferred blob
+and kernel checks. Host init verification passed for the local RC files; shell
+syntax checking passed for `init.oplus.sh`.
+
+Fstab is installed through the same vendor/ramdisk module definition as Lineage
+kebab; recovery receives it through `TARGET_RECOVERY_FSTAB`. Encryption and mount
+options are preserved. Postinstall uses Lineage's system ext4/vendor EROFS
+configuration with optional otapreopt/checkpoint steps and matching packages.
+Update-engine packages are selected; boot control HAL and vendor integration
+remain prerequisites for a working OTA flow.
+
+Filesystem consistency and source/module checks passed. No decryption, image
+build, OTA update, hardware service behavior or enforcing-policy validation has
+been performed.

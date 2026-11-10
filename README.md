@@ -7,11 +7,14 @@ Standalone device configuration for the OnePlus 8T, intended for
 
 Initial board and product foundation. This repository registers `aospa_kebab`
 and contains board/device configuration, a baseline recovery fstab, firmware
-symlink modules and Qualcomm image-generation integration. Hardware services,
-normal-boot init, manifests, overlays, policy and proprietary integration remain
-pending, so the product is not buildable yet.
+symlink modules and Qualcomm image-generation integration. OnePlus variant
+libinit, boot/init scripts, fstab installation and OTA postinstall configuration
+are defined. Hardware HAL integration, manifests, overlays, policy
+and proprietary integration remain pending, so the product is not buildable yet.
 
 See [BRINGUP.md](docs/BRINGUP.md) for source comparisons, checks and remaining work,
+[INIT_OWNERSHIP.md](docs/INIT_OWNERSHIP.md) for boot/init ownership,
+[PA_SOURCE_REQUIREMENTS.md](docs/PA_SOURCE_REQUIREMENTS.md) for the missing PA init hook,
 and [VENDOR_INTEGRATION.md](docs/VENDOR_INTEGRATION.md) for deferred vendor interfaces.
 
 The target PA branch and Android version remain to be confirmed. Kernel and
