@@ -31,7 +31,6 @@ TARGET_COMMON_QTI_COMPONENTS := \
     alarm \
     av \
     bt \
-    gps \
     init \
     keymaster \
     overlay \
@@ -492,3 +491,12 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.software.ipsec_tunnels.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.software.ipsec_tunnels.xml
 
 PRODUCT_VENDOR_PROPERTIES += wifi.aware.interface=wifi-aware0
+
+# OnePlus ODM GNSS configuration with vendor service ownership.
+# The GNSS 2.1 service, RC, manifests and libraries are OnePlus vendor outputs.
+# Own only the device override and feature declaration here.
+PRODUCT_COPY_FILES += \
+    device/oneplus/kebab/configs/gps/gps.conf:$(TARGET_COPY_OUT_ODM)/etc/gps.conf \
+    frameworks/native/data/etc/android.hardware.location.gps.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.location.gps.xml
+
+PRODUCT_SYSTEM_EXT_PROPERTIES += persist.backup.ntpServer=0.pool.ntp.org
