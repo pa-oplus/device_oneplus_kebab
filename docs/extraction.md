@@ -50,3 +50,12 @@ The current inputs contain 107 device and 2,443 common entries, with 2,550 uniqu
 destinations. The setup wrapper's help path and Python syntax were also checked.
 This does not resolve input pin/fixup hashes, ELF dependencies or generated-module
 correctness, which need actual proprietary inputs and a complete source graph.
+
+## Selected unified-vendor migration
+
+The subsequent authorized planning step cloned both matching TheMuppets branches
+and verified the DES helper. A combined-list candidate and a single-producer
+staging output now exist, with all 2,550 blob contents preserved. See
+[vendor-consolidation.md](vendor-consolidation.md) for audited inputs and the
+five-commit migration plan. The two-producer script above is still the active
+contract until that migration is executed; no vendor include has been enabled.

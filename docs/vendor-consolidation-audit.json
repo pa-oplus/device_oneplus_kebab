@@ -1,0 +1,581 @@
+{
+  "repositories": [
+    {
+      "kind": "common",
+      "directory": "vendor-reference/proprietary_vendor_oneplus_sm8250-common",
+      "branch": "lineage-24.0",
+      "commit": "e3f6fd86ad47653897753cc2a7a22e80c1b46a18",
+      "listed_files": 2443
+    },
+    {
+      "kind": "device",
+      "directory": "vendor-reference/proprietary_vendor_oneplus_kebab",
+      "branch": "lineage-24.0",
+      "commit": "9ecfe6349188e4f961aa7fc878e478e23cc3a6aa",
+      "listed_files": 107
+    }
+  ],
+  "missing_files": [],
+  "duplicate_destinations": [],
+  "pinned_files": [
+    {
+      "path": "product/app/PowerOffAlarm/PowerOffAlarm.apk",
+      "actual": "6b8aa2a6b6feaa2da0f45be0a9a8147f46f10f50",
+      "input_hash": "5928b0a09b559a33f08ad2f04603a5c70fd3493b",
+      "fixed_hash": "6b8aa2a6b6feaa2da0f45be0a9a8147f46f10f50",
+      "matches": "fixed"
+    },
+    {
+      "path": "system/framework/WfdCommon.jar",
+      "actual": "6d1f1d953c48a414e978263256e2ed3aec1580b7",
+      "input_hash": "27251f8421652af8abffb1f3fd9449fe0ec64ee5",
+      "fixed_hash": "6d1f1d953c48a414e978263256e2ed3aec1580b7",
+      "matches": "fixed"
+    },
+    {
+      "path": "system_ext/bin/wfdservice",
+      "actual": "6b738758fe3d21d6d53d3fb522e1321b54592fa9",
+      "input_hash": "6b738758fe3d21d6d53d3fb522e1321b54592fa9",
+      "fixed_hash": null,
+      "matches": "input"
+    },
+    {
+      "path": "system_ext/etc/init/wfdservice.rc",
+      "actual": "907def8565d8f91f531ca7dfad880af05d540b0c",
+      "input_hash": "907def8565d8f91f531ca7dfad880af05d540b0c",
+      "fixed_hash": null,
+      "matches": "input"
+    },
+    {
+      "path": "system_ext/etc/permissions/wfd-system-ext-privapp-permissions-qti.xml",
+      "actual": "6669d5ee462c981663b8ac573d84d334e4eed96c",
+      "input_hash": "6669d5ee462c981663b8ac573d84d334e4eed96c",
+      "fixed_hash": null,
+      "matches": "input"
+    },
+    {
+      "path": "system_ext/etc/seccomp_policy/wfdservice64.policy",
+      "actual": "1e331272649395423b11c575892e0bdc9433b820",
+      "input_hash": "1e331272649395423b11c575892e0bdc9433b820",
+      "fixed_hash": null,
+      "matches": "input"
+    },
+    {
+      "path": "system_ext/framework/vendor.qti.hardware.alarm-V1.0-java.jar",
+      "actual": "1cef4c9f6193022d8410e21513f36687cab0e0f2",
+      "input_hash": "1cef4c9f6193022d8410e21513f36687cab0e0f2",
+      "fixed_hash": null,
+      "matches": "input"
+    },
+    {
+      "path": "system_ext/lib64/libmmrtpdecoder.so",
+      "actual": "51c486b525879c1239062f0fa6b591c3e0abaaa0",
+      "input_hash": "51c486b525879c1239062f0fa6b591c3e0abaaa0",
+      "fixed_hash": null,
+      "matches": "input"
+    },
+    {
+      "path": "system_ext/lib64/libmmrtpencoder.so",
+      "actual": "946d85b6b852ee95e17b40b00c4c85ebfa72c85c",
+      "input_hash": "946d85b6b852ee95e17b40b00c4c85ebfa72c85c",
+      "fixed_hash": null,
+      "matches": "input"
+    },
+    {
+      "path": "system_ext/lib64/libwfdavenhancements.so",
+      "actual": "e5a06c6ea07c0cd4ebb73b030b87bf5e51a553e3",
+      "input_hash": "e5a06c6ea07c0cd4ebb73b030b87bf5e51a553e3",
+      "fixed_hash": null,
+      "matches": "input"
+    },
+    {
+      "path": "system_ext/lib64/libwfdclient.so",
+      "actual": "ae443c8657e680558cce30039409cee1e6ab5505",
+      "input_hash": "ae443c8657e680558cce30039409cee1e6ab5505",
+      "fixed_hash": null,
+      "matches": "input"
+    },
+    {
+      "path": "system_ext/lib64/libwfdcommonutils.so",
+      "actual": "27c411978b486ccc075862fa2eff450990b9d47a",
+      "input_hash": "27c411978b486ccc075862fa2eff450990b9d47a",
+      "fixed_hash": null,
+      "matches": "input"
+    },
+    {
+      "path": "system_ext/lib64/libwfdconfigutils.so",
+      "actual": "d05d03298caf2e233c69689cf1fed0dd19a02be1",
+      "input_hash": "d05d03298caf2e233c69689cf1fed0dd19a02be1",
+      "fixed_hash": null,
+      "matches": "input"
+    },
+    {
+      "path": "system_ext/lib64/libwfddisplayconfig.so",
+      "actual": "2717202736b678390be7518ce6f69a63079e4217",
+      "input_hash": "2717202736b678390be7518ce6f69a63079e4217",
+      "fixed_hash": null,
+      "matches": "input"
+    },
+    {
+      "path": "system_ext/lib64/libwfdmminterface.so",
+      "actual": "b560306dbc7b2bffb734c8eb6439dd3721f75c12",
+      "input_hash": "b560306dbc7b2bffb734c8eb6439dd3721f75c12",
+      "fixed_hash": null,
+      "matches": "input"
+    },
+    {
+      "path": "system_ext/lib64/libwfdmmsink.so",
+      "actual": "a250fd4085ec04345db8067f11962f57c3b166f0",
+      "input_hash": "a250fd4085ec04345db8067f11962f57c3b166f0",
+      "fixed_hash": null,
+      "matches": "input"
+    },
+    {
+      "path": "system_ext/lib64/libwfdmmsrc_system.so",
+      "actual": "69e08746a9557ee5fba3e02a8170032db0fa0105",
+      "input_hash": "69e08746a9557ee5fba3e02a8170032db0fa0105",
+      "fixed_hash": null,
+      "matches": "input"
+    },
+    {
+      "path": "system_ext/lib64/libwfdnative.so",
+      "actual": "923acb22f26dc3aab5115cf685a161611e43c018",
+      "input_hash": "923acb22f26dc3aab5115cf685a161611e43c018",
+      "fixed_hash": null,
+      "matches": "input"
+    },
+    {
+      "path": "system_ext/lib64/libwfdrtsp.so",
+      "actual": "14eec96c4fa615096c473d5a269ba315a53cfd00",
+      "input_hash": "14eec96c4fa615096c473d5a269ba315a53cfd00",
+      "fixed_hash": null,
+      "matches": "input"
+    },
+    {
+      "path": "system_ext/lib64/libwfdservice.so",
+      "actual": "54624fd8c8ef2932e71c4b3ce176fb712e884f5a",
+      "input_hash": "429839b831a8b16fb858179241dc6183c50bdf13",
+      "fixed_hash": "54624fd8c8ef2932e71c4b3ce176fb712e884f5a",
+      "matches": "fixed"
+    },
+    {
+      "path": "system_ext/lib64/libwfdsinksm.so",
+      "actual": "e714120166d6480ada0b629ddd73c499c73c55a2",
+      "input_hash": "e714120166d6480ada0b629ddd73c499c73c55a2",
+      "fixed_hash": null,
+      "matches": "input"
+    },
+    {
+      "path": "system_ext/lib64/libwfduibcinterface.so",
+      "actual": "62a596c93efa57bdc79b078d74a3ccf4d19d1f58",
+      "input_hash": "62a596c93efa57bdc79b078d74a3ccf4d19d1f58",
+      "fixed_hash": null,
+      "matches": "input"
+    },
+    {
+      "path": "system_ext/lib64/libwfduibcsink.so",
+      "actual": "a6fc5d0245e23648812a535f7338d562c9317f09",
+      "input_hash": "a6fc5d0245e23648812a535f7338d562c9317f09",
+      "fixed_hash": null,
+      "matches": "input"
+    },
+    {
+      "path": "system_ext/lib64/libwfduibcsinkinterface.so",
+      "actual": "2db07ec7a9a6206d2782439e247b35fbe62a550f",
+      "input_hash": "2db07ec7a9a6206d2782439e247b35fbe62a550f",
+      "fixed_hash": null,
+      "matches": "input"
+    },
+    {
+      "path": "system_ext/lib64/libwfduibcsrc.so",
+      "actual": "ac3e0988fb5c36c6c4561f04e0e5d53d7de2ad76",
+      "input_hash": "ac3e0988fb5c36c6c4561f04e0e5d53d7de2ad76",
+      "fixed_hash": null,
+      "matches": "input"
+    },
+    {
+      "path": "system_ext/lib64/libwfduibcsrcinterface.so",
+      "actual": "d19e9b5c35f61cc696a9c999dce6eb11d781bd8c",
+      "input_hash": "d19e9b5c35f61cc696a9c999dce6eb11d781bd8c",
+      "fixed_hash": null,
+      "matches": "input"
+    },
+    {
+      "path": "system_ext/lib64/vendor.qti.hardware.wifidisplaysession@1.0.so",
+      "actual": "7b3051498476202797fce711a6dcc42ae6a7b8ea",
+      "input_hash": "7b3051498476202797fce711a6dcc42ae6a7b8ea",
+      "fixed_hash": null,
+      "matches": "input"
+    },
+    {
+      "path": "system_ext/lib64/vendor.qti.hardware.wifidisplaysession_aidl-V2-ndk.so",
+      "actual": "b2f864d6ae621758bef6f4081af353e2e11e04d8",
+      "input_hash": "b2f864d6ae621758bef6f4081af353e2e11e04d8",
+      "fixed_hash": null,
+      "matches": "input"
+    },
+    {
+      "path": "system_ext/priv-app/WfdService/WfdService.apk",
+      "actual": "7d7e4ce1ec07338f1d2abf39035a8f44714a4a40",
+      "input_hash": "7d7e4ce1ec07338f1d2abf39035a8f44714a4a40",
+      "fixed_hash": null,
+      "matches": "input"
+    },
+    {
+      "path": "vendor/etc/init/vendor.qti.media.c2@1.0-service.rc",
+      "actual": "11209316ba8aae64b689217bc13b0804f6620678",
+      "input_hash": "11209316ba8aae64b689217bc13b0804f6620678",
+      "fixed_hash": null,
+      "matches": "input"
+    },
+    {
+      "path": "vendor/etc/vintf/manifest/c2_manifest_vendor.xml",
+      "actual": "0e532bf1c7d6a0ee2e7e03a9cc3283a5bffc7f8e",
+      "input_hash": "0e532bf1c7d6a0ee2e7e03a9cc3283a5bffc7f8e",
+      "fixed_hash": null,
+      "matches": "input"
+    },
+    {
+      "path": "vendor/lib64/sensors.ssc.so",
+      "actual": "d1ceee93b0135646cbe8a49dfe0e33017c1c0605",
+      "input_hash": "073bf1ad552b1615177b24aebda0668cc3f5d7fc",
+      "fixed_hash": "d1ceee93b0135646cbe8a49dfe0e33017c1c0605",
+      "matches": "fixed"
+    }
+  ],
+  "elf_parse_errors": [],
+  "shim_dependencies": {
+    "libcamera_metadata_shim.so": {
+      "users": 1,
+      "examples": [
+        "vendor/lib64/hw/com.qti.chi.override.so"
+      ]
+    },
+    "libcrypto_shim.so": {
+      "users": 2,
+      "examples": [
+        "odm/lib64/libwvhidl.so",
+        "odm/lib64/mediadrm/libwvdrmengine.so"
+      ]
+    },
+    "libshims_fingerprint.oplus.so": {
+      "users": 1,
+      "examples": [
+        "odm/bin/hw/vendor.oplus.hardware.biometrics.fingerprint@2.1-service"
+      ]
+    }
+  },
+  "generated_module_collisions": [],
+  "file_count": 2550,
+  "elf_counts": {
+    "64": 620,
+    "32": 152
+  },
+  "module_count": 777,
+  "pinned_summary": {
+    "fixed": 4,
+    "input": 28
+  },
+  "external_needed_libraries": [
+    "android.frameworks.sensorservice@1.0.so",
+    "android.hardware.audio.common@5.0.so",
+    "android.hardware.biometrics.fingerprint@2.1.so",
+    "android.hardware.biometrics.fingerprint@2.2.so",
+    "android.hardware.biometrics.fingerprint@2.3.so",
+    "android.hardware.bluetooth.audio@2.0.so",
+    "android.hardware.bluetooth@1.0.so",
+    "android.hardware.common-V2-ndk.so",
+    "android.hardware.drm@1.0.so",
+    "android.hardware.drm@1.1.so",
+    "android.hardware.drm@1.2.so",
+    "android.hardware.drm@1.3.so",
+    "android.hardware.gatekeeper@1.0.so",
+    "android.hardware.gnss.measurement_corrections@1.0.so",
+    "android.hardware.gnss.measurement_corrections@1.1.so",
+    "android.hardware.gnss.visibility_control@1.0.so",
+    "android.hardware.gnss@1.0.so",
+    "android.hardware.gnss@1.1.so",
+    "android.hardware.gnss@2.0.so",
+    "android.hardware.gnss@2.1.so",
+    "android.hardware.graphics.allocator-V2-ndk.so",
+    "android.hardware.graphics.allocator@2.0.so",
+    "android.hardware.graphics.allocator@3.0.so",
+    "android.hardware.graphics.allocator@4.0.so",
+    "android.hardware.graphics.bufferqueue@1.0.so",
+    "android.hardware.graphics.bufferqueue@2.0.so",
+    "android.hardware.graphics.common@1.0.so",
+    "android.hardware.graphics.common@1.1.so",
+    "android.hardware.graphics.common@1.2.so",
+    "android.hardware.graphics.composer@2.1.so",
+    "android.hardware.graphics.composer@2.2.so",
+    "android.hardware.graphics.composer@2.3.so",
+    "android.hardware.graphics.composer@2.4.so",
+    "android.hardware.graphics.mapper@2.0.so",
+    "android.hardware.graphics.mapper@2.1.so",
+    "android.hardware.graphics.mapper@3.0.so",
+    "android.hardware.graphics.mapper@4.0.so",
+    "android.hardware.health@1.0.so",
+    "android.hardware.health@2.0.so",
+    "android.hardware.health@2.1.so",
+    "android.hardware.keymaster@4.0.so",
+    "android.hardware.keymaster@4.1.so",
+    "android.hardware.media.c2@1.0.so",
+    "android.hardware.neuralnetworks@1.0.so",
+    "android.hardware.neuralnetworks@1.1.so",
+    "android.hardware.neuralnetworks@1.2.so",
+    "android.hardware.neuralnetworks@1.3.so",
+    "android.hardware.power@1.2.so",
+    "android.hardware.radio.config@1.0.so",
+    "android.hardware.radio.config@1.1.so",
+    "android.hardware.radio.config@1.2.so",
+    "android.hardware.radio.deprecated@1.0.so",
+    "android.hardware.radio@1.0.so",
+    "android.hardware.radio@1.1.so",
+    "android.hardware.radio@1.2.so",
+    "android.hardware.radio@1.3.so",
+    "android.hardware.radio@1.4.so",
+    "android.hardware.radio@1.5.so",
+    "android.hardware.secure_element@1.0.so",
+    "android.hardware.secure_element@1.1.so",
+    "android.hardware.secure_element@1.2.so",
+    "android.hardware.sensors@1.0.so",
+    "android.hardware.sensors@2.0-ScopedWakelock.so",
+    "android.hardware.sensors@2.0.so",
+    "android.hardware.wifi.hostapd@1.0.so",
+    "android.hardware.wifi.supplicant@1.0.so",
+    "android.hidl.allocator@1.0.so",
+    "android.hidl.memory@1.0.so",
+    "android.hidl.safe_union@1.0.so",
+    "android.media.audio.common.types-V5-cpp.so",
+    "android.system.net.netd@1.1.so",
+    "audioclient-types-aidl-cpp.so",
+    "com.dsi.ant@1.0.so",
+    "libEGL.so",
+    "libGLESv2.so",
+    "libGLESv3.so",
+    "libaaudio.so",
+    "libandroid.so",
+    "libandroid_net.so",
+    "libandroid_runtime.so",
+    "libaudiobase.so",
+    "libaudioclient.so",
+    "libaudiofoundation.so",
+    "libaudioroute.so",
+    "libaudioutils.so",
+    "libavservices_minijail.so",
+    "libbase.so",
+    "libbinder.so",
+    "libbinder_ndk.so",
+    "libbluetooth_audio_session.so",
+    "libc++.so",
+    "libc.so",
+    "libcamera_metadata.so",
+    "libcamera_metadata_shim.so",
+    "libclang_rt.ubsan_standalone-aarch64-android.so",
+    "libclang_rt.ubsan_standalone-arm-android.so",
+    "libcld80211.so",
+    "libcodec2_hidl@1.0.so",
+    "libcodec2_vndk.so",
+    "libcrypto.so",
+    "libcrypto_shim.so",
+    "libcurl.so",
+    "libcutils.so",
+    "libdisplayconfig.system.qti.so",
+    "libdisplaydebug.so",
+    "libdl.so",
+    "libdmabufheap.so",
+    "libdng_sdk.so",
+    "libdrm.so",
+    "libdrmutils.so",
+    "libdumpstateutil.so",
+    "libexpat.so",
+    "libfmq.so",
+    "libgpu_tonemapper.so",
+    "libgralloc.qti.so",
+    "libgralloctypes.so",
+    "libgrallocutils.so",
+    "libgui.so",
+    "libhardware.so",
+    "libhardware_legacy.so",
+    "libhidlbase.so",
+    "libhidlmemory.so",
+    "libhidltransport.so",
+    "libhwbinder.so",
+    "libhwui.so",
+    "libinput.so",
+    "libion.so",
+    "libjpeg.so",
+    "libjson.so",
+    "libjsoncpp.so",
+    "liblog.so",
+    "libm.so",
+    "libmedia.so",
+    "libmedia_helper.so",
+    "libmediandk.so",
+    "libnativehelper.so",
+    "libnativewindow.so",
+    "libnetutils.so",
+    "libnl.so",
+    "libpiex.so",
+    "libpng.so",
+    "libprocessgroup.so",
+    "libprotobuf-cpp-full-3.9.1.so",
+    "libprotobuf-cpp-lite-3.9.1.so",
+    "libqdMetaData.so",
+    "libqservice.so",
+    "libqti_vndfwk_detect.so",
+    "librmnetctl.so",
+    "libsensorndkbridge.so",
+    "libshims_fingerprint.oplus.so",
+    "libsqlite.so",
+    "libssl.so",
+    "libstagefright_foundation.so",
+    "libsync.so",
+    "libtinyalsa.so",
+    "libtinycompress.so",
+    "libtinyxml2-v34.so",
+    "libui.so",
+    "libutils.so",
+    "libutilscallstack.so",
+    "libvndksupport.so",
+    "libwfdaac_vendor.so",
+    "libwpa_client.so",
+    "libxml2.so",
+    "libz.so",
+    "vendor.display.config@1.0.so",
+    "vendor.display.config@1.1.so",
+    "vendor.display.config@1.2.so",
+    "vendor.display.config@1.3.so",
+    "vendor.display.config@1.4.so",
+    "vendor.display.config@1.5.so",
+    "vendor.display.config@1.6.so",
+    "vendor.display.config@1.7.so",
+    "vendor.display.config@1.8.so",
+    "vendor.display.config@1.9.so",
+    "vendor.display.config@2.0.so",
+    "vendor.oplus.hardware.biometrics.fingerprint@2.1.so",
+    "vendor.oplus.hardware.cammidasservice-V1-ndk_platform.so",
+    "vendor.oplus.hardware.commondcs-V1-ndk_platform.so",
+    "vendor.oplus.hardware.olc2-V1-ndk_platform.so",
+    "vendor.oplus.hardware.osense.client-V1-ndk_platform.so",
+    "vendor.oplus.hardware.performance-V1-ndk_platform.so",
+    "vendor.oplus.hardware.radio-V2-ndk_platform.so",
+    "vendor.qti.hardware.bluetooth_audio@2.0.so",
+    "vendor.qti.hardware.bluetooth_audio@2.1.so",
+    "vendor.qti.hardware.btconfigstore@1.0.so",
+    "vendor.qti.hardware.btconfigstore@2.0.so",
+    "vendor.qti.hardware.camera.postproc@1.0.so",
+    "vendor.qti.hardware.capabilityconfigstore@1.0.so",
+    "vendor.qti.hardware.display.composer@3.0.so",
+    "vendor.qti.hardware.display.config-V16-ndk.so",
+    "vendor.qti.hardware.display.mapper@1.0.so",
+    "vendor.qti.hardware.display.mapper@1.1.so",
+    "vendor.qti.hardware.display.mapper@2.0.so",
+    "vendor.qti.hardware.display.mapper@3.0.so",
+    "vendor.qti.hardware.display.mapper@4.0.so",
+    "vendor.qti.hardware.display.mapperextensions@1.0.so",
+    "vendor.qti.hardware.display.mapperextensions@1.1.so",
+    "vendor.qti.hardware.perf@2.0.so",
+    "vendor.qti.hardware.perf@2.1.so",
+    "vendor.qti.hardware.perf@2.2.so"
+  ],
+  "external_needed_count": 201,
+  "merged_candidate_sha256": "57ee2f7473acde7064ccc8829cc0fd239df1ba5622faf4bf6f69a2fb8672e6fc",
+  "merged_candidate": "vendor-reference/merge-review/proprietary-files.merged.txt",
+  "vendor_vintf": {
+    "manifest_count": 11,
+    "instance_count": 21,
+    "overrides": [
+      {
+        "file": "proprietary_vendor_oneplus_sm8250-common/proprietary/odm/etc/vintf/manifest/manifest_oplus_fingerprint.xml",
+        "name": "android.hardware.biometrics.fingerprint"
+      }
+    ],
+    "overlaps_with_selected_sources": [
+      {
+        "instance": [
+          "hidl",
+          "android.hardware.biometrics.fingerprint",
+          "2",
+          "IBiometricsFingerprint",
+          "default"
+        ],
+        "vendor_files": [
+          "proprietary_vendor_oneplus_sm8250-common/proprietary/odm/etc/vintf/manifest/manifest_oplus_fingerprint.xml"
+        ],
+        "selected_owners": [
+          "pa/hardware/oplus/hidl/fingerprint/android.hardware.biometrics.fingerprint@2.3-service.oplus.xml"
+        ]
+      }
+    ],
+    "parse_errors": [],
+    "reference_records_accounted_for_with_vendor_fragments": 9,
+    "reference_records_still_unaccounted_for": 43
+  },
+  "tools": {
+    "extract_utils": {
+      "path": "des/tools/extract-utils/extract_utils/module.py",
+      "present": true,
+      "executable": null
+    },
+    "patchelf_0_18": {
+      "path": "des/prebuilts/extract-tools/linux-x86/bin/patchelf-0_18",
+      "present": true,
+      "executable": true
+    },
+    "ota_extractor": {
+      "path": "des/prebuilts/extract-tools/linux-x86/bin/ota_extractor",
+      "present": true,
+      "executable": true
+    },
+    "stripzip": {
+      "path": "des/prebuilts/extract-tools/linux-x86/bin/stripzip",
+      "present": true,
+      "executable": true
+    },
+    "llvm_objdump": {
+      "path": "des/prebuilts/clang/host/linux-x86/llvm-binutils-stable/llvm-objdump",
+      "present": true,
+      "executable": true
+    },
+    "llvm_readobj": {
+      "path": "des/prebuilts/clang/host/linux-x86/llvm-binutils-stable/llvm-readobj",
+      "present": true,
+      "executable": true
+    }
+  },
+  "shim_provider_review": {
+    "libcamera_metadata_shim.so": {
+      "source": "pa/hardware/lineage/compat/Android.bp",
+      "status": "provider definition found; target linkage/ABI still needs validation"
+    },
+    "libcrypto_shim.so": {
+      "source": "pa/hardware/lineage/compat/Android.bp",
+      "status": "provider definition found; target linkage/ABI still needs validation"
+    },
+    "libshims_fingerprint.oplus.so": {
+      "source": "des/hardware/oplus/fingerprint/shims/Android.bp",
+      "status": "reference found in des; absent from selected PA hardware/oplus; port/provider decision needed"
+    }
+  },
+  "staging_generation": {
+    "root": "vendor-reference/merge-review/staging",
+    "vendor_path": "vendor/oneplus/kebab",
+    "metadata_files": [
+      "Android.bp",
+      "Android.mk",
+      "BoardConfigVendor.mk",
+      "kebab-vendor.mk"
+    ],
+    "named_bp_modules": 777,
+    "duplicate_bp_modules": false,
+    "fixups_executed": false,
+    "production_includes_changed": false,
+    "helper_commit": "78ba5d58c4b06712e18bb387a2a72eac8fbc8d70",
+    "blob_contents_preserved": true
+  },
+  "tool_repository": {
+    "path": "des/tools/extract-utils",
+    "commit": "78ba5d58c4b06712e18bb387a2a72eac8fbc8d70"
+  }
+}

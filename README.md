@@ -34,7 +34,9 @@ See [BRINGUP.md](docs/BRINGUP.md) for source comparisons, checks and remaining w
 and [VENDOR_INTEGRATION.md](docs/VENDOR_INTEGRATION.md) for deferred vendor interfaces.
 
 The local PA source assembly is recorded in [source-assembly.md](docs/source-assembly.md).
-Kernel and proprietary vendor acquisition/output generation remain deferred.
+Vendor reference clones and a single-producer staging output are reviewed in
+[vendor-consolidation.md](docs/vendor-consolidation.md). Kernel acquisition and
+activation of the production vendor output remain deferred.
 
 ## Reference sources
 

@@ -1,7 +1,9 @@
 # Deferred vendor integration
 
-No proprietary vendor sources are included or fetched at this stage. The new
-standalone device tree initially retains the two vendor outputs referenced by
+Vendor references are now cloned separately and a unified staging output has
+been generated for review; no proprietary binaries are stored in this device
+repository or activated in the PA product. The standalone device tree initially
+retained the two vendor outputs referenced by
 Lineage's kebab and sm8250-common device configuration. Combining device source
 configuration does not by itself combine generated vendor outputs.
 
@@ -94,3 +96,11 @@ require a sibling common device checkout. The two product/board output interface
 above remain the intended contracts; this change does not activate their includes.
 See extraction.md for the raw-metadata/fixup boundary and read-only parser command.
 No extractor or makefile generator was run on proprietary files during this step.
+
+## Unified target selected
+
+The desired production output is now one vendor/oneplus/kebab repository and one
+proprietary list. The original two outputs above describe the current scripts,
+not a requirement to keep two vendor trees. The reviewed prototype and migration
+steps are recorded in vendor-consolidation.md; change the active includes and
+extractor together when executing that migration.
