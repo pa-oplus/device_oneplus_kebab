@@ -59,3 +59,7 @@ Additional source interfaces checked for the NFC/USB/boot/radio/DRM batch:
 | `aospa-trees/vendor/qcom/opensource/recovery-ext/oem-recovery/Android.bp` | `a498f42d95168eb58c8bcd151fea0654c0989c202ee7e15c476cb644333c292b` |
 
 USB, ClearKey and the Oplus helper use the pinned calcite repositories above.
+
+The QTI AIDL memtrack provider was additionally verified in
+`aospa-trees/device/qcom/vendor-common/memtrack/Android.bp` (SHA-256
+`f87d9dd8d551bddeb4e5bd86db8f4c63d27f932b536acac560551901a26d20a0`).

@@ -18,3 +18,13 @@ still require verification against final vendor binaries and the source revision
 
 The RRO can be resource-compiled independently; a complete overlay link, final
 product resource precedence and runtime panel behavior have not been validated.
+
+## QTI AIDL memtrack provider
+
+The selected vendor.qti.hardware.memtrack-service is defined by
+`device/qcom/vendor-common/memtrack/Android.bp`, with its own RC and AIDL
+IMemtrack/default fragment. That source is available in aospa-trees and removes
+the earlier unidentified-provider gap; it is not part of hardware/qcom/display.
+The service reads KGSL/proc accounting directly. Do not substitute the platform
+example implementation or add a duplicate device manifest. Runtime KGSL layout,
+permissions and accounting accuracy still require target validation.

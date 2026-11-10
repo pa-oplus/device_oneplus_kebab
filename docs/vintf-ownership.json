@@ -54,14 +54,13 @@
     {
       "module": "android.hardware.wifi-service",
       "path": "hardware/interfaces/wifi/aidl/default/android.hardware.wifi-service.xml"
-    }
-  ],
-  "unresolved_providers": [
+    },
     {
       "module": "vendor.qti.hardware.memtrack-service",
-      "reason": "Complete source provider/fragment selection still needs target source graph validation."
+      "path": "device/qcom/vendor-common/memtrack/memtrack_qti.xml"
     }
   ],
+  "unresolved_providers": [],
   "reference_hal_records": [
     {
       "format": "hidl",
