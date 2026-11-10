@@ -36,7 +36,6 @@ TARGET_COMMON_QTI_COMPONENTS := \
     overlay \
     perf \
     telephony \
-    usb \
     wfd
 
 # Shipping API
@@ -517,3 +516,33 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.se.omapi.ese.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.se.omapi.ese.xml \
     frameworks/native/data/etc/android.hardware.se.omapi.uicc.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.se.omapi.uicc.xml \
     frameworks/native/data/etc/com.android.nfc_extras.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/com.android.nfc_extras.xml
+
+# USB: own the QTI product locally so OnePlus properties replace generic defaults.
+PRODUCT_HAS_GADGET_HAL := true
+TARGET_HAS_DIAG_ROUTER := false
+include vendor/qcom/opensource/usb/vendor_product.mk
+
+PRODUCT_SOONG_NAMESPACES += \
+    device/qcom/common/vendor/usb \
+    vendor/qcom/opensource/usb/etc
+PRODUCT_PACKAGES += \
+    init.aospa.usb.rc \
+    oplus_usb_compositions.conf
+
+PRODUCT_COPY_FILES += \
+    frameworks/native/data/etc/android.hardware.usb.accessory.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.usb.accessory.xml \
+    frameworks/native/data/etc/android.hardware.usb.host.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.usb.host.xml
+
+kebab_usb_property_keys := sys.usb.mtp.batchcancel vendor.usb.diag.func.name vendor.usb.dpl.inst.name vendor.usb.qdss.inst.name vendor.usb.rmnet.func.name vendor.usb.rmnet.inst.name vendor.usb.rndis.func.name vendor.usb.use_ffs_mtp vendor.usb.use_gadget_hal
+PRODUCT_PROPERTY_OVERRIDES := $(filter-out $(addsuffix =%,$(kebab_usb_property_keys)),$(PRODUCT_PROPERTY_OVERRIDES))
+PRODUCT_VENDOR_PROPERTIES := $(filter-out $(addsuffix =%,$(kebab_usb_property_keys)),$(PRODUCT_VENDOR_PROPERTIES))
+PRODUCT_VENDOR_PROPERTIES += \
+    sys.usb.mtp.batchcancel=1 \
+    vendor.usb.diag.func.name=diag \
+    vendor.usb.dpl.inst.name=dpl \
+    vendor.usb.qdss.inst.name=qdss \
+    vendor.usb.rmnet.func.name=gsi \
+    vendor.usb.rmnet.inst.name=rmnet \
+    vendor.usb.rndis.func.name=gsi \
+    vendor.usb.use_ffs_mtp=1 \
+    vendor.usb.use_gadget_hal=1
