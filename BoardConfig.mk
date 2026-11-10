@@ -143,3 +143,6 @@ AUDIO_FEATURE_ENABLED_SSR := true
 AUDIO_FEATURE_ENABLED_SVA_MULTI_STAGE := true
 BOARD_SUPPORTS_SOUND_TRIGGER := true
 BOARD_USES_ALSA_AUDIO := true
+
+# Camera provider declaration; this service does not install a VINTF fragment.
+DEVICE_MANIFEST_FILE += $(DEVICE_PATH)/configs/vintf/manifest-camera.xml
