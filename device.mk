@@ -29,7 +29,6 @@ TARGET_KERNEL_VERSION := 4.19
 TARGET_COMMON_QTI_COMPONENTS := \
     adreno \
     alarm \
-    audio \
     av \
     bt \
     charging \
@@ -96,3 +95,57 @@ PRODUCT_PACKAGES += \
     vendor_bt_firmware_mountpoint \
     vendor_dsp_mountpoint \
     vendor_firmware_mnt_mountpoint
+
+# Device-owned source audio configuration.
+KEBAB_AUDIO_CONFIG_PATH := device/oneplus/kebab/configs/audio
+KEBAB_AUDIO_HAL_PATH := vendor/qcom/opensource/audio-hal/primary-hal
+
+# Own audio locally: retain source kona feature flags without inheriting the
+# common audio component a second time. The source checkout must provide this.
+include $(KEBAB_AUDIO_HAL_PATH)/configs/kona/kona.mk
+
+# Use one HIDL 6.0 service/implementation, matching the OnePlus baseline.
+# The generic kona recipe also selects older services and implementations.
+PRODUCT_PACKAGES := $(filter-out \
+    android.hardware.audio@2.0-service \
+    android.hardware.audio@2.0-impl \
+    android.hardware.audio.effect@2.0-impl \
+    android.hardware.audio@4.0-impl \
+    android.hardware.audio.effect@4.0-impl \
+    android.hardware.audio@5.0-impl \
+    android.hardware.audio.effect@5.0-impl \
+    android.hardware.soundtrigger@2.1-impl \
+    android.hardware.soundtrigger@2.2-impl \
+    audio.a2dp.default \
+    $(AUDIO_HAL_TEST_APPS),$(PRODUCT_PACKAGES))
+
+PRODUCT_PACKAGES += \
+    android.hardware.audio@6.0-impl \
+    android.hardware.audio.effect@6.0-impl \
+    android.hardware.audio.service \
+    android.hardware.bluetooth.audio-impl \
+    android.hardware.soundtrigger@2.3-impl \
+    audio.bluetooth.default \
+    audio.primary.kona \
+    audio.r_submix.default \
+    audio.usb.default \
+    audio_amplifier.qcom \
+    liba2dpoffload \
+    libbatterylistener \
+    libcomprcapture \
+    libexthwplugin \
+    libhdmiedid \
+    libhfp \
+    libqcompostprocbundle \
+    libqcomvisualizer \
+    libqcomvoiceprocessing \
+    libsndmonitor \
+    libspkrprot \
+    libssrec \
+    libvolumelistener
+
+# Match the common QTI tinycompress integration for a 4.19 source HAL.
+$(call soong_config_set,tinycompress,enable_extended_compress_format,true)
+$(call soong_config_set,tinycompress,loop_compress_read,true)
+AUDIO_FEATURE_ENABLED_DYNAMIC_LOG := false
+BOARD_SUPPORTS_OPENSOURCE_STHAL := false
