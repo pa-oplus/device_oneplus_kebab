@@ -1,0 +1,10 @@
+# Copyright (C) 2026 Paranoid Android
+# SPDX-License-Identifier: Apache-2.0
+
+# Source wrapper and vendor backend communicate in the fingerprint HAL domain.
+binder_call(hal_fingerprint_default, hal_fingerprint_default)
+allow hal_fingerprint_default vendor_kebab_oplus_display_device:chr_file { getattr open read write ioctl };
+allow hal_fingerprint_default fingerprint_device:chr_file rw_file_perms;
+get_prop(hal_fingerprint_default, vendor_kebab_fingerprint_prop)
+set_prop(hal_fingerprint_default, vendor_kebab_fingerprint_prop)
+set_prop(vendor_init, vendor_kebab_fingerprint_prop)
