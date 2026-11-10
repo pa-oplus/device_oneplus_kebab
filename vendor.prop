@@ -6,3 +6,6 @@
 # Crypto: preserve the OnePlus metadata encryption contract.
 ro.crypto.dm_default_key.options_format.version=2
 ro.crypto.volume.metadata.method=dm-default-key
+
+# USB identity
+vendor.usb.product_string=OnePlus 8T
