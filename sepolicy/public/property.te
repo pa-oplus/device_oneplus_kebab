@@ -1,0 +1,5 @@
+# Copyright (C) 2026 Paranoid Android
+# SPDX-License-Identifier: Apache-2.0
+
+# Legacy OnePlus read-only configuration seeded by vendor init.
+system_vendor_config_prop(kebab_project_prop)
