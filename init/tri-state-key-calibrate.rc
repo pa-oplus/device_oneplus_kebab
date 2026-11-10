@@ -1,0 +1,17 @@
+# Copyright (C) 2022 The LineageOS Project
+# Copyright (C) 2026 Paranoid Android
+# SPDX-License-Identifier: Apache-2.0
+
+service vendor.tri-state-key-calibrate /vendor/bin/tri-state-key-calibrate
+    class main
+    user system
+    group system
+    oneshot
+    disabled
+
+on post-fs-data
+    chown system system /proc/tristatekey/hall_data_calib
+    chmod 0660 /proc/tristatekey/hall_data_calib
+    chown system system /proc/tristatekey/tri_state
+    chmod 0440 /proc/tristatekey/tri_state
+    start vendor.tri-state-key-calibrate
