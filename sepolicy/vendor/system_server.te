@@ -1,0 +1,6 @@
+# Copyright (C) 2026 Paranoid Android
+# SPDX-License-Identifier: Apache-2.0
+
+# KebabKeyHandler only reads the physical slider state.
+allow system_server vendor_kebab_slider_proc:dir search;
+allow system_server vendor_kebab_slider_state:file r_file_perms;
