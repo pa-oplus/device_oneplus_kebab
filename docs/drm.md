@@ -23,3 +23,17 @@ instance, with no duplicate fragments. The base Lineage manifest's wfdhdcp DRM
 instances belong to the still-pending WFD integration and are not asserted here.
 Secure decoding, provisioning, playback, suspend/resume, service restarts and DRM
 compatibility tests remain required. No security-level/certification claim is made.
+
+## Helper domain
+
+The selected wvmkiller binary now has a dedicated init-transitioned vendor domain,
+DRM client attributes and the HIDL manager property access used by the PA Oplus
+reference. Its single vendor.wvm.disable_l1 boolean has an exact vendor-internal
+context and is writable by the helper. No direct TEE, keybox, OEMCrypto file or
+Widevine-server domain permissions are added for this client.
+
+The source RC handles the property event and service restarts; the helper does
+not receive a generic ctl.restart capability. This preserves the reference's
+conditional L3 recovery behavior rather than forcing a level unconditionally.
+Validate the real Widevine service names, property/event behavior and policy in
+the final product. The reference-policy compile is not proof of DRM provisioning.

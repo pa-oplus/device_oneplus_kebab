@@ -1,0 +1,9 @@
+# Copyright (C) 2026 Paranoid Android
+# SPDX-License-Identifier: Apache-2.0
+
+type vendor_kebab_wvmkiller, domain;
+type vendor_kebab_wvmkiller_exec, exec_type, vendor_file_type, file_type;
+init_daemon_domain(vendor_kebab_wvmkiller)
+hal_client_domain(vendor_kebab_wvmkiller, hal_drm)
+get_prop(vendor_kebab_wvmkiller, hwservicemanager_prop)
+set_prop(vendor_kebab_wvmkiller, vendor_kebab_wvmkiller_prop)
