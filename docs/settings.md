@@ -16,3 +16,16 @@ or a complete Oplus generic overlay product are inherited.
 AAPT2 resource compilation and source/value checks passed; linking/idmap policy,
 overlay precedence, enrollment scaling and Settings behavior require the full
 platform build and device. These checks do not validate HBM or fingerprint auth.
+
+## Initial device and framework defaults
+
+KebabSettingsProviderRes preserves kebab's def_device_name_simple = OnePlus 8T,
+targeting the actual PA SettingsProvider resource. This seeds Settings' initial
+name and does not override a saved user name. The original ODM partition/static
+priority are retained with a unique package/module.
+
+The framework RRO also preserves the OnePlus common long-press/virtual-key 10 ms
+patterns, proximity suspend, default-disabled always-on display, haptic text-handle
+flag and two physical SIM slots. These are supported PA resource names; no
+Lineage-only screen-off fingerprint settings or unrelated lid/performance flags
+are added. Final resource precedence and hardware/default behavior need testing.

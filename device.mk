@@ -601,3 +601,6 @@ PRODUCT_PACKAGES += KebabSettingsRes
 
 # Kebab panel corner masks, status-bar geometry and SystemUI haptic behavior.
 PRODUCT_PACKAGES += KebabSystemUIRes
+
+# OnePlus 8T initial Settings device name; user-renamed devices retain their value.
+PRODUCT_PACKAGES += KebabSettingsProviderRes
