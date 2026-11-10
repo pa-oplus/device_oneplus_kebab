@@ -44,10 +44,30 @@ TARGET_SCREEN_DENSITY := 450
 
 # Kernel
 BOARD_BOOT_HEADER_VERSION := 2
+BOARD_KERNEL_BASE := 0x00000000
+BOARD_KERNEL_CMDLINE := \
+    androidboot.hardware=qcom \
+    androidboot.memcg=1 \
+    androidboot.usbcontroller=a600000.dwc3 \
+    cgroup.memory=nokmem,nosocket \
+    loop.max_part=7 \
+    lpm_levels.sleep_disabled=1 \
+    msm_rtb.filter=0x237 \
+    reboot=panic_warm \
+    service_locator.enable=1 \
+    swiotlb=2048
+BOARD_KERNEL_IMAGE_NAME := Image
 BOARD_KERNEL_PAGESIZE := 4096
 BOARD_KERNEL_SEPARATED_DTBO := true
 BOARD_MKBOOTIMG_ARGS += --header_version $(BOARD_BOOT_HEADER_VERSION)
 BOARD_RAMDISK_USE_LZ4 := true
+
+# Kernel source and configuration integration are provisional until kernel bring-up.
+# Lineage also applies vendor/oplus.config; its CLO merge must be resolved before building.
+TARGET_KERNEL_VERSION := 4.19
+TARGET_KERNEL_SOURCE := kernel/oneplus/sm8250
+KERNEL_DEFCONFIG := vendor/kona-perf_defconfig
+KERNEL_LLVM_SUPPORT := true
 
 # Metadata
 BOARD_USES_METADATA_PARTITION := true
