@@ -10,3 +10,44 @@ cc_library_static {
     shared_libs: ["libbase"],
     srcs: ["init_kebab.cpp"],
 }
+
+prebuilt_etc {
+    name: "init.oplus.hw.rc",
+    src: "init.oplus.hw.rc",
+    sub_dir: "init",
+    device_specific: true,
+}
+
+prebuilt_etc {
+    name: "init.oplus.hw.recovery.rc",
+    src: "init.oplus.hw.rc",
+    sub_dir: "init",
+    recovery: true,
+}
+
+prebuilt_etc {
+    name: "init.oplus.rc",
+    src: "init.oplus.rc",
+    sub_dir: "init",
+    device_specific: true,
+}
+
+prebuilt_etc {
+    name: "init.target.rc",
+    src: "init.target.rc",
+    sub_dir: "init/hw",
+    vendor: true,
+}
+
+prebuilt_etc {
+    name: "ueventd.kebab.rc",
+    filename: "ueventd.rc",
+    src: "ueventd.kebab.rc",
+    device_specific: true,
+}
+
+sh_binary {
+    name: "init.oplus.sh",
+    src: "init.oplus.sh",
+    device_specific: true,
+}
