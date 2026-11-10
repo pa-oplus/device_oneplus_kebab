@@ -416,3 +416,15 @@ $(call soong_config_set,qti_thermal,netlink,false)
 # Own health here: the generic charging component also installs a proprietary
 # charger-monitor RC not selected by the OnePlus baseline.
 $(call inherit-product, vendor/qcom/opensource/healthd-ext/health-vendor-product.mk)
+
+# OnePlus LED/sysfs vibrator through PA hardware/oplus.
+# Supplied by the selected PA hardware/oplus tree, including RC and AIDL VINTF.
+PRODUCT_PACKAGES += \
+    vendor.qti.hardware.vibrator.service.oplus \
+    init.kebab.vibrator.rc
+
+PRODUCT_COPY_FILES += \
+    vendor/qcom/opensource/vibrator/excluded-input-devices.xml:$(TARGET_COPY_OUT_VENDOR)/etc/excluded-input-devices.xml
+
+# Kebab uses the LED/sysfs backend; do not enable the optional effect streamer.
+$(call soong_config_set,OPLUS_LINEAGE_VIBRATOR_HAL,USE_EFFECT_STREAM,false)
