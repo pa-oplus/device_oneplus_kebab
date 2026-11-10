@@ -7,3 +7,8 @@ genfscon proc /tristatekey/hall_data_calib    u:object_r:vendor_kebab_slider_cal
 
 genfscon proc /touchpanel/double_tap_enable    u:object_r:vendor_kebab_double_tap:s0
 genfscon sysfs /kernel/oplus_display/fp_state    u:object_r:vendor_kebab_fp_state:s0
+
+# Physical LED paths present in both historical OnePlus kona and PA Oplus policy.
+genfscon sysfs /devices/platform/soc/88c000.i2c/i2c-6/6-005a/leds/vibrator    u:object_r:sysfs_vibrator:s0
+genfscon sysfs /devices/platform/soc/a8c000.i2c/i2c-5/5-005a/leds/vibrator    u:object_r:sysfs_vibrator:s0
+genfscon sysfs /devices/platform/soc/a8c000.i2c/i2c-6/6-005a/leds/vibrator    u:object_r:sysfs_vibrator:s0
