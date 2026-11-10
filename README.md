@@ -10,8 +10,9 @@ and contains board/device configuration, a baseline recovery fstab, firmware
 symlink modules and Qualcomm image-generation integration. OnePlus variant
 libinit, boot/init scripts, fstab installation and OTA postinstall configuration
 are defined. Device-owned source audio configuration is in [docs/audio.md](docs/audio.md).
-Remaining hardware HAL integration, manifests, overlays, policy
-and proprietary integration remain pending, so the product is not buildable yet.
+Power, display, optical fingerprint and legacy camera configuration are also
+defined. Remaining hardware integration, complete manifests/policy and proprietary
+dependencies are pending, so the product is not buildable yet.
 
 See [BRINGUP.md](docs/BRINGUP.md) for source comparisons, checks and remaining work,
 [INIT_OWNERSHIP.md](docs/INIT_OWNERSHIP.md) for boot/init ownership,
@@ -23,6 +24,9 @@ The target PA branch and Android version remain to be confirmed. Kernel and
 proprietary vendor tree work is deferred.
 
 ## Reference sources
+
+See [REFERENCE_SOURCES.md](docs/REFERENCE_SOURCES.md) for exact source snapshots,
+including the PA Oplus tree in `aospa-trees/hardware/oplus`.
 
 - LineageOS `android_device_oneplus_kebab`, branch `lineage-24.0`.
 - LineageOS `android_device_oneplus_sm8250-common`, branch `lineage-24.0`.

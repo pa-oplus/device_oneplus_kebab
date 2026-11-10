@@ -138,3 +138,26 @@ checks used the existing SM8250 source recipe at
 `des/hardware/qcom-caf/sm8250/audio` (`399ade94`) read-only. No checkout was recreated
 or fetched. These checks do not validate the missing target audio source graph,
 amplifier implementation, final vendor effects/sound-trigger ABI or runtime audio.
+
+## Calcite hardware continuation
+
+The selected PA Oplus tree is now confirmed at `aospa-trees/hardware/oplus`
+(clo-oscaro/hardware_oplus calcite, `cc126d9`). It supplies the fingerprint wrapper
+but no amplifier, UDFPS library or Lineage touch/KeyHandler modules. Device-local
+amplifier/UDFPS implementations use the verified source interfaces; touch and
+slider work must follow PA APIs rather than importing absent Lineage modules.
+
+The power selection avoids the source recipe's undefined power-impl package and
+implements the OnePlus double-tap mode through its supported extension hook.
+Display recipes are device-owned so conflicting generic properties can be
+replaced before inheritance. The RRO preserves kebab panel/brightness resources.
+Camera uses the Lineage legacy provider declaration and excludes alioth torch code.
+
+Combined GNU Make parsing used real calcite audio/display recipes in an isolated
+source-path map: 68 direct copy destinations had no competing sources, vendor
+property overrides did not conflict, and power/UDFPS selectors and selected
+packages agreed. External product/vendor inheritance was recorded, not expanded.
+AAPT2 compiled the overlay resources; XML/source checks and host init verification
+passed. UDFPS compiled/linked against the real calcite extension header and passed
+fallback-behavior assertions. The power hook passed host tests with mocked Android
+APIs. None of these checks establish a complete Android build or hardware behavior.
