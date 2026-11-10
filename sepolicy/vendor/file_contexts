@@ -9,3 +9,5 @@
 /(odm|vendor/odm)/bin/hw/vendor\.oplus\.hardware\.biometrics\.fingerprint@2\.1-service    u:object_r:hal_fingerprint_default_exec:s0
 /dev/oplus_display    u:object_r:vendor_kebab_oplus_display_device:s0
 /dev/goodix_fp    u:object_r:fingerprint_device:s0
+
+/vendor/bin/hw/vendor\.qti\.hardware\.vibrator\.service\.oplus    u:object_r:hal_vibrator_default_exec:s0
