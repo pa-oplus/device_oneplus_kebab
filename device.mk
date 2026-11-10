@@ -31,7 +31,6 @@ TARGET_COMMON_QTI_COMPONENTS := \
     alarm \
     av \
     bt \
-    charging \
     gps \
     init \
     keymaster \
@@ -412,3 +411,8 @@ PRODUCT_PACKAGES += android.hardware.thermal-service.qti
 
 # Match the 4.19 common QTI path: sysfs/uevent monitoring, not netlink.
 $(call soong_config_set,qti_thermal,netlink,false)
+
+# QTI AIDL health and offline charging, without generic charger-monitor blobs.
+# Own health here: the generic charging component also installs a proprietary
+# charger-monitor RC not selected by the OnePlus baseline.
+$(call inherit-product, vendor/qcom/opensource/healthd-ext/health-vendor-product.mk)
