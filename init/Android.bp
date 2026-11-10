@@ -73,6 +73,13 @@ prebuilt_etc {
     vendor: true,
 }
 
+prebuilt_etc {
+    name: "init.kebab.vibrator.rc",
+    src: "init.kebab.vibrator.rc",
+    sub_dir: "init",
+    vendor: true,
+}
+
 sh_binary {
     name: "tri-state-key-calibrate",
     src: "tri-state-key-calibrate.sh",
