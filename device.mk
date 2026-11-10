@@ -35,7 +35,6 @@ TARGET_COMMON_QTI_COMPONENTS := \
     gps \
     init \
     keymaster \
-    media \
     overlay \
     perf \
     telephony \
@@ -380,3 +379,30 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.sensor.proximity.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.sensor.proximity.xml \
     frameworks/native/data/etc/android.hardware.sensor.stepcounter.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.sensor.stepcounter.xml \
     frameworks/native/data/etc/android.hardware.sensor.stepdetector.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.sensor.stepdetector.xml
+
+# OnePlus Codec2 configuration and vendor codec ownership.
+# The selected OnePlus baseline uses vendor Codec2 and disables source OMX.
+# Own these configs locally rather than inheriting the generic OMX product.
+TARGET_SUPPORTS_OMX_SERVICE := false
+PRODUCT_SOONG_NAMESPACES += device/qcom/common/vendor/media
+PRODUCT_PACKAGES += \
+    android.hardware.media.c2@1.2.vendor \
+    libavservices_minijail.vendor
+
+PRODUCT_COPY_FILES += \
+    device/oneplus/kebab/configs/media/media_codecs_c2.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_c2.xml \
+    device/oneplus/kebab/configs/media/media_codecs_performance_c2.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_performance_c2.xml \
+    device/oneplus/kebab/configs/media/media_codecs_performance_kona_vendor.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_performance_kona.xml \
+    device/oneplus/kebab/configs/media/video_system_specs.json:$(TARGET_COPY_OUT_VENDOR)/etc/media/video_system_specs.json \
+    device/qcom/common/vendor/seccomp/codec2.software.ext.policy:$(TARGET_COPY_OUT_VENDOR)/etc/seccomp_policy/codec2.software.ext.policy \
+    device/qcom/common/vendor/seccomp/codec2.vendor.ext.policy:$(TARGET_COPY_OUT_VENDOR)/etc/seccomp_policy/codec2.vendor.ext.policy \
+    device/qcom/common/vendor/seccomp/mediacodec-seccomp.policy:$(TARGET_COPY_OUT_VENDOR)/etc/seccomp_policy/mediacodec.policy \
+    device/qcom/common/vendor/seccomp/mediaextractor-seccomp.policy:$(TARGET_COPY_OUT_VENDOR)/etc/seccomp_policy/mediaextractor.policy
+
+PRODUCT_VENDOR_PROPERTIES += ro.mediaserver.64b.enable=true
+PRODUCT_SYSTEM_EXT_PROPERTIES += \
+    media.settings.xml=/vendor/etc/media_profiles_vendor.xml \
+    media.stagefright.thumbnail.prefer_hw_codecs=true \
+    ro.media.recorder-max-base-layer-fps=60
+PRODUCT_ODM_PROPERTIES += \
+    ro.odm.build.media_performance_class=30
