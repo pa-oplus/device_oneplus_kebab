@@ -17,7 +17,9 @@ QTI AIDL health/recovery, PA Oplus vibrator, OnePlus Bluetooth settings, qcwcn
 Wi-Fi and the ODM GNSS configuration are also defined. NFC/secure element,
 OnePlus USB compositions, A/B boot control, radio/carrier overlays and DRM service
 ownership are configured. Local audio/security manifests and OnePlus Wi-Fi,
-Settings and SystemUI overlays are included.
+Settings and SystemUI overlays are included. The kebab power profile, initial
+device defaults, Oplus framework matrix and initial slider/power/sensor policy
+are also defined.
 Remaining hardware integration, complete manifests/policy and proprietary
 dependencies are pending, so the product is not buildable yet.
 

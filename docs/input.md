@@ -20,8 +20,9 @@ No Zephyrus broadcast, custom Settings dependency or slider animation is assumed
 
 The calibration service restores non-empty persist data with semicolon-to-comma
 conversion and no appended newline. It does not manufacture calibration data.
-Permissions are set in its init file; SELinux labels/access for system_server and
-the calibration service remain part of the policy phase. The PA framework hooks,
+Permissions and targeted persist restorecon actions are set in init. Local
+SELinux policy now labels the script, calibration data and separate proc leaves;
+system_server has read-only state access and a dedicated domain writes calibration. The PA framework hooks,
 actual hall device events, boot ordering, current-user ringer behavior and device
 calibration still need a full product/device test.
 

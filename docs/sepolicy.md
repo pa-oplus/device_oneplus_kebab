@@ -31,3 +31,19 @@ harness; no reference source/build output is modified. checkfc validates the loc
 file contexts against the resulting temporary policy. This catches syntax/type
 and some permission conflicts, not final kebab policy compatibility. Rebuild the
 actual PA/QTI/vendor composition and run its full checks before device use.
+
+## Power and sensor leaves
+
+The Power HAL's existing OnePlus mode extension writes double_tap_enable; only
+that proc leaf receives a local label and write permission. The PA Oplus synthetic
+sensor opens fp_state read-only in the platform multihal process; only that sysfs
+leaf is labeled and granted read access. Parent touchpanel/display trees retain
+their common labels. Existing init RCs supply system ownership and 0660/0440 modes.
+
+The common CLO file contexts map android.hardware.power-service to
+hal_power_default_exec, and platform vendor contexts map sensors-service.multihal
+to hal_sensors_default_exec. No duplicate executable contexts are added. The
+source domains/transition rules and parent traversal must still be checked in
+the actual PA/QTI product; local rules do not complete fingerprint, sensors or
+power policy. Runtime labels, enforcing access, wake behavior and the remaining
+backend policies are device-validation work.

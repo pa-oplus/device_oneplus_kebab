@@ -169,7 +169,8 @@ The historical opkona tree supplies the OnePlus slider calibration contract and
 physical state mapping. Calibration is a vendor oneshot after persist mounts;
 the device-local Java handler uses PA's actual DeviceKeyHandler interface and
 framework overlay arrays. It applies the physical position at boot and on slider
-events. Gesture support and required SELinux access remain pending.
+events. Gesture customization remains pending. Initial slider SELinux rules are now
+defined, with full-product and enforcing-device checks still required.
 
 Sensors select the platform AIDL multihal bridge with PA Oplus and SSC libraries.
 The UDFPS long-press sensor name matches the selected source. The optional SSC
@@ -270,3 +271,31 @@ files; no resource-link/idmap or hardware outcome is claimed. Combined Make
 checks retain 110 unique direct copy destinations, select the new RRO packages
 and exclude the generic keymaster vendor producer. External inheritance limits
 from the previous checks still apply.
+
+## Power estimates, defaults, matrix and initial policy
+
+The unchanged kebab framework power profile adds the reference 4500 mAh and
+4+3+1 CPU accounting tables. SettingsProvider seeds OnePlus 8T as the initial
+name; supported OnePlus framework haptic/proximity/AOD/SIM defaults are preserved.
+Power-profile/table checks and AAPT2 compilation pass. No new measurements or
+runtime default/overlay-precedence result is claimed.
+
+BoardConfig selects the actual PA Oplus framework matrix. assemble_vintf parses
+that optional contract file; complete QTI/framework/device/vendor compatibility
+still requires final product assembly. The common QTI matrix selection remains
+conditional on its own source product flags.
+
+The first device policy slice is selected through BOARD_VENDOR_SEPOLICY_DIRS.
+A dedicated slider domain reads the exact persist file and writes its calibration
+leaf, while system_server only reads the state leaf. Init restores the targeted
+persist labels before starting calibration. Separate labels grant the Power HAL
+write access to double-tap and sensors multihal read access to fingerprint state.
+Executable contexts for those existing HALs come from CLO/platform policy.
+
+Local policy expands with PA macros and compiles with neverallow checks in an
+existing different-device reference policy universe; checkfc validates local file
+contexts there. Colliding reference genfs entries are replaced only in a temporary
+harness. This is not a kebab build: final PA/QTI composition, mappings, backend
+policies and runtime labels/access remain pending. Common type/path searches,
+source node contracts, host init verification and standalone Make selection checks
+also pass. No reference source/build outputs or device data were modified.

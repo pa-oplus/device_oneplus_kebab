@@ -10,8 +10,8 @@ kona powerhint configuration. `TARGET_USES_QTI_POWER_HAL` enables its Make guard
 The source implements a device mode-extension hook but otherwise reports
 DOUBLE_TAP_TO_WAKE unsupported. `PowerModes.cpp` implements that mode using the
 OnePlus node recorded in Lineage common.mk, leaving other modes to the common
-service. The local init file assigns system ownership. SELinux node labels and
-access still need policy integration. The bool hook ABI indicates whether a mode
+service. The local init file assigns system ownership. Local SELinux labels/write access now cover the double-tap leaf; full-product
+policy and enforcing runtime validation remain pending. The bool hook ABI indicates whether a mode
 was handled; write failure is logged but cannot propagate an AIDL error through
 that ABI. This has not been tested on hardware.
 

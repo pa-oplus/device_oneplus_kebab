@@ -10,7 +10,8 @@ The two-line HAL configuration is identical in old opkona and current Lineage:
 vendor/etc/sensors/hals.conf. The SSC library and proprietary sensor configuration
 remain deferred OnePlus vendor outputs; the source Oplus library adds synthetic
 sensors including the UDFPS wake-up sensor. Its string type matches the new
-framework overlay, and its fp_state node is granted read access in local init.
+framework overlay. Local init grants fp_state DAC access, and device SELinux
+policy gives the multihal domain read-only access to that sysfs leaf.
 No barometer feature is advertised for kebab; Lineage's barometer SKUs belong to
 other devices in the common family.
 

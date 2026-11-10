@@ -5,3 +5,7 @@ type vendor_kebab_slider_proc, fs_type, proc_type;
 type vendor_kebab_slider_state, fs_type, proc_type;
 type vendor_kebab_slider_calibration, fs_type, proc_type;
 type vendor_kebab_slider_calibration_file, file_type, vendor_persist_type;
+
+# Leaf labels for device-local power and synthetic sensor integrations.
+type vendor_kebab_double_tap, fs_type, proc_type;
+type vendor_kebab_fp_state, fs_type, sysfs_type;

@@ -110,3 +110,17 @@ policy or runtime precedence checks. The Wi-Fi values must still agree with the
 actual source HAL/firmware capabilities, and panel/enrollment UI needs device
 validation at supported densities. Final source/vendor VINTF assembly and complete
 matrices remain prerequisites for a full build.
+
+## Initial policy ownership
+
+Device vendor policy supplies only the slider script/state/calibration and local
+power/sensor leaf integrations so far. PA's BoardConfigQcom must still select the
+common QTI policy correctly; it provides vendor_persist_type/vendor_persist_file
+and the Power HAL executable mapping. Platform policy supplies vendor shell/toybox,
+system_server, sensor executable and standard domain macros.
+
+Do not include the entire Oplus policy product without adapting its policy layout
+and resolving overlapping genfs labels/Lineage-specific dependencies. A successful
+reference-policy compile is not the final product policy test. Complete remaining
+service/property/device rules and validate with actual source/vendor policy and
+an enforcing device before considering SELinux integration complete.
