@@ -37,3 +37,25 @@ executables, kernel modules, properties or SELinux permissions exist at runtime.
 The selected common scripts and the local scripts have been checked for duplicate
 service names. Vendor-generated init fragments are not available yet, so their
 service ownership remains a separate integration check.
+
+## Device-owned ODM script policy
+
+init.oplus.sh has a dedicated vendor_kebab_init transition. It may execute the
+vendor shell/toybox, read proc_cmdline and set the common CLO radio property type;
+its exact vendor.radio.multisim.config mapping uses that existing type. The
+script does not receive generic vendor-init or filesystem write privileges.
+The service is disabled for automatic class starts and still runs synchronously
+through the existing early-boot exec_start before the persist.radio copy action.
+
+ro.separate.soft and ro.boot.hardware.revision are legacy OnePlus configuration
+properties used by retained init actions. Their exact contexts live in device
+system-ext private policy with a public system_vendor_config_prop type; that
+macro limits setters to init/vendor-init/device-config domains. They are not
+misclassified as vendor-owned names, and read-only property semantics remain.
+Bootloader-preseeded values and final cross-partition property/mapping rules
+require target validation. The platform's radio_control_prop already covers the
+persist.radio destination; no replacement context is added for it.
+
+Other vendor-script/service nodes, reserved partitions and platform properties
+must still be reconciled with the actual vendor/common policy. This change does
+not grant the retained ODM sensor daemon or generic QTI scripts blanket access.

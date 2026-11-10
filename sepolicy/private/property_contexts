@@ -1,0 +1,5 @@
+# Copyright (C) 2026 Paranoid Android
+# SPDX-License-Identifier: Apache-2.0
+
+ro.separate.soft    u:object_r:kebab_project_prop:s0 exact string
+ro.boot.hardware.revision    u:object_r:kebab_project_prop:s0 exact string

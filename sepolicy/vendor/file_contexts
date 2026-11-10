@@ -11,3 +11,5 @@
 /dev/goodix_fp    u:object_r:fingerprint_device:s0
 
 /vendor/bin/hw/vendor\.qti\.hardware\.vibrator\.service\.oplus    u:object_r:hal_vibrator_default_exec:s0
+
+/odm/bin/init\.oplus\.sh    u:object_r:vendor_kebab_init_exec:s0

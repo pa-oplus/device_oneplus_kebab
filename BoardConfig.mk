@@ -184,3 +184,7 @@ DEVICE_FRAMEWORK_COMPATIBILITY_MATRIX_FILE += \
 
 # Device-owned OnePlus nodes/services; common QTI policy is selected by PA.
 BOARD_VENDOR_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy/vendor
+
+# Export only the OnePlus platform-facing config property type to vendor policy.
+SYSTEM_EXT_PUBLIC_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy/public
+SYSTEM_EXT_PRIVATE_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy/private
