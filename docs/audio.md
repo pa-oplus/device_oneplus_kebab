@@ -5,8 +5,9 @@ calcite kona recipe is included directly before PA product inheritance; local
 rules remove competing legacy HAL implementations, generic test applications,
 and replaced configuration/property destinations. The chosen HIDL 6.0 audio and
 effects service, 2.3 sound-trigger wrapper, source `audio.primary.kona` and source
-`libvolumelistener` follow the Lineage OnePlus baseline. Common QTI init owns the
-audio service RC.
+`libvolumelistener` follow the Lineage OnePlus baseline. The selected platform audio service module installs its own RC; it has no
+service-owned VINTF fragment. The device audio manifest declares audio/effects
+6.0 and sound-trigger 2.3 from the OnePlus baseline.
 
 The exact source reference is pa-sanji/android_hardware_qcom_audio calcite at
 `da8e3bed`, checked out under `pa-kona/pa-alioth`. It must be integrated into the
@@ -68,3 +69,11 @@ No Xiaomi stock HAL/volume listener, no-op perf client, Dolby stack, input-probe
 bypass, SSREC workaround or diagnostic watchdog/log overrides are imported.
 Calls, Bluetooth/SCO, capture/video audio, hotword, wired/USB audio, effects and
 speaker calibration require separate device tests.
+
+## VINTF boundary
+
+The manifest covers only the selected source HIDL service's factory instances.
+The complete platform matrix and proprietary effects/STHAL backends still need
+compatibility checks. Do not add generic QTI or vendor fragments declaring the
+same default instances. assemble_vintf parsing/merge checks do not compile the
+service or validate runtime registration and library interfaces.

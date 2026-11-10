@@ -174,3 +174,6 @@ DEVICE_MANIFEST_FILE += $(DEVICE_PATH)/configs/vintf/manifest-radio.xml
 
 # OnePlus vendor gatekeeper/keymaster; no source or generic-QTI duplicate backend.
 DEVICE_MANIFEST_FILE += $(DEVICE_PATH)/configs/vintf/manifest-security.xml
+
+# The selected HIDL audio service has RC but no service-owned manifest fragment.
+DEVICE_MANIFEST_FILE += $(DEVICE_PATH)/configs/vintf/manifest-audio.xml
