@@ -26,3 +26,17 @@ The device hook preserves Lineage's five kebab RF-to-model mappings and DDR
 property extraction. Unknown or malformed RF versions leave the product's default
 model in place. Other sm8250 OnePlus model branches are excluded from this
 kebab-only library.
+
+## Source audio dependencies
+
+The device-owned audio configuration strictly includes
+`vendor/qcom/opensource/audio-hal/primary-hal/configs/kona/kona.mk`. The inspected
+`pa/` checkout does not currently provide that source tree. The corresponding
+secondary `aospa/` source was inspected earlier but disappeared during the work;
+checks then used the existing `des/` SM8250 source recipe read-only.
+
+Before building, provide the correct final PA audio source revision, resolve the
+Lineage `audio_amplifier.qcom` implementation and check the full module graph.
+The device tree does not create stubs, skip missing includes, or claim that the
+secondary recipe proves target-source compatibility. See `docs/audio.md` for
+source/prebuilt boundaries and pending ABI/effects/VINTF checks.

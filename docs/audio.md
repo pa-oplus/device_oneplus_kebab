@@ -51,3 +51,42 @@ available source recipe at `des/hardware/qcom-caf/sm8250/audio` (`399ade94`), wh
 kona file uses the same CLO config destination scheme. The previously inspected
 `aospa/` audio directory disappeared during this work; it was not recreated.
 The final target PA source and its transitive dependencies still need validation.
+
+## ABI and property decisions
+
+`device.mk` preserves the audio sections of Lineage's vendor, ODM and
+system-ext properties in their respective partitions. Device property names are
+removed from the directly included generic recipe's legacy vendor property list
+before adding the OnePlus values. Remaining generic properties are retained;
+they still need final product-level duplicate/property-context checks when all
+components and vendor makefiles are present.
+
+The OnePlus references use different Fluence values in vendor and ODM. Both
+partition-specific values are retained rather than silently collapsing them.
+Effective runtime property resolution must be checked on the final product.
+
+The intended primary HAL and volume listener are built from the same audio
+source tree. Do not install alioth's prebuilt primary HAL or volume listener,
+rename its audio dependencies, or add its 32-bit no-op performance client. The
+Lineage blob list records `vendor/lib/hw/sound_trigger.primary.kona.so`; its
+interaction with the source audio HAL, sound-trigger wrapper and OnePlus
+configuration remains an explicit ABI check for the deferred vendor integration.
+
+No audio-specific binary shim or fixup is established by the current references.
+That does not prove none is needed: before claiming compatibility, inspect the
+actual ELF dependencies/symbols, 32/64-bit variants, source/prebuilt ownership,
+amplifier interface, ACDB/calibration data and sound-trigger vendor interface.
+The WFD audio-types replacement in Lineage's extraction helper applies to WFD,
+not to the primary audio HAL, and is deferred to media/WFD integration.
+
+The generic effects XML references software effects, Qualcomm effects and
+proprietary effect libraries. Check that each named library has a real provider
+in the final source/vendor graph; selecting the XML does not supply its binaries.
+Likewise, `audio_amplifier.qcom` and audio DLKMs are unresolved prerequisites,
+not validated implementations in the current target checkout.
+
+Alioth's input-profile probe bypass, SSREC workaround, diagnostic watchdog/log
+settings, stock perf client and Dolby additions are excluded. No speaker or
+microphone behavior is inferred from passing configuration checks. Calls,
+Bluetooth/SCO, capture, camcorder audio, hotword/sound trigger, headphone/USB audio,
+effects, calibration and speaker protection require separate hardware testing.

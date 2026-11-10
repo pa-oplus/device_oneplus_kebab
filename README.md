@@ -9,12 +9,14 @@ Initial board and product foundation. This repository registers `aospa_kebab`
 and contains board/device configuration, a baseline recovery fstab, firmware
 symlink modules and Qualcomm image-generation integration. OnePlus variant
 libinit, boot/init scripts, fstab installation and OTA postinstall configuration
-are defined. Hardware HAL integration, manifests, overlays, policy
+are defined. Device-owned source audio configuration is in [docs/audio.md](docs/audio.md).
+Remaining hardware HAL integration, manifests, overlays, policy
 and proprietary integration remain pending, so the product is not buildable yet.
 
 See [BRINGUP.md](docs/BRINGUP.md) for source comparisons, checks and remaining work,
 [INIT_OWNERSHIP.md](docs/INIT_OWNERSHIP.md) for boot/init ownership,
 [PA_SOURCE_REQUIREMENTS.md](docs/PA_SOURCE_REQUIREMENTS.md) for the missing PA init hook,
+[STORAGE_USB.md](docs/STORAGE_USB.md) for storage and USB review findings,
 and [VENDOR_INTEGRATION.md](docs/VENDOR_INTEGRATION.md) for deferred vendor interfaces.
 
 The target PA branch and Android version remain to be confirmed. Kernel and

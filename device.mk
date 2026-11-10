@@ -175,3 +175,113 @@ PRODUCT_COPY_FILES += \
     $(KEBAB_AUDIO_CONFIG_PATH)/sound_trigger_mixer_paths.xml:$(TARGET_COPY_OUT_ODM)/etc/sound_trigger_mixer_paths.xml \
     $(KEBAB_AUDIO_CONFIG_PATH)/sound_trigger_platform_info.xml:$(TARGET_COPY_OUT_ODM)/etc/sound_trigger_platform_info.xml \
     frameworks/av/services/audiopolicy/config/bluetooth_audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/bluetooth_audio_policy_configuration.xml
+
+# OnePlus vendor audio properties.
+kebab_audio_vendor_properties := \
+    aaudio.hw_burst_min_usec=2000 \
+    aaudio.mmap_exclusive_policy=2 \
+    aaudio.mmap_policy=2 \
+    audio.deep_buffer.media=true \
+    persist.vendor.audio.ambisonic.auto.profile=false \
+    persist.vendor.audio.ambisonic.capture=false \
+    persist.vendor.audio.apptype.multirec.enabled=false \
+    persist.vendor.audio.avs.afe_api_version=2 \
+    persist.vendor.audio.fluence.speaker=true \
+    persist.vendor.audio.fluence.tmic.enabled=false \
+    persist.vendor.audio.fluence.voicecall=true \
+    persist.vendor.audio.fluence.voicecomm=true \
+    persist.vendor.audio.fluence.voicerec=false \
+    persist.vendor.audio.ras.enabled=false \
+    persist.vendor.audio.spv3.enable=true \
+    persist.vendor.audio.voicecall.speaker.stereo=true \
+    ro.vendor.audio.sdk.fluencetype=none \
+    ro.vendor.audio.sdk.ssr=false \
+    vendor.audio.adm.buffering.ms=2 \
+    vendor.audio.dolby.ds2.enabled=false \
+    vendor.audio.dolby.ds2.hardbypass=false \
+    vendor.audio.enable.mirrorlink=false \
+    vendor.audio.feature.a2dp_offload.enable=true \
+    vendor.audio.feature.afe_proxy.enable=true \
+    vendor.audio.feature.anc_headset.enable=false \
+    vendor.audio.feature.audiozoom.enable=false \
+    vendor.audio.feature.battery_listener.enable=true \
+    vendor.audio.feature.compr_cap.enable=false \
+    vendor.audio.feature.compr_voip.enable=false \
+    vendor.audio.feature.compress_in.enable=true \
+    vendor.audio.feature.compress_meta_data.enable=true \
+    vendor.audio.feature.concurrent_capture.enable=true \
+    vendor.audio.feature.custom_stereo.enable=true \
+    vendor.audio.feature.deepbuffer_as_primary.enable=false \
+    vendor.audio.feature.display_port.enable=true \
+    vendor.audio.feature.dsm_feedback.enable=false \
+    vendor.audio.feature.dynamic_ecns.enable=true \
+    vendor.audio.feature.ext_hw_plugin.enable=false \
+    vendor.audio.feature.external_dsp.enable=false \
+    vendor.audio.feature.external_speaker.enable=false \
+    vendor.audio.feature.external_speaker_tfa.enable=false \
+    vendor.audio.feature.fluence.enable=true \
+    vendor.audio.feature.fm.enable=true \
+    vendor.audio.feature.hdmi_edid.enable=true \
+    vendor.audio.feature.hdmi_passthrough.enable=true \
+    vendor.audio.feature.hfp.enable=true \
+    vendor.audio.feature.hifi_audio.enable=false \
+    vendor.audio.feature.hwdep_cal.enable=false \
+    vendor.audio.feature.incall_music.enable=true \
+    vendor.audio.feature.keep_alive.enable=true \
+    vendor.audio.feature.kpi_optimize.enable=true \
+    vendor.audio.feature.maxx_audio.enable=false \
+    vendor.audio.feature.multi_voice_session.enable=true \
+    vendor.audio.feature.ras.enable=true \
+    vendor.audio.feature.record_play_concurency.enable=false \
+    vendor.audio.feature.snd_mon.enable=true \
+    vendor.audio.feature.spkr_prot.enable=true \
+    vendor.audio.feature.src_trkn.enable=true \
+    vendor.audio.feature.ssrec.enable=true \
+    vendor.audio.feature.usb_offload.enable=true \
+    vendor.audio.feature.usb_offload_burst_mode.enable=true \
+    vendor.audio.feature.usb_offload_sidetone_volume.enable=false \
+    vendor.audio.feature.vbat.enable=true \
+    vendor.audio.feature.wsa.enable=false \
+    vendor.audio.flac.sw.decoder.24bit=true \
+    vendor.audio.hal.boot.timeout.ms=20000 \
+    vendor.audio.hal.output.suspend.supported=true \
+    vendor.audio.hw.aac.encoder=true \
+    vendor.audio.offload.buffer.size.kb=32 \
+    vendor.audio.offload.gapless.enabled=true \
+    vendor.audio.offload.multiaac.enable=true \
+    vendor.audio.offload.multiple.enabled=false \
+    vendor.audio.offload.passthrough=false \
+    vendor.audio.offload.track.enable=true \
+    vendor.audio.parser.ip.buffer.size=262144 \
+    vendor.audio.safx.pbe.enabled=false \
+    vendor.audio.tunnel.encode=false \
+    vendor.audio.use.sw.alac.decoder=true \
+    vendor.audio.use.sw.ape.decoder=true \
+    vendor.audio.use.sw.mpegh.decoder=true \
+    vendor.audio.volume.headset.gain.depcal=true \
+    vendor.audio_hal.in_period_size=144 \
+    vendor.audio_hal.period_multiplier=3 \
+    vendor.audio_hal.period_size=192 \
+    vendor.voice.path.for.pcm.voip=true
+
+# OnePlus odm audio properties.
+kebab_audio_odm_properties := \
+    ro.audio.monitorRotation=true \
+    ro.config.media_vol_steps=30 \
+    ro.config.vc_call_vol_steps=9 \
+    ro.vendor.audio.sdk.fluencetype=fluence \
+    ro.vendor.qti.va_odm.support=1
+
+# OnePlus system_ext audio properties.
+kebab_audio_system_ext_properties := \
+    audio.offload.min.duration.secs=30 \
+    persist.vendor.audio_hal.dsp_bit_width_enforce_mode=24
+
+# Remove only properties replaced by this device from the directly included
+# generic recipe. Keep each device override in its original OnePlus partition.
+kebab_audio_property_names := $(foreach prop,$(kebab_audio_vendor_properties) $(kebab_audio_odm_properties) $(kebab_audio_system_ext_properties),$(word 1,$(subst =, ,$(prop))))
+PRODUCT_PROPERTY_OVERRIDES := $(filter-out $(addsuffix =%,$(kebab_audio_property_names)),$(PRODUCT_PROPERTY_OVERRIDES))
+
+PRODUCT_VENDOR_PROPERTIES += $(kebab_audio_vendor_properties)
+PRODUCT_ODM_PROPERTIES += $(kebab_audio_odm_properties)
+PRODUCT_SYSTEM_EXT_PROPERTIES += $(kebab_audio_system_ext_properties)

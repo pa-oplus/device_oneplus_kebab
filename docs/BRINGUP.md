@@ -13,8 +13,8 @@ build target remains open.
 | Filesystems | Preserve Lineage's ext4 system/product/system_ext and EROFS vendor/odm. Recovery fstab is copied from kebab with only its trailing blank line removed, retaining its license. |
 | AVB | Preserve Lineage's RSA4096 system chain and rollback location 1, including its bring-up verification-disable flags. Production signing is not configured. |
 | Product reserve | Preserve kebab's 800,000,000-byte vanilla product reserve, gated by PA's `TARGET_DISABLES_GMS`. Reassess image fit when the final product is assembled. |
-| QTI ownership | Select the same initial component list as alioth. PA's `vendor/aospa/target/product/aospa-target.mk` already inherits `device/qcom/common/common.mk`; avoid a second inheritance. |
-| Audio/perf | Initial common component selection only. No stock Xiaomi HAL, stub perf client, blob overrides, Dolby or framework workaround is imported. Final OnePlus implementations remain pending. |
+| QTI ownership | Start from alioth's component list, then remove `audio` because its source recipe and configuration are now device-owned. PA's `vendor/aospa/target/product/aospa-target.mk` already inherits `device/qcom/common/common.mk`; avoid a second inheritance. |
+| Audio/perf | Source audio is device-owned with OnePlus configuration; see `docs/audio.md`. Performance integration remains pending. No stock Xiaomi HAL, stub perf client, Dolby or framework workaround is imported. |
 | Init/fstab | OnePlus init and normal-boot/ramdisk fstab modules are defined. Recovery uses the same source through BoardConfig. Boot control HAL integration and runtime validation remain pending. |
 | Kernel | Record 4.19, `kernel/oneplus/sm8250`, base defconfig `vendor/kona-perf_defconfig` and LLVM support. No compiler version is selected without kernel evidence. |
 
@@ -34,7 +34,8 @@ check the resulting configuration. Do not build this baseline without that step.
 - Complete hardware integration behind the registered PA product.
 - External PA libinit hook integration and validation of init dependencies against
   kernel/vendor outputs; see [INIT_OWNERSHIP.md](INIT_OWNERSHIP.md).
-- OnePlus audio flags/configuration, UDFPS, touch, slider, sensors and other HALs.
+- Source-audio dependencies, ABI/VINTF/policy and runtime checks; UDFPS, touch,
+  slider, sensors and other HALs.
 - Device manifests, property files, overlays and SELinux policies.
 - Vendor includes and extraction implementation; expected interfaces are recorded in
   [VENDOR_INTEGRATION.md](VENDOR_INTEGRATION.md).
@@ -113,3 +114,27 @@ remain prerequisites for a working OTA flow.
 Filesystem consistency and source/module checks passed. No decryption, image
 build, OTA update, hardware service behavior or enforcing-policy validation has
 been performed.
+
+## Storage, USB and source audio
+
+Storage encryption properties and firmware mount-directory modules preserve the
+OnePlus references. `docs/STORAGE_USB.md` records the reviewed filesystem/encryption
+contract and unresolved common-QTI versus OnePlus USB gadget/composition settings.
+The selected AIDL charger service name matches the device trigger; no offline
+charging or USB behavior has been tested.
+
+Audio is now device-owned, so `audio` is removed from the common QTI component
+list. The directly included source kona recipe supplies feature flags, while the
+local audio configuration normalizes competing HAL packages and copy/property
+ownership before PA product inheritance. The OnePlus mixer/platform/policy and
+sound-trigger inputs are preserved, including the offload-disabled policy.
+
+The seven local configuration inputs match Lineage byte for byte. XML, route
+endpoints, XInclude destinations and copy-map checks passed. Device audio property
+sections preserve their original vendor/ODM/system-ext partitions, with replaced
+generic legacy-vendor keys removed. The initial source-recipe evaluation used the
+then-available `aospa/` checkout. After that source directory disappeared, combined
+checks used the existing SM8250 source recipe at
+`des/hardware/qcom-caf/sm8250/audio` (`399ade94`) read-only. No checkout was recreated
+or fetched. These checks do not validate the missing target audio source graph,
+amplifier implementation, final vendor effects/sound-trigger ABI or runtime audio.
