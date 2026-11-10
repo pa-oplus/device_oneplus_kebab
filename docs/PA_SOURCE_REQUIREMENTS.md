@@ -95,3 +95,18 @@ Do not claim successful standalone Make parsing as resolution of that dependency
 ClearKey is supplied by frameworks/av; the PA Oplus wvmkiller helper requires the
 legacy Widevine instance and its restart/property policy. Widevine remains a
 OnePlus ODM producer with its own VINTF fragment.
+
+## Security backend and overlays
+
+Gatekeeper/keymaster now belong exclusively to the OnePlus vendor producer, with
+local HIDL 1.0/4.1 declarations. The common keymaster component is not inherited;
+do not reintroduce its overlapping generic binaries during vendor integration.
+Audio 6.0/effect 6.0/sound-trigger 2.3 also have a local manifest because the
+selected source service installs its RC without a service-owned fragment.
+
+The new RROs target PA Wi-Fi resources, Settings and SystemUI. Resource name and
+input compilation checks do not replace target APK linking, overlayable/idmap
+policy or runtime precedence checks. The Wi-Fi values must still agree with the
+actual source HAL/firmware capabilities, and panel/enrollment UI needs device
+validation at supported densities. Final source/vendor VINTF assembly and complete
+matrices remain prerequisites for a full build.

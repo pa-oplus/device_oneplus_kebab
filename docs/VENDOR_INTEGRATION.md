@@ -76,3 +76,12 @@ includes. The chosen init services and manifests must agree with actual binaries
   reconciled together before enabling strict vendor includes.
 - DRM: source ClearKey fragment and PA Oplus reference helper; OnePlus ODM Widevine
   1.3 service/OEMCrypto/manifest and QSEECom outputs. WFD/HDCP is still separate.
+
+## Security and audio manifest boundary
+
+The common OnePlus vendor producer owns QTI gatekeeper 1.0 and keymaster libraries;
+the kebab producer owns the QTI keymaster 4.1 service/RC. Generic QTI keymaster
+vendor inheritance is disabled to avoid competing producers. Their default
+instances are declared by manifest-security.xml. Source audio/effect 6.0 and
+sound-trigger 2.3 use manifest-audio.xml. Vendor extraction must not add duplicate
+fragments for these locally declared instances.

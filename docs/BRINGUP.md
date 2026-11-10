@@ -244,3 +244,29 @@ comparisons passed. AAPT2 compiled carrier/framework resources, Blueprint format
 passed, and NFC/USB/boot/ClearKey/helper RCs passed host init verification. Other
 external inheritance remains recorded, not expanded. Full Android compilation,
 RRO linking, VINTF compatibility, vendor ABI, policy and device tests are pending.
+
+## Security/audio manifests and user-interface resources
+
+Keymaster is removed from the common component dispatcher to avoid a second
+Qualcomm blob producer. The OnePlus common/device vendor contracts supply
+respectively gatekeeper 1.0 and keymaster 4.1, declared in the device security
+manifest. The selected platform audio service supplies an RC but no manifest;
+local audio/effect 6.0 and sound-trigger 2.3 declarations now match that ownership.
+
+The Wi-Fi RRO preserves the OnePlus reference's four capability values and targets
+PA's WifiCustomization group. Settings combines OnePlus color-mode/scan/refresh
+resources with kebab enrollment progress radius. The color values agree with the
+framework mode list. SystemUI combines the common icon vibration setting with
+unchanged kebab corner masks, status-bar dimensions and portrait/landscape padding.
+Modules/packages are unique and original resource partitions are preserved.
+
+assemble_vintf parses and merges all six local device manifest files at target
+level 7. This is a local merge check, not a final compatibility result: source
+service fragments, vendor manifests and device/framework matrices still need a
+complete-product check. All five RRO package names are unique. New RRO inputs
+compile with AAPT2, resource names exist in the inspected PA targets, and Blueprint
+formatting passes. Named OnePlus inputs are compared to their original source
+files; no resource-link/idmap or hardware outcome is claimed. Combined Make
+checks retain 110 unique direct copy destinations, select the new RRO packages
+and exclude the generic keymaster vendor producer. External inheritance limits
+from the previous checks still apply.
