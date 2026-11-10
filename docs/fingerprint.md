@@ -43,3 +43,18 @@ property prefix or unrelated Oplus service policy is imported. Backend data,
 persist/TEE/device paths and remaining property requirements still need actual
 vendor/policy reconciliation. This initial slice does not validate enrollment,
 HBM, ioctl ABI or authentication on device.
+
+## Fingerprint data boundary
+
+The PA Oplus /data/vendor/fingerprint(_ori) paths use the existing platform
+fingerprint_vendor_data_file type. Standard platform fingerprint HAL policy already
+allows its vendor servers to manage that type; no duplicate enrollment access
+rule is added. The platform also owns /data/vendor_de/<user>/fpdata labeling.
+
+The OnePlus persist/fingerprint subtree has a separate vendor-persist type and
+HAL read/traversal plus file read/write permissions, following the selected Oplus
+reference's calibration contract. It is not merged with ordinary enrollment data
+or granted blanket persist directory write access. Existing OnePlus persist
+restorecon handling supplies relabeling during boot; no directory or calibration
+file is manufactured. Actual backend paths, DAC, vendor-init restorecon and TEE
+behavior remain full-product and enforcing-device checks.

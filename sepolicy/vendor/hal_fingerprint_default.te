@@ -8,3 +8,9 @@ allow hal_fingerprint_default fingerprint_device:chr_file rw_file_perms;
 get_prop(hal_fingerprint_default, vendor_kebab_fingerprint_prop)
 set_prop(hal_fingerprint_default, vendor_kebab_fingerprint_prop)
 set_prop(vendor_init, vendor_kebab_fingerprint_prop)
+
+# Retain the PA Oplus persist contract without granting access to all persist data.
+allow hal_fingerprint_default mnt_vendor_file:dir search;
+allow hal_fingerprint_default vendor_persist_file:dir search;
+r_dir_file(hal_fingerprint_default, vendor_kebab_persist_fingerprint_file)
+allow hal_fingerprint_default vendor_kebab_persist_fingerprint_file:file rw_file_perms;
