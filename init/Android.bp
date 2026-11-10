@@ -1,0 +1,12 @@
+//
+// Copyright (C) 2022 The LineageOS Project
+// Copyright (C) 2026 Paranoid Android
+// SPDX-License-Identifier: Apache-2.0
+//
+
+cc_library_static {
+    name: "libinit_kebab",
+    recovery_available: true,
+    shared_libs: ["libbase"],
+    srcs: ["init_kebab.cpp"],
+}
