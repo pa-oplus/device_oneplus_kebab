@@ -146,3 +146,6 @@ BOARD_USES_ALSA_AUDIO := true
 
 # Camera provider declaration; this service does not install a VINTF fragment.
 DEVICE_MANIFEST_FILE += $(DEVICE_PATH)/configs/vintf/manifest-camera.xml
+
+# OnePlus vendor Bluetooth transport; vendor baseline has no HAL fragment.
+DEVICE_MANIFEST_FILE += $(DEVICE_PATH)/configs/vintf/manifest-bluetooth.xml

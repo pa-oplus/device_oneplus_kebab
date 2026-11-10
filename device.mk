@@ -428,3 +428,46 @@ PRODUCT_COPY_FILES += \
 
 # Kebab uses the LED/sysfs backend; do not enable the optional effect streamer.
 $(call soong_config_set,OPLUS_LINEAGE_VIBRATOR_HAL,USE_EFFECT_STREAM,false)
+
+# OnePlus Bluetooth controller/profile properties and common PA stack ownership.
+# Keep the PA common bt component for stack integration and feature permissions.
+# The transport service and controller firmware remain OnePlus vendor outputs.
+# Replace matching generic source-audio properties before PA common inheritance.
+kebab_bluetooth_property_keys := bluetooth.device.class_of_device bluetooth.hardware.power.idle_cur_ma bluetooth.hardware.power.operating_voltage_mv bluetooth.hardware.power.rx_cur_ma bluetooth.hardware.power.tx_cur_ma bluetooth.profile.a2dp.source.enabled bluetooth.profile.asha.central.enabled bluetooth.profile.avrcp.target.enabled bluetooth.profile.bas.client.enabled bluetooth.profile.gatt.enabled bluetooth.profile.hfp.ag.enabled bluetooth.profile.hid.device.enabled bluetooth.profile.hid.host.enabled bluetooth.profile.map.server.enabled bluetooth.profile.opp.enabled bluetooth.profile.pan.nap.enabled bluetooth.profile.pan.panu.enabled bluetooth.profile.pbap.server.enabled bluetooth.profile.sap.server.enabled persist.bluetooth.a2dp_offload.disabled persist.vendor.bluetooth.modem_nv_support persist.vendor.bt.aac_frm_ctl.enabled persist.vendor.bt.aac_vbr_frm_ctl.enabled persist.vendor.qcom.bluetooth.a2dp_offload_cap persist.vendor.qcom.bluetooth.aac_frm_ctl.enabled persist.vendor.qcom.bluetooth.aptxadaptiver2_1_support persist.vendor.qcom.bluetooth.soc ro.bluetooth.a2dp_offload.supported ro.vendor.bluetooth.wipower vendor.qcom.bluetooth.soc
+PRODUCT_PROPERTY_OVERRIDES := $(filter-out $(addsuffix =%,$(kebab_bluetooth_property_keys)),$(PRODUCT_PROPERTY_OVERRIDES))
+PRODUCT_VENDOR_PROPERTIES += \
+    bluetooth.device.class_of_device=90,2,12 \
+    bluetooth.hardware.power.idle_cur_ma=6 \
+    bluetooth.hardware.power.operating_voltage_mv=3700 \
+    bluetooth.hardware.power.rx_cur_ma=28 \
+    bluetooth.hardware.power.tx_cur_ma=36 \
+    bluetooth.profile.a2dp.source.enabled?=true \
+    bluetooth.profile.asha.central.enabled?=true \
+    bluetooth.profile.avrcp.target.enabled?=true \
+    bluetooth.profile.bas.client.enabled?=true \
+    bluetooth.profile.gatt.enabled?=true \
+    bluetooth.profile.hfp.ag.enabled?=true \
+    bluetooth.profile.hid.device.enabled?=true \
+    bluetooth.profile.hid.host.enabled?=true \
+    bluetooth.profile.map.server.enabled?=true \
+    bluetooth.profile.opp.enabled?=true \
+    bluetooth.profile.pan.nap.enabled?=true \
+    bluetooth.profile.pan.panu.enabled?=true \
+    bluetooth.profile.pbap.server.enabled?=true \
+    bluetooth.profile.sap.server.enabled?=true \
+    persist.bluetooth.a2dp_offload.disabled=false \
+    persist.vendor.bluetooth.modem_nv_support=true \
+    persist.vendor.bt.aac_frm_ctl.enabled=true \
+    persist.vendor.bt.aac_vbr_frm_ctl.enabled=true \
+    persist.vendor.qcom.bluetooth.a2dp_offload_cap=sbc-aptx-aptxtws-aptxhd-aac-ldac-aptxadaptiver2 \
+    persist.vendor.qcom.bluetooth.aac_frm_ctl.enabled=true \
+    persist.vendor.qcom.bluetooth.aptxadaptiver2_1_support=true \
+    persist.vendor.qcom.bluetooth.soc=hastings \
+    ro.bluetooth.a2dp_offload.supported=true \
+    ro.vendor.bluetooth.wipower=false \
+    vendor.qcom.bluetooth.soc=hastings
+
+PRODUCT_SYSTEM_EXT_PROPERTIES += \
+    persist.bluetooth.bqr.choppy_threshold=9,6 \
+    persist.bluetooth.bqr.event_mask=0x8000000E \
+    persist.bluetooth.bqr.min_interval_ms=60000
