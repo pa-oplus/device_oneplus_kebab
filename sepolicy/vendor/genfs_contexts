@@ -1,0 +1,6 @@
+# Copyright (C) 2026 Paranoid Android
+# SPDX-License-Identifier: Apache-2.0
+
+genfscon proc /tristatekey    u:object_r:vendor_kebab_slider_proc:s0
+genfscon proc /tristatekey/tri_state    u:object_r:vendor_kebab_slider_state:s0
+genfscon proc /tristatekey/hall_data_calib    u:object_r:vendor_kebab_slider_calibration:s0

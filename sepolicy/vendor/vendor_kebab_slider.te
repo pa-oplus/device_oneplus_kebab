@@ -1,0 +1,15 @@
+# Copyright (C) 2026 Paranoid Android
+# SPDX-License-Identifier: Apache-2.0
+
+type vendor_kebab_slider, domain;
+type vendor_kebab_slider_exec, exec_type, vendor_file_type, file_type;
+init_daemon_domain(vendor_kebab_slider)
+
+# The oneshot is a vendor shell script and invokes toybox tr.
+allow vendor_kebab_slider vendor_shell_exec:file rx_file_perms;
+allow vendor_kebab_slider vendor_toolbox_exec:file rx_file_perms;
+allow vendor_kebab_slider mnt_vendor_file:dir search;
+allow vendor_kebab_slider vendor_persist_file:dir search;
+allow vendor_kebab_slider vendor_kebab_slider_calibration_file:file r_file_perms;
+allow vendor_kebab_slider vendor_kebab_slider_proc:dir search;
+allow vendor_kebab_slider vendor_kebab_slider_calibration:file { getattr open write };

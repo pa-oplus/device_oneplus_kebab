@@ -181,3 +181,6 @@ DEVICE_MANIFEST_FILE += $(DEVICE_PATH)/configs/vintf/manifest-audio.xml
 # Framework-side optional Oplus/Pixelworks contracts from the selected PA hardware.
 DEVICE_FRAMEWORK_COMPATIBILITY_MATRIX_FILE += \
     hardware/oplus/vintf/device_framework_matrix.xml
+
+# Device-owned OnePlus nodes/services; common QTI policy is selected by PA.
+BOARD_VENDOR_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy/vendor
