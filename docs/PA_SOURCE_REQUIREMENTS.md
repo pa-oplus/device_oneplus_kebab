@@ -20,7 +20,10 @@ Before a full build, verify the final PA branch links the selected library into
 normal and recovery init and invokes its property hook after loading partition
 properties and before deriving the final `ro.product.*` identity. This needs a
 source change outside this tree if the inspected implementation is retained.
-Do not mark regional model detection functional until this is checked.
+A concrete patch is now staged in patches/system-core; it passes apply checks
+against the recorded PA source but has not been applied there. It links the
+provider into normal/recovery second-stage binaries and calls the hook at that
+point. Do not mark regional detection functional before final build/device checks.
 
 The device hook preserves Lineage's five kebab RF-to-model mappings and DDR
 property extraction. Unknown or malformed RF versions leave the product's default

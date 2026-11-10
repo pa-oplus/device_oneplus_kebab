@@ -1,0 +1,15 @@
+{
+  "repository": "https://github.com/AOSPA/android_system_core",
+  "local_reference": "pa/system/core",
+  "commit": "a39957699ee525fb94a11839e4e0fd2041503309",
+  "files": {
+    "init/Android.bp": {
+      "before_sha256": "841b02ed125274d17c52a05111241b28667288a6850b8b079052836714978586",
+      "after_sha256": "197a30c1ca2e2e6e4a469637c3a0097106190ab04f15c9797dbbffab4566f663"
+    },
+    "init/property_service.cpp": {
+      "before_sha256": "92132810fc4e8514f9df7c7e937c03e71617388378b8f26c8c778de8b3f26680",
+      "after_sha256": "346333e1a168b5f84806af136b0af43172f0f9c7cec5d46d419edc9d6130ad72"
+    }
+  }
+}
