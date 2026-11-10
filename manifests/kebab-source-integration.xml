@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<manifest>
+  <remote name="kebab-github" fetch="https://github.com/" />
+  <!-- Replace the differently located thermal service to avoid duplicate modules. -->
+  <remove-project name="AOSPA/android_hardware_qcom_thermal" />
+  <project path="hardware/oplus" name="clo-oscaro/hardware_oplus" remote="kebab-github" revision="calcite" />
+  <project path="hardware/qcom/thermal" name="pa-sanji/android_hardware_qcom_thermal" remote="kebab-github" revision="calcite" />
+  <project path="hardware/qcom/display" name="pa-sanji/android_hardware_qcom_display" remote="kebab-github" revision="calcite" />
+  <project path="vendor/qcom/opensource/audio-hal/primary-hal" name="pa-sanji/android_hardware_qcom_audio" remote="kebab-github" revision="calcite" />
+</manifest>
