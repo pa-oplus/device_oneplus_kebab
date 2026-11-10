@@ -1,0 +1,88 @@
+{
+  "schema_version": 1,
+  "scope": "critical recorded source contracts; not the full Soong/Make dependency graph",
+  "module_providers": [
+    {
+      "path": "vendor/aospa/soong/Android.bp",
+      "module": "vendor_init_defaults"
+    },
+    {
+      "path": "device/qcom/vendor-common/memtrack/Android.bp",
+      "module": "vendor.qti.hardware.memtrack-service"
+    },
+    {
+      "path": "hardware/oplus/hidl/fingerprint/Android.bp",
+      "module": "android.hardware.biometrics.fingerprint@2.3-service.oplus"
+    },
+    {
+      "path": "hardware/oplus/aidl/vibrator/qti/Android.bp",
+      "module": "vendor.qti.hardware.vibrator.service.oplus"
+    },
+    {
+      "path": "hardware/oplus/sensors/Android.bp",
+      "module": "sensors.oplus"
+    },
+    {
+      "path": "hardware/oplus/wvmkiller/Android.bp",
+      "module": "wvmkiller"
+    },
+    {
+      "path": "hardware/interfaces/audio/common/all-versions/default/service/Android.bp",
+      "module": "android.hardware.audio.service"
+    },
+    {
+      "path": "hardware/interfaces/wifi/aidl/default/Android.bp",
+      "module": "android.hardware.wifi-service"
+    },
+    {
+      "path": "hardware/interfaces/sensors/aidl/multihal/Android.bp",
+      "module": "android.hardware.sensors-service.multihal"
+    },
+    {
+      "path": "hardware/qcom/thermal/Android.bp",
+      "module": "android.hardware.thermal-service.qti"
+    },
+    {
+      "path": "hardware/qcom/bootctrl/aidl/Android.bp",
+      "module": "android.hardware.boot-service.qti"
+    },
+    {
+      "path": "vendor/qcom/opensource/healthd-ext/aidl/Android.bp",
+      "module": "android.hardware.health-service.qti"
+    },
+    {
+      "path": "vendor/qcom/opensource/power/Android.mk",
+      "module": "android.hardware.power-service"
+    },
+    {
+      "path": "vendor/qcom/opensource/usb/hal/Android.bp",
+      "module": "android.hardware.usb.gadget-service.qti"
+    },
+    {
+      "path": "frameworks/av/drm/mediadrm/plugins/clearkey/aidl/Android.bp",
+      "module": "android.hardware.drm-service.clearkey"
+    },
+    {
+      "path": "hardware/nxp/nfc/snxxx/Android.bp",
+      "module": "android.hardware.nfc-service.nxp"
+    }
+  ],
+  "required_files": [
+    "device/qcom/common/common.mk",
+    "device/qcom/common/BoardConfigQcom.mk",
+    "vendor/qcom/opensource/audio-hal/primary-hal/configs/kona/kona.mk",
+    "hardware/qcom/display/config/display-product.mk",
+    "hardware/qcom/wlan/qcwcn/Android.bp",
+    "hardware/google/interfaces/Android.bp",
+    "vendor/qcom/opensource/recovery-ext/oem-recovery/Android.bp",
+    "tools/extract-utils/extract_utils/module.py"
+  ],
+  "deferred_checks": [
+    "kernel source/config merge and generated kernel headers",
+    "OnePlus common/kebab vendor outputs, pins and fixups",
+    "display-config/power interface versions and final perf/Picard ABI",
+    "IMS Java/native framework and vendor compatibility",
+    "remaining VINTF registrations, matrices and complete policy",
+    "complete product configuration, build and hardware tests"
+  ]
+}

@@ -138,6 +138,14 @@ makefiles are inherited yet.
 
 tools/check-vintf-ownership.py validates recorded declarations and prints unresolved
 reference/provider counts. Its strict coverage mode currently fails by design
-because vendor/WFD/common-provider reconciliation is unfinished. In particular,
-resolve the selected memtrack service's complete provider/fragment before treating
-the source graph as complete. See extraction.md and vintf.md for command scope.
+because vendor/WFD/common-provider reconciliation is unfinished. The selected memtrack provider/fragment is now identified in
+device/qcom/vendor-common/memtrack; full ABI/build validation remains pending. See extraction.md and vintf.md for command scope.
+
+## Reproducible source checks
+
+See source-readiness.md and tools/check-source-readiness.py for critical source
+providers and init-hook consumption checks. The staged system/core patch is
+reviewable and apply-checked, not automatically applied to reference sources.
+Normal/recovery binaries require whole-static provider linkage; adding the device
+library only to a libinit archive is insufficient for the optional weak hook.
+The current pa checkout still needs assembly/integration before a real build.

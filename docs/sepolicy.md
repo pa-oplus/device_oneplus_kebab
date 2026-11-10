@@ -63,3 +63,17 @@ Both system-ext policy directories are selected in BoardConfig. The reference
 compile includes these types, and property_info_checker/checkfc validate property,
 file and hwbinder contexts against that temporary policy. This remains a different-
 device reference check, not a final kebab compile or runtime authorization result.
+
+## DRM client and fingerprint storage
+
+The selected wvmkiller helper has a dedicated DRM-client domain and exact boolean
+property. It does not receive Widevine-server, keybox/TEE or generic service-control
+permissions. Fingerprint enrollment paths use the platform data type/rules, while
+persist calibration has a separate local type and narrower directory/file access.
+The actual backend data paths and DAC still need vendor/device validation.
+
+The local macro-expansion harness now explicitly supplies full-Treble, compatible-
+property, sysprop-owner and userdebug build flags for the reference check. Omitting
+the Treble flag incorrectly expands a passthrough HAL branch that is inapplicable
+to this shipping-API-30 target. Neverallow checks remain enabled. This correction
+does not weaken product policy or replace a target build/mapping check.

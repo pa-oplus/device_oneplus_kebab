@@ -312,7 +312,8 @@ source-path matching and host init/shell checks pass; full target policy is pend
 The VINTF audit records all 52 Lineage legacy records and twelve known source
 fragment providers. Eighteen local/source inputs merge with 28 declared instances;
 nine reference records are covered and 43 remain for vendor/WFD/provider review.
-The memtrack provider remains unverified in the complete source graph. Duplicate
+The memtrack provider was initially unidentified; the continuation below verifies
+its device/qcom/vendor-common source and fragment. Duplicate
 injection and strict incomplete-coverage checks fail as intended. This replaces
 an assumption of completeness with a concrete unresolved inventory.
 
@@ -322,3 +323,33 @@ destinations. Setup help/API registration and Python syntax pass without vendor
 output generation. Only reference library module-name suffix handling is adapted;
 binary/config/APK fixups are recorded for review rather than applied without
 inputs. No vendor/kernel checkout, dump or firmware was acquired.
+
+## Memtrack, DRM/storage policy and init source integration
+
+The QTI memtrack module is verified in device/qcom/vendor-common, with its own
+AIDL fragment and RC. Thirteen known source-service fragments plus six local
+manifests now merge to 29 instances; the earlier unidentified provider is removed
+from the audit. The 43 remaining vendor/WFD reference obligations are unchanged.
+
+The selected Widevine recovery helper now has a DRM-client domain and exact
+boolean property, without backend/TEE or generic restart privileges. Fingerprint
+persist calibration and ordinary enrollment paths have separate labeling/access.
+The reference-policy compile keeps neverallow checks enabled and now explicitly
+sets the target's full-Treble/property-owner flags when expanding local macros.
+No target-policy/mapping or DRM/fingerprint hardware result is claimed.
+
+A patch staged under patches/system-core wires PA's existing vendor-init defaults
+into the final normal/recovery second-stage binaries and calls the optional device
+hook after loading properties, before deriving product identity/fingerprint.
+It applies to the recorded PA source and temporary copies with exact expected
+output hashes. Host tests cover optional weak/no-provider and whole-archive
+provider retention; the device RF/DDR hook tests also pass. Reference source is
+unchanged and the patch is not yet integrated into a real build.
+
+The source-readiness tool checks critical module/file providers, recorded VINTF
+artifacts and hook consumption. It rejects an unpatched isolated source view and
+passes those recorded checks after patching temporary copies. The actual pa
+checkout currently reports 11 source-integration gaps, including the unapplied
+hook. This is a concrete blocker report, not a complete Soong graph/build test.
+Kernel/vendor acquisition, header/config merge, fixups, ABI, complete VINTF/policy
+and build/device validation remain deferred.
