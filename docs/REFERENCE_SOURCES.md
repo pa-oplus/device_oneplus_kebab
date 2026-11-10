@@ -34,3 +34,18 @@ clone is excluded as requested.
 The PA Oplus tree in aospa-trees is the selected hardware source. The separately
 cloned Lineage Oplus tree supplies source reference for the device-local amplifier
 and UDFPS adaptation only. Do not replace the selected hardware source wholesale.
+
+## Additional local source checks
+
+Health AIDL/product and qcwcn module interfaces were inspected in aospa-trees;
+the supplicant generator was inspected in pa/external/wpa_supplicant_8. The
+following content hashes identify those inputs without assuming Git metadata is
+available for the copied source folders. These are API checks, not a declaration
+of a fully synchronized build manifest.
+
+| Local source | SHA-256 |
+|---|---|
+| `aospa-trees/vendor/qcom/opensource/healthd-ext/health-vendor-product.mk` | `e5d3955323445001dc81e1da4d5d577e3608f702888369b629f3a685491258f5` |
+| `aospa-trees/vendor/qcom/opensource/healthd-ext/aidl/Android.bp` | `d857b0e9eb40cd2d8b5ea0dad1167f4326b251018731606f37890aa025070abf` |
+| `aospa-trees/hardware/qcom/wlan/qcwcn/wifi_hal/Android.bp` | `cb47b618d231163f46479a40ecb17fd9a8313860b73507ce35d3b005f9c0e211` |
+| `pa/external/wpa_supplicant_8/wpa_supplicant/Android.bp` | `5b601a86d1a3a2ee3154bc961da1280eea7de4e61c54215dd66a042a2b718549` |

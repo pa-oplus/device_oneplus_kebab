@@ -57,3 +57,21 @@ The camera source needs QTI camera interfaces and the final OnePlus vendor HAL.
 
 No dependency is silently skipped by the device-owned audio include. Reference
 configuration checks are not a completed Android build or compatibility result.
+
+## Health and connectivity dependencies
+
+Provide QTI healthd-ext at vendor/qcom/opensource/healthd-ext, including its AIDL
+boot/recovery services, product recipe and charger images. The selected PA Oplus
+source also supplies the vibrator service and its AIDL V1 fragment. Its optional
+effect-stream implementation is disabled for the initial kebab LED backend.
+
+Wi-Fi requires hardware/qcom/wlan/qcwcn with libwifi-hal-ctrl and its private
+driver-command library, the platform AIDL Wi-Fi service and the existing
+wpa_supplicant_conf_gen module in external/wpa_supplicant_8. The device installs
+that generator output; a legacy installed wpa_supplicant.conf module is not
+assumed. Resolve the OnePlus kernel driver and IPACM/tethering provider separately.
+
+Bluetooth still uses PA common stack inheritance with a OnePlus vendor HIDL 1.0
+transport. GNSS uses the OnePlus vendor 2.1 service and vendor.qti.gnss 4.0
+fragment. Reconcile those deferred vendor producers and final platform matrices
+before treating the selected source APIs as a working combination.

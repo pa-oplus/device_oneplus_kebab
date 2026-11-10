@@ -187,3 +187,29 @@ checks, overlay AAPT2 compilation, source/XML comparisons and host init checks
 passed. Media performance entries were checked against both vendor and platform
 software Codec2 declarations. None establishes an Android build, SELinux access,
 vendor ABI compatibility or hardware behavior.
+
+## Health, vibrator and connectivity continuation
+
+Health owns the QTI AIDL boot/recovery product, replacing the generic charging
+component and its unselected charger-monitor RC. The selected PA Oplus source
+already supplies the OnePlus LED vibrator, so it is selected without copying the
+historical implementation. Local init covers the additional sysfs nodes used by
+that backend; effect streaming stays disabled.
+
+Bluetooth retains PA common stack integration and adds the OnePlus Hastings/NV,
+profile, offload and BQR configuration plus the legacy HIDL transport declaration.
+Wi-Fi owns the OnePlus qcwcn flags and service selection, with an installed config
+from the platform supplicant generator. It avoids generic kona multi-chip driver
+selection; kernel modules and IPACM/tethering integration remain pending. GNSS
+preserves the OnePlus ODM file byte for byte and leaves services/manifests with
+the deferred OnePlus vendor producer. No generic QCC declaration is added.
+
+Combined Make checks expanded the real QTI health product and common Bluetooth
+recipes in addition to device/board and calcite audio/display. They found 96
+unique direct copy destinations with no competing sources or conflicting
+vendor/system-ext/ODM values. New service packages, selectors, OnePlus Bluetooth
+VINTF/properties, Wi-Fi flags/permissions and the supplicant generator passed
+source/configuration checks. Blueprint formatting and health/vibrator init checks
+passed. Other external inheritance remains recorded rather than expanded. These
+checks do not compile the Android product or establish firmware, vendor ABI,
+offline charging, radio connectivity, haptic behavior or enforcing policy.

@@ -51,3 +51,16 @@ that its target is available at runtime.
 
 Kernel/vendor acquisition, extraction and generated vendor makefiles remain
 outside the current five-step implementation batch.
+
+## Connectivity ownership established during bring-up
+
+- Bluetooth: OnePlus vendor HIDL 1.0 transport/RC, libbtnv and controller firmware;
+  the device declares its baseline HAL instance and PA common owns stack integration.
+- Wi-Fi: OnePlus cnss-daemon, vendor supplicant overlays and ODM WCNSS config;
+  source AIDL service/qcwcn libraries and generated base config are device-selected.
+- GNSS: OnePlus 2.1 service/RC and Android/vendor.qti.gnss manifests, support
+  libraries/daemons and vendor configs; the device owns only ODM gps.conf and the
+  feature permission. Do not also inherit the generic source GNSS product.
+
+Reconcile extraction and module/manifest ownership before enabling the vendor
+includes. The chosen init services and manifests must agree with actual binaries.
