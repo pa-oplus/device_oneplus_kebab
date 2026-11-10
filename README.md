@@ -5,12 +5,14 @@ Standalone device configuration for the OnePlus 8T, intended for
 
 ## Status
 
-Initial board and product foundation. This repository contains `BoardConfig.mk`,
-a minimal `device.mk` and the baseline recovery fstab. Product registration and
-hardware integration remain pending, so it is not buildable yet.
+Initial board and product foundation. This repository registers `aospa_kebab`
+and contains board/device configuration, a baseline recovery fstab, firmware
+symlink modules and Qualcomm image-generation integration. Hardware services,
+normal-boot init, manifests, overlays, policy and proprietary integration remain
+pending, so the product is not buildable yet.
 
-See [BRINGUP.md](docs/BRINGUP.md) for source comparisons, provisional kernel settings
-and remaining integration work.
+See [BRINGUP.md](docs/BRINGUP.md) for source comparisons, checks and remaining work,
+and [VENDOR_INTEGRATION.md](docs/VENDOR_INTEGRATION.md) for deferred vendor interfaces.
 
 The target PA branch and Android version remain to be confirmed. Kernel and
 proprietary vendor tree work is deferred.

@@ -31,11 +31,12 @@ check the resulting configuration. Do not build this baseline without that step.
 
 ## Remaining integration
 
-- PA product registration, identity, root Soong namespace and image generation.
+- Complete hardware integration behind the registered PA product.
 - Normal boot/ramdisk fstab installation, OnePlus libinit and init services.
 - OnePlus audio flags/configuration, UDFPS, touch, slider, sensors and other HALs.
 - Device manifests, property files, overlays and SELinux policies.
-- Vendor includes and extraction interfaces once their layout is decided.
+- Vendor includes and extraction implementation; expected interfaces are recorded in
+  [VENDOR_INTEGRATION.md](VENDOR_INTEGRATION.md).
 
 ## Verification limits
 
@@ -55,3 +56,33 @@ Checks performed for this foundation:
 - The 17 common QTI selections match alioth and exist in the inspected PA
   component dispatcher. No second common-product inheritance was introduced.
 - Platform, kernel-version and shipping-API declarations are consistent.
+
+## Product and build integration
+
+`aospa_kebab.mk` uses the inspected PA alioth/OnePlus product inheritance order:
+64-bit-with-32-bit-support base, telephony base, kebab device configuration, then
+PA configuration. It retains Lineage's initial OMX-disable choice pending media
+integration. Identity uses Lineage's KB2005 default and OnePlus8T property names;
+regional variant handling still belongs to future libinit work.
+
+`AndroidProducts.mk` registers `aospa_kebab` locally so this repository is
+self-contained. Do not also register the same product in `vendor/aospa/products`.
+The two-field common lunch choice follows the inspected PA product registry.
+For the inspected Android 17 shell, the explicit invocation is
+`lunch aospa_kebab trunk_staging userdebug`; this is a configuration target, not
+a claim that the incomplete device configuration can build or boot.
+
+The root Soong namespace currently has no imports: the two firmware link modules
+have no dependencies on external namespaces. Add hardware imports when selected
+OnePlus modules actually require them.
+
+`AndroidBoard.mk` follows the alioth image-generation entry point. A GNU Make
+check parsed the real local CLO rules using temporary output paths and verified
+separate recovery, the DTBO kernel/tool dependencies, and preservation of an
+already-defined `BOARD_PREBUILT_DTBOIMAGE`. No image was generated and no kernel
+build was invoked.
+
+Product checks evaluated local identity, registration and nested device
+inheritance while recording external base/PA inheritance calls. Their entry paths
+exist in the inspected PA checkout; their full transitive configuration was not
+evaluated. Blueprint formatting passed with the local prebuilt `bpfmt`.
