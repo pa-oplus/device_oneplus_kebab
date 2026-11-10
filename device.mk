@@ -48,3 +48,12 @@ TARGET_COMMON_QTI_COMPONENTS := \
 # Shipping API
 PRODUCT_SHIPPING_API_LEVEL := 30
 BOARD_SHIPPING_API_LEVEL := 30
+
+# Soong namespaces
+PRODUCT_SOONG_NAMESPACES += \
+    $(LOCAL_PATH)
+
+# Wi-Fi firmware links: preserve the OnePlus persist and ODM locations.
+PRODUCT_PACKAGES += \
+    firmware_WCNSS_qcom_cfg.ini_symlink \
+    firmware_wlan_mac.bin_symlink
