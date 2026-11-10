@@ -5,9 +5,12 @@ Standalone device configuration for the OnePlus 8T, intended for
 
 ## Status
 
-Initial skeleton. This repository currently contains documentation only and is
-not buildable. Board configuration, product registration and hardware integration
-will be added incrementally.
+Initial board and product foundation. This repository contains `BoardConfig.mk`,
+a minimal `device.mk` and the baseline recovery fstab. Product registration and
+hardware integration remain pending, so it is not buildable yet.
+
+See [BRINGUP.md](docs/BRINGUP.md) for source comparisons, provisional kernel settings
+and remaining integration work.
 
 The target PA branch and Android version remain to be confirmed. Kernel and
 proprietary vendor tree work is deferred.
