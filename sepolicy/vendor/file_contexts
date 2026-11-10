@@ -15,3 +15,6 @@
 /odm/bin/init\.oplus\.sh    u:object_r:vendor_kebab_init_exec:s0
 
 /vendor/bin/wvmkiller    u:object_r:vendor_kebab_wvmkiller_exec:s0
+
+/data/vendor/fingerprint(_ori)?(/.*)?    u:object_r:fingerprint_vendor_data_file:s0
+/mnt/vendor/persist/fingerprint(/.*)?    u:object_r:vendor_kebab_persist_fingerprint_file:s0
