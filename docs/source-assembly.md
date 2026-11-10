@@ -19,8 +19,6 @@ in source-assembly.json.
 | device/qcom/sepolicy_vndr | pa-sanji/android_device_qcom_sepolicy_vndr | d6709e1b2b13 |
 | system/libhwbinder | pa-sanji/android_system_libhwbinder | a76d5def4843 |
 | frameworks/av | pa-sanji/frameworks_av | 6c91a1be53cf |
-| frameworks/base | pa-sanji/frameworks_basepengu | a1f9bb8b984e |
-| frameworks/native | pa-sanji/android_frameworks_nativepengu | 460ff5ddaa58 |
 | build/release | pa-sanji/android_build_release | b8badbd159ed |
 | device/qcom/sepolicy | pa-sanji/device_qcom_sepolicy | f074369b27d8 |
 | hardware/interfaces | pa-sanji/hardware_interfaces | 35664468268e |
@@ -41,8 +39,10 @@ The existing PA vendor/aospa configuration is retained. Sanji’s PenguinOS vend
 product adds its own apps and defaults, so it is a reference rather than a
 replacement. Its camera extension bridge and updater perf policy are not applied
 by this source setup; enabling those features requires a separate kebab review.
-Shared framework forks are installed, but their complete module dependencies
-have not been checked through a full product build.
+The original PA frameworks/base and frameworks/native checkouts are retained.
+The PenguinOS framework forks were excluded after scope correction; their clones
+are preserved under excluded-penguin in the alignment backup. The 17 selected
+shared repositories still require complete product dependency/build validation.
 
 ## Local changes and backups
 

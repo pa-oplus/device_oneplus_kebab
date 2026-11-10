@@ -9,8 +9,6 @@
   <remove-project name="AOSPA/android_device_qcom_sepolicy_vndr" path="device/qcom/sepolicy_vndr" optional="true" />
   <remove-project name="platform/system/libhwbinder" path="system/libhwbinder" optional="true" />
   <remove-project name="AOSPA/android_frameworks_av" path="frameworks/av" optional="true" />
-  <remove-project name="AOSPA/android_frameworks_base" path="frameworks/base" optional="true" />
-  <remove-project name="AOSPA/android_frameworks_native" path="frameworks/native" optional="true" />
   <remove-project name="platform/build/release" path="build/release" optional="true" />
   <remove-project name="device/qcom/sepolicy" path="device/qcom/sepolicy" optional="true" />
   <remove-project name="AOSPA/android_hardware_interfaces" path="hardware/interfaces" optional="true" />
@@ -40,8 +38,6 @@
   <project path="device/qcom/sepolicy_vndr" name="pa-sanji/android_device_qcom_sepolicy_vndr" remote="kebab-github" revision="calcite" />
   <project path="system/libhwbinder" name="pa-sanji/android_system_libhwbinder" remote="kebab-github" revision="calcite" />
   <project path="frameworks/av" name="pa-sanji/frameworks_av" remote="kebab-github" revision="calcite" />
-  <project path="frameworks/base" name="pa-sanji/frameworks_basepengu" remote="kebab-github" revision="calcite" />
-  <project path="frameworks/native" name="pa-sanji/android_frameworks_nativepengu" remote="kebab-github" revision="calcite" />
   <project path="build/release" name="pa-sanji/android_build_release" remote="kebab-github" revision="calcite" />
   <project path="device/qcom/sepolicy" name="pa-sanji/device_qcom_sepolicy" remote="kebab-github" revision="calcite" />
   <project path="hardware/interfaces" name="pa-sanji/hardware_interfaces" remote="kebab-github" revision="calcite" />

@@ -74,18 +74,6 @@
       "commit": "6c91a1be53cf8db90a7d8a567dbbf8969d16f3c4"
     },
     {
-      "path": "frameworks/base",
-      "repository": "pa-sanji/frameworks_basepengu",
-      "branch": "calcite",
-      "commit": "a1f9bb8b984e65d538a6cd109c9f08e8b84c91f4"
-    },
-    {
-      "path": "frameworks/native",
-      "repository": "pa-sanji/android_frameworks_nativepengu",
-      "branch": "calcite",
-      "commit": "460ff5ddaa5864d9dee48d799ee372af68ec66d8"
-    },
-    {
       "path": "build/release",
       "repository": "pa-sanji/android_build_release",
       "branch": "calcite",
@@ -158,14 +146,18 @@
       "hardware/oplus from aospa-trees",
       "hardware/qcom/thermal selected calcite path",
       "existing AIDL NXP NFC sources",
-      "system/core local init hook"
+      "system/core local init hook",
+      "Original PA frameworks/base at 2d3deacd4c78b696368d42a7857ac784afda3175",
+      "Original PA frameworks/native at 9b6253730b3c5f7440491a09823d6708d6d59871"
     ],
     "excluded": [
       "Xiaomi device/camera/vendor/hardware sources",
       "Xiaomi kernel and kernel/configs replacement",
-      "alioth legacy NXP HIDL sources"
+      "alioth legacy NXP HIDL sources",
+      "PenguinOS frameworks/basepengu and android_frameworks_nativepengu; original PA checkouts restored"
     ],
     "installation": "Standalone local clones; local repo manifest records replacements. No repo sync/force-sync performed.",
-    "full_build_validated": false
+    "full_build_validated": false,
+    "correction": "17 shared repositories remain selected. The two PenguinOS framework clones are preserved outside PA under excluded-penguin in the alignment backup."
   }
 }
