@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2022 The LineageOS Project
+     Copyright (C) 2026 Paranoid Android
+     SPDX-License-Identifier: Apache-2.0 -->
+<resources>
+    <bool name="config_telephony5gStandalone">true</bool>
+    <bool name="config_telephony5gNonStandalone">true</bool>
+    <bool name="config_carrier_wfc_ims_available">true</bool>
+</resources>

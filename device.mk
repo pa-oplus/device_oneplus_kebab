@@ -35,7 +35,6 @@ TARGET_COMMON_QTI_COMPONENTS := \
     keymaster \
     overlay \
     perf \
-    telephony \
     wfd
 
 # Shipping API
@@ -551,3 +550,37 @@ PRODUCT_VENDOR_PROPERTIES += \
     vendor.usb.rndis.func.name=gsi \
     vendor.usb.use_ffs_mtp=1 \
     vendor.usb.use_gadget_hal=1
+
+# Telephony: evaluate common PA source integration once, then apply OnePlus values.
+include $(QCOM_COMMON_PATH)/system/telephony/qti-telephony.mk
+include $(QCOM_COMMON_PATH)/vendor/telephony/qti-telephony.mk
+
+kebab_radio_vendor_properties := \
+    persist.vendor.dpmhalservice.enable=1 \
+    persist.vendor.radio.apm_sim_not_pwdn=1 \
+    persist.vendor.radio.custom_ecc=1 \
+    persist.vendor.radio.enableadvancedscan=true \
+    persist.vendor.radio.procedure_bytes=SKIP \
+    persist.vendor.radio.rat_on=combine \
+    persist.vendor.radio.sib16_support=1 \
+    ro.telephony.default_network=33,33
+
+kebab_radio_system_ext_properties := \
+    persist.vendor.cne.feature=1 \
+    persist.vendor.dpm.feature=9 \
+    persist.dbg.volte_avail_ovr=1 \
+    persist.dbg.vt_avail_ovr=1 \
+    persist.dbg.wfc_avail_ovr=1 \
+    persist.data.df.agg.dl_pkt=10 \
+    persist.data.df.agg.dl_size=4096 \
+    persist.vendor.data.mode=concurrent \
+    ril.subscription.types=NV,RUIM
+
+kebab_radio_property_keys := $(foreach prop,$(kebab_radio_vendor_properties) $(kebab_radio_system_ext_properties),$(word 1,$(subst =, ,$(prop))))
+PRODUCT_PROPERTY_OVERRIDES := $(filter-out $(addsuffix =%,$(kebab_radio_property_keys)),$(PRODUCT_PROPERTY_OVERRIDES))
+PRODUCT_VENDOR_PROPERTIES := $(filter-out $(addsuffix =%,$(kebab_radio_property_keys)),$(PRODUCT_VENDOR_PROPERTIES))
+PRODUCT_SYSTEM_EXT_PROPERTIES := $(filter-out $(addsuffix =%,$(kebab_radio_property_keys)),$(PRODUCT_SYSTEM_EXT_PROPERTIES))
+PRODUCT_VENDOR_PROPERTIES += $(kebab_radio_vendor_properties)
+PRODUCT_SYSTEM_EXT_PROPERTIES += $(kebab_radio_system_ext_properties)
+
+PRODUCT_PACKAGES += KebabCarrierConfig
