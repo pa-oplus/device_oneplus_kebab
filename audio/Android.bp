@@ -1,0 +1,32 @@
+// SPDX-FileCopyrightText: 2020-2025 The LineageOS Project
+// SPDX-FileCopyrightText: 2026 Paranoid Android
+// SPDX-License-Identifier: Apache-2.0
+
+cc_library_shared {
+    name: "audio_amplifier.kebab",
+    stem: "audio_amplifier.qcom",
+    relative_install_path: "hw",
+    vendor: true,
+    owner: "qti",
+    srcs: ["audio_amplifier.c"],
+    include_dirs: [
+        "external/tinyalsa/include",
+        "external/tinycompress/include",
+        "system/media/audio_route/include",
+        "system/media/audio_utils/include",
+        "vendor/qcom/opensource/audio-hal/primary-hal/hal",
+        "vendor/qcom/opensource/audio-hal/primary-hal/hal/audio_extn",
+        "vendor/qcom/opensource/audio-hal/primary-hal/hal/msm8974",
+    ],
+    header_libs: [
+        "libhardware_headers",
+        "qti_kernel_headers",
+    ],
+    shared_libs: [
+        "libcutils",
+        "libdl",
+        "libhardware",
+        "liblog",
+        "libtinyalsa",
+    ],
+}
