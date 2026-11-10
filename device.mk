@@ -32,7 +32,6 @@ TARGET_COMMON_QTI_COMPONENTS := \
     av \
     bt \
     charging \
-    display \
     gps \
     init \
     keymaster \
@@ -302,3 +301,32 @@ PRODUCT_COPY_FILES += \
 
 # Perf stays owned by the common QTI perf component. Do not set the stock-blob
 # override until a complete OnePlus perf ABI/configuration set has been verified.
+
+# OnePlus display properties and framework calibration overlay.
+# Include the common recipes once, locally, so device properties can replace
+# generic source defaults before the PA product inheritance is resolved.
+QCOM_COMMON_PATH := device/qcom/common
+TARGET_USE_AIDL_QTI_MEMTRACK := true
+include $(QCOM_COMMON_PATH)/system/display/qti-display.mk
+include $(QCOM_COMMON_PATH)/vendor/display/qti-display.mk
+
+PRODUCT_PACKAGES += KebabFrameworksRes
+
+kebab_display_properties := \
+    vendor.display.disable_hw_recovery_dump=1 \
+    vendor.display.disable_offline_rotator=1 \
+    vendor.display.disable_system_load_check=1 \
+    vendor.display.enable_async_powermode=0 \
+    vendor.display.enable_camera_smooth=1 \
+    vendor.display.not_switch_qhd_120hz=1 \
+    vendor.display.primary_mixer_stages=9 \
+    vendor.display.show_memc_tomast=true \
+    vendor.display.smomo_camera_support=1 \
+    vendor.display.smomo_game_support=0 \
+    vendor.display.use_layer_ext=1 \
+    vendor.display.use_smooth_motion=1
+
+kebab_display_property_names := $(foreach prop,$(kebab_display_properties),$(word 1,$(subst =, ,$(prop))))
+PRODUCT_PROPERTY_OVERRIDES := $(filter-out $(addsuffix =%,$(kebab_display_property_names)),$(PRODUCT_PROPERTY_OVERRIDES))
+PRODUCT_VENDOR_PROPERTIES := $(filter-out $(addsuffix =%,$(kebab_display_property_names)),$(PRODUCT_VENDOR_PROPERTIES))
+PRODUCT_VENDOR_PROPERTIES += $(kebab_display_properties)
