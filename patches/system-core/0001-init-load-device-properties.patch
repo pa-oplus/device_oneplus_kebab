@@ -1,0 +1,50 @@
+--- a/init/Android.bp
++++ b/init/Android.bp
+@@ -330,7 +330,10 @@
+
+ cc_binary {
+     name: "init_second_stage",
+-    defaults: ["init_second_stage_defaults"],
++    defaults: [
++        "init_second_stage_defaults",
++        "vendor_init_defaults",
++    ],
+     static_libs: ["libinit"],
+     visibility: ["//visibility:any_system_partition"],
+     required: [
+@@ -346,7 +349,10 @@
+
+ cc_binary {
+     name: "init_second_stage.recovery",
+-    defaults: ["init_second_stage_defaults"],
++    defaults: [
++        "init_second_stage_defaults",
++        "vendor_init_defaults",
++    ],
+     static_libs: ["libinit"],
+     recovery: true,
+     cflags: ["-DRECOVERY"],
+--- a/init/property_service.cpp
++++ b/init/property_service.cpp
+@@ -75,6 +75,9 @@
+ #include "system/core/init/property_service.pb.h"
+ #include "util.h"
+
++// Optional device hook supplied through PA vendor_init_defaults.
++void vendor_load_properties() __attribute__((weak));
++
+ [[maybe_unused]] static constexpr char APPCOMPAT_OVERRIDE_PROP_FOLDERNAME[] =
+         "/dev/__properties__/appcompat_override";
+ [[maybe_unused]] static constexpr char APPCOMPAT_OVERRIDE_PROP_TREE_FILE[] =
+@@ -1237,6 +1240,11 @@
+             LOG(ERROR) << "Could not set '" << name << "' to '" << value
+                        << "' while loading .prop files" << error;
+         }
++    }
++
++    // Device overrides must precede derived product identity and fingerprint.
++    if (::vendor_load_properties != nullptr) {
++        ::vendor_load_properties();
+     }
+
+     property_initialize_ro_product_props();
