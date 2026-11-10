@@ -15,7 +15,7 @@ build target remains open.
 | Product reserve | Preserve kebab's 800,000,000-byte vanilla product reserve, gated by PA's `TARGET_DISABLES_GMS`. Reassess image fit when the final product is assembled. |
 | QTI ownership | Start from alioth's component list, then remove `audio` because its source recipe and configuration are now device-owned. PA's `vendor/aospa/target/product/aospa-target.mk` already inherits `device/qcom/common/common.mk`; avoid a second inheritance. |
 | Audio/perf | Source audio is device-owned with OnePlus configuration; see `docs/audio.md`. Performance integration remains pending. No stock Xiaomi HAL, stub perf client, Dolby or framework workaround is imported. |
-| Init/fstab | OnePlus init and normal-boot/ramdisk fstab modules are defined. Recovery uses the same source through BoardConfig. Boot control HAL integration and runtime validation remain pending. |
+| Init/fstab | OnePlus init and normal-boot/ramdisk fstab modules are defined. Recovery uses the same source through BoardConfig. QTI AIDL boot control is selected; build/runtime validation remains pending. |
 | Kernel | Record 4.19, `kernel/oneplus/sm8250`, base defconfig `vendor/kona-perf_defconfig` and LLVM support. No compiler version is selected without kernel evidence. |
 
 ## Kernel configuration blocker for later build integration
@@ -109,8 +109,8 @@ Fstab is installed through the same vendor/ramdisk module definition as Lineage
 kebab; recovery receives it through `TARGET_RECOVERY_FSTAB`. Encryption and mount
 options are preserved. Postinstall uses Lineage's system ext4/vendor EROFS
 configuration with optional otapreopt/checkpoint steps and matching packages.
-Update-engine packages are selected; boot control HAL and vendor integration
-remain prerequisites for a working OTA flow.
+Update-engine and QTI AIDL boot-control packages are selected; vendor integration,
+service/policy and OTA runtime checks remain prerequisites for a working flow.
 
 Filesystem consistency and source/module checks passed. No decryption, image
 build, OTA update, hardware service behavior or enforcing-policy validation has
