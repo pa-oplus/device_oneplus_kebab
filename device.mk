@@ -149,3 +149,29 @@ $(call soong_config_set,tinycompress,enable_extended_compress_format,true)
 $(call soong_config_set,tinycompress,loop_compress_read,true)
 AUDIO_FEATURE_ENABLED_DYNAMIC_LOG := false
 BOARD_SUPPORTS_OPENSOURCE_STHAL := false
+
+# Replace generic kona copy destinations in this directly included recipe.
+# PA searches /vendor/etc/audio before /vendor/etc, so both primary-policy
+# destinations must resolve to the same OnePlus configuration.
+kebab_audio_copy_destinations := \
+    $(TARGET_COPY_OUT_VENDOR)/etc/audio_io_policy.conf \
+    $(TARGET_COPY_OUT_VENDOR)/etc/audio_policy_configuration.xml \
+    $(TARGET_COPY_OUT_VENDOR)/etc/audio/audio_policy_configuration.xml \
+    $(TARGET_COPY_OUT_VENDOR)/etc/audio_platform_info_intcodec.xml \
+    $(TARGET_COPY_OUT_VENDOR)/etc/mixer_paths.xml \
+    $(TARGET_COPY_OUT_VENDOR)/etc/sound_trigger_mixer_paths.xml \
+    $(TARGET_COPY_OUT_VENDOR)/etc/sound_trigger_platform_info.xml
+PRODUCT_COPY_FILES := $(filter-out $(foreach dest,$(kebab_audio_copy_destinations),%:$(dest)),$(PRODUCT_COPY_FILES))
+
+PRODUCT_COPY_FILES += \
+    $(KEBAB_AUDIO_CONFIG_PATH)/audio_io_policy.conf:$(TARGET_COPY_OUT_VENDOR)/etc/audio_io_policy.conf \
+    $(KEBAB_AUDIO_CONFIG_PATH)/audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_policy_configuration.xml \
+    $(KEBAB_AUDIO_CONFIG_PATH)/audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio/audio_policy_configuration.xml \
+    $(KEBAB_AUDIO_CONFIG_PATH)/audio_policy_configuration_a2dp_offload_disabled.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_policy_configuration_a2dp_offload_disabled.xml \
+    $(KEBAB_AUDIO_CONFIG_PATH)/audio_platform_info_intcodec.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_platform_info_intcodec.xml \
+    $(KEBAB_AUDIO_CONFIG_PATH)/mixer_paths.xml:$(TARGET_COPY_OUT_VENDOR)/etc/mixer_paths.xml \
+    $(KEBAB_AUDIO_CONFIG_PATH)/sound_trigger_mixer_paths.xml:$(TARGET_COPY_OUT_VENDOR)/etc/sound_trigger_mixer_paths.xml \
+    $(KEBAB_AUDIO_CONFIG_PATH)/sound_trigger_platform_info.xml:$(TARGET_COPY_OUT_VENDOR)/etc/sound_trigger_platform_info.xml \
+    $(KEBAB_AUDIO_CONFIG_PATH)/sound_trigger_mixer_paths.xml:$(TARGET_COPY_OUT_ODM)/etc/sound_trigger_mixer_paths.xml \
+    $(KEBAB_AUDIO_CONFIG_PATH)/sound_trigger_platform_info.xml:$(TARGET_COPY_OUT_ODM)/etc/sound_trigger_platform_info.xml \
+    frameworks/av/services/audiopolicy/config/bluetooth_audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/bluetooth_audio_policy_configuration.xml
