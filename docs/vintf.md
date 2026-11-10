@@ -19,3 +19,22 @@ must assemble all fragments, actual framework/device matrices, shipping FCM/kern
 requirements and SELinux versions. That check still needs the final PA product,
 source providers and vendor output; the local level-7 merge is only a syntax and
 local ownership check. In particular, optional entries are not a VINTF bypass.
+
+## Recorded ownership audit
+
+Run `python3 tools/check-vintf-ownership.py` from the repository root. The JSON
+inventory preserves every record in the pinned Lineage common manifest and lists
+twelve known selected source-service fragment providers. `--source-root PATH`
+checks those fragments in a canonical Android source layout; missing files fail.
+Duplicate concrete HAL instances fail, including HIDL same-major instance clashes.
+`--require-reference-coverage` fails while reference/provider obligations remain.
+Without it, success means only that the supplied declarations have no detected
+conflicts; unresolved counts are always printed.
+
+The current audit covers nine of the 52 reference records locally and leaves 43
+for vendor/WFD/common-provider reconciliation. The memtrack service provider still
+needs complete source-graph validation. Do not copy those 43 registrations blindly:
+some are supplied by eventual vendor fragments, some differ from source providers,
+and WFD remains separate. The twelve recorded source-service fragments plus local
+manifests merge with assemble_vintf, but this is still not the final vendor product.
+The tool does not infer module installation, start services or fetch any sources.
