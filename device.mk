@@ -26,13 +26,14 @@ TARGET_KERNEL_VERSION := 4.19
 # QTI: consumed by device/qcom/common/common.mk through the PA product config.
 # Do not inherit common.mk a second time here. Hardware-specific overrides follow
 # in subsequent bring-up commits, before the PA product configuration is inherited.
+
+# QTI gatekeeper/keymaster are OnePlus vendor outputs; their manifest is local.
 TARGET_COMMON_QTI_COMPONENTS := \
     adreno \
     alarm \
     av \
     bt \
     init \
-    keymaster \
     overlay \
     perf \
     wfd
@@ -592,3 +593,4 @@ PRODUCT_PACKAGES += \
     wvmkiller
 
 PRODUCT_VENDOR_PROPERTIES += drm.service.enabled=true
+
