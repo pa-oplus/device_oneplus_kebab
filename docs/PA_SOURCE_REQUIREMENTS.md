@@ -75,3 +75,23 @@ Bluetooth still uses PA common stack inheritance with a OnePlus vendor HIDL 1.0
 transport. GNSS uses the OnePlus vendor 2.1 service and vendor.qti.gnss 4.0
 fragment. Reconcile those deferred vendor producers and final platform matrices
 before treating the selected source APIs as a working combination.
+
+## NFC, A/B and radio dependencies
+
+Provide the inspected NXP SNxxx NFC AIDL V1 service/extension at hardware/nxp/nfc,
+with OnePlus SN100 firmware/configuration and QTI secure-element service from the
+vendor producer. Do not replace that secure-element backend with the source NXP
+service without reconciling instances, config, firmware and API contracts.
+
+QTI hardware/qcom/bootctrl supplies both AIDL boot services and links the GPT
+helpers from vendor/qcom/opensource/recovery-ext. The selected calcite USB product
+and its AIDL port/gadget services are in vendor/qcom/opensource/usb; PA Oplus
+supplies ODM compositions. Validate the final 4.19 kernel configfs/functions.
+
+Common PA telephony recipes require dataservices and legacy IPACM plus external
+framework/vendor outputs. Lineage's Java extension modules were not found in the
+inspected PA layout; see telephony.md for the remaining IMS API/classpath work.
+Do not claim successful standalone Make parsing as resolution of that dependency.
+ClearKey is supplied by frameworks/av; the PA Oplus wvmkiller helper requires the
+legacy Widevine instance and its restart/property policy. Widevine remains a
+OnePlus ODM producer with its own VINTF fragment.

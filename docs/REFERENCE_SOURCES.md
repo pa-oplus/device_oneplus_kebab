@@ -49,3 +49,13 @@ of a fully synchronized build manifest.
 | `aospa-trees/vendor/qcom/opensource/healthd-ext/aidl/Android.bp` | `d857b0e9eb40cd2d8b5ea0dad1167f4326b251018731606f37890aa025070abf` |
 | `aospa-trees/hardware/qcom/wlan/qcwcn/wifi_hal/Android.bp` | `cb47b618d231163f46479a40ecb17fd9a8313860b73507ce35d3b005f9c0e211` |
 | `pa/external/wpa_supplicant_8/wpa_supplicant/Android.bp` | `5b601a86d1a3a2ee3154bc961da1280eea7de4e61c54215dd66a042a2b718549` |
+
+Additional source interfaces checked for the NFC/USB/boot/radio/DRM batch:
+
+| Local source | SHA-256 |
+|---|---|
+| `aospa-trees/hardware/nxp/nfc/snxxx/Android.bp` | `d82716f109cf5e9f0ecbd886fcbf1d58164b41feb13c2b834230a0b7df2b0d30` |
+| `aospa-trees/hardware/qcom/bootctrl/aidl/Android.bp` | `4b4ffd27787b712a87bc0836d6aa3fa1d163ef384aa7fcef2b046ae5acc04c1a` |
+| `aospa-trees/vendor/qcom/opensource/recovery-ext/oem-recovery/Android.bp` | `a498f42d95168eb58c8bcd151fea0654c0989c202ee7e15c476cb644333c292b` |
+
+USB, ClearKey and the Oplus helper use the pinned calcite repositories above.

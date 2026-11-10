@@ -64,3 +64,15 @@ outside the current five-step implementation batch.
 
 Reconcile extraction and module/manifest ownership before enabling the vendor
 includes. The chosen init services and manifests must agree with actual binaries.
+
+## Additional service ownership established
+
+- NFC: source NXP AIDL V1 HAL; OnePlus vendor libnfc configuration/SN100 firmware.
+- Secure element: OnePlus ODM QTI HIDL 1.2 backend; local SIM1/SIM2/eSE1 declaration.
+- USB and boot control: selected source services install their own manifests/RCs;
+  Oplus USB compositions are ODM data from hardware/oplus.
+- Radio/IMS: local legacy radio/config declarations and carrier overlay; OnePlus
+  vendor RIL/IMS/modem outputs plus PA's common framework/data integration must be
+  reconciled together before enabling strict vendor includes.
+- DRM: source ClearKey fragment and PA Oplus reference helper; OnePlus ODM Widevine
+  1.3 service/OEMCrypto/manifest and QSEECom outputs. WFD/HDCP is still separate.

@@ -213,3 +213,34 @@ source/configuration checks. Blueprint formatting and health/vibrator init check
 passed. Other external inheritance remains recorded rather than expanded. These
 checks do not compile the Android product or establish firmware, vendor ABI,
 offline charging, radio connectivity, haptic behavior or enforcing policy.
+
+## NFC, USB, boot control, telephony and DRM continuation
+
+NFC selects the PA NXP AIDL V1 HAL with its own extension/manifest, preserving
+OnePlus vendor SN100 configuration and the QTI secure-element backend. The local
+secure-element declaration matches Lineage's SIM1/SIM2/eSE1 instances. Platform
+base products retain NFC app/APEX ownership.
+
+USB directly includes the QTI product with the gadget HAL enabled before recipe
+evaluation, normalizes OnePlus property ownership and selects Oplus ODM compositions.
+Boot control selects QTI AIDL normal/recovery services and relies on their own
+manifest/RC plus the existing OnePlus misc/UFS paths. No block or slot operations
+were executed during these checks.
+
+Telephony directly includes the existing common PA recipes before applying
+OnePlus network/DPM/IMS values. Radio instances and the unchanged common OnePlus
+carrier XML are installed locally. PA resource names for SA/NSA and WFC exist.
+The missing Lineage-specific Java recipes are documented rather than selecting
+unavailable modules; vendor IMS/framework API reconciliation remains open.
+DRM selects source ClearKey and the PA Oplus reference helper, with Widevine and
+its manifest kept vendor-owned. The helper's conditional L3 fallback is documented
+in drm.md; no working L1/certification result is implied.
+
+Combined Make checks now also expand QTI health/USB and common Bluetooth/telephony
+recipes: 110 unique direct copy destinations, no competing copy sources or
+conflicting vendor/system-ext/ODM values, correct package/selector ownership and
+legacy IPACM selection for 4.19. Source service/fragments and OnePlus manifest/data
+comparisons passed. AAPT2 compiled carrier/framework resources, Blueprint formatting
+passed, and NFC/USB/boot/ClearKey/helper RCs passed host init verification. Other
+external inheritance remains recorded, not expanded. Full Android compilation,
+RRO linking, VINTF compatibility, vendor ABI, policy and device tests are pending.

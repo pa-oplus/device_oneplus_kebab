@@ -14,7 +14,9 @@ Power, display, optical fingerprint and legacy camera configuration are also
 defined. Alert slider calibration/PA key handling, the PA Oplus sensor multihal,
 OnePlus Codec2 configuration and QTI kona thermal reporting are now selected.
 QTI AIDL health/recovery, PA Oplus vibrator, OnePlus Bluetooth settings, qcwcn
-Wi-Fi and the ODM GNSS configuration are also defined.
+Wi-Fi and the ODM GNSS configuration are also defined. NFC/secure element,
+OnePlus USB compositions, A/B boot control, radio/carrier overlays and DRM service
+ownership are configured.
 Remaining hardware integration, complete manifests/policy and proprietary
 dependencies are pending, so the product is not buildable yet.
 

@@ -584,3 +584,11 @@ PRODUCT_VENDOR_PROPERTIES += $(kebab_radio_vendor_properties)
 PRODUCT_SYSTEM_EXT_PROPERTIES += $(kebab_radio_system_ext_properties)
 
 PRODUCT_PACKAGES += KebabCarrierConfig
+
+# DRM: source ClearKey and the OnePlus reference Widevine recovery helper.
+# Widevine HAL/OEMCrypto and its manifest remain OnePlus ODM vendor outputs.
+PRODUCT_PACKAGES += \
+    android.hardware.drm-service.clearkey \
+    wvmkiller
+
+PRODUCT_VENDOR_PROPERTIES += drm.service.enabled=true
