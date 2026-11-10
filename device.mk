@@ -359,3 +359,6 @@ PRODUCT_COPY_FILES += \
 
 PRODUCT_VENDOR_PROPERTIES += \
     vendor.camera.aux.packageexcludelist=org.telegram.messenger,org.thunderdog.challegram,us.zoom.videomeetings
+
+# OnePlus alert slider calibration and device key handling.
+PRODUCT_PACKAGES += tri-state-key-calibrate

@@ -65,3 +65,10 @@ prebuilt_etc {
     sub_dir: "init",
     vendor: true,
 }
+
+sh_binary {
+    name: "tri-state-key-calibrate",
+    src: "tri-state-key-calibrate.sh",
+    init_rc: ["tri-state-key-calibrate.rc"],
+    vendor: true,
+}
