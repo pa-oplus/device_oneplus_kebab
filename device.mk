@@ -595,3 +595,6 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_VENDOR_PROPERTIES += drm.service.enabled=true
 
+
+# OnePlus display-mode choices and kebab optical fingerprint enrollment UI.
+PRODUCT_PACKAGES += KebabSettingsRes
