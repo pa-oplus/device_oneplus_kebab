@@ -66,3 +66,9 @@ PRODUCT_PACKAGES += \
     init.oplus.sh \
     init.target.rc \
     ueventd.kebab.rc
+
+# Fstab: vendor for late mounts and boot ramdisk for first-stage mounts.
+# Recovery receives the same source through TARGET_RECOVERY_FSTAB.
+PRODUCT_PACKAGES += \
+    fstab.qcom \
+    fstab.qcom.ramdisk

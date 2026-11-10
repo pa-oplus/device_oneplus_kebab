@@ -51,3 +51,10 @@ sh_binary {
     src: "init.oplus.sh",
     device_specific: true,
 }
+
+prebuilt_etc {
+    name: "fstab.qcom",
+    src: "fstab.qcom",
+    vendor: true,
+    ramdisk_available: true,
+}
