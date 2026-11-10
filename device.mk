@@ -57,3 +57,12 @@ PRODUCT_SOONG_NAMESPACES += \
 PRODUCT_PACKAGES += \
     firmware_WCNSS_qcom_cfg.ini_symlink \
     firmware_wlan_mac.bin_symlink
+
+# OnePlus init; generic Qualcomm init remains owned by the common QTI component.
+PRODUCT_PACKAGES += \
+    init.oplus.hw.rc \
+    init.oplus.hw.recovery.rc \
+    init.oplus.rc \
+    init.oplus.sh \
+    init.target.rc \
+    ueventd.kebab.rc
