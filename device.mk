@@ -483,7 +483,8 @@ PRODUCT_PACKAGES += \
     libwifi-hal-ctrl \
     libwifi-hal-qcom \
     wpa_supplicant \
-    KebabWpaSupplicantConf
+    KebabWpaSupplicantConf \
+    KebabWifiRes
 
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.wifi.aware.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.wifi.aware.xml \

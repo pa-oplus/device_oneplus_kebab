@@ -20,3 +20,13 @@ Kernel driver/module integration and the generic component's IPACM replacement
 must be resolved alongside kernel and USB/tethering bring-up. Validate vendor HAL
 ABI, firmware, persistent MAC, scan/connect, WPA3, hotspot/P2P concurrency, Aware,
 RTT, suspend and policy on the final source/kernel/vendor combination.
+
+## Wi-Fi resources
+
+KebabWifiRes preserves the four current Lineage Wi-Fi booleans: restricted
+multi-STA concurrency and SoftAP 802.11ax SU beamformer/beamformee support. Its
+vendor RRO targets the PA Wi-Fi module's WifiCustomization overlayable group,
+with the original static priority. This is separate from HAL interface
+combinations: it does not add dual-STA or dual-AP combinations to the source HAL.
+Firmware/HAL capability negotiation and actual concurrency still need testing.
+All four names and the target overlayable group exist in the inspected PA source.
