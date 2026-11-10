@@ -44,13 +44,8 @@ on init
     symlink /dev/block/platform/soc/1d84000.ufshc /dev/block/bootdevice
     chown system system /sys/devices/platform/soc/1d84000.ufshc/auto_hibern8
     chmod 0660 /sys/devices/platform/soc/1d84000.ufshc/auto_hibern8
-    start logd
-
-on early-fs
-    start vold
 
 on fs
-    start hwservicemanager
     mkdir /mnt/vendor/spunvm 0660 system system
     mount_all /vendor/etc/fstab.qcom --early
     chown root system /mnt/vendor/persist
@@ -148,13 +143,3 @@ service vendor.cnss_diag /system/vendor/bin/cnss_diag -q -f -b 128 -t HELIUM
    user system
    group system wifi inet sdcard_rw media_rw diag
    oneshot
-
-service dcvs-sh /vendor/bin/init.qti.dcvs.sh
-    class late_start
-    user root
-    group root system
-    disabled
-    oneshot
-
-on property:vendor.dcvs.prop=1
-   start dcvs-sh
