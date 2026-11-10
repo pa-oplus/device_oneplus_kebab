@@ -90,3 +90,20 @@ settings, stock perf client and Dolby additions are excluded. No speaker or
 microphone behavior is inferred from passing configuration checks. Calls,
 Bluetooth/SCO, capture, camcorder audio, hotword/sound trigger, headphone/USB audio,
 effects, calibration and speaker protection require separate hardware testing.
+
+## Calcite reference reconciliation
+
+The checked-out pa-sanji `android_hardware_qcom_audio` calcite source at
+`da8e3bed` now supplies the exact recipe used for configuration validation.
+It retains the source-HAL route and stock-HAL switch used by the alioth reference.
+
+The OnePlus amplifier implementation was located in LineageOS hardware/oplus
+lineage-24.0 (`0cdf188`). Its original Blueprint hardcodes CAF SM8250 include paths.
+This tree carries its C source unchanged and uses CLO primary-HAL include paths.
+The local module is named `audio_amplifier.kebab` and installs with the expected
+`audio_amplifier.qcom.so` filename, avoiding a module-name collision if hardware/oplus
+is exported later. The six functions it resolves from the primary HAL are present
+as non-static source definitions in the inspected calcite audio source. Header,
+32/64-bit, vendor ELF and calibration compatibility still require a complete build
+and device testing. Earlier missing-source notes describe the target `pa/` checkout;
+reference clones alone do not install platform dependencies into that checkout.
