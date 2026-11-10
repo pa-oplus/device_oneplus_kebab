@@ -9,3 +9,6 @@ ro.crypto.volume.metadata.method=dm-default-key
 
 # USB identity
 vendor.usb.product_string=OnePlus 8T
+
+# Bluetooth
+bluetooth.device.default_name=OnePlus 8T
