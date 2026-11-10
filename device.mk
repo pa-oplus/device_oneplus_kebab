@@ -330,3 +330,18 @@ kebab_display_property_names := $(foreach prop,$(kebab_display_properties),$(wor
 PRODUCT_PROPERTY_OVERRIDES := $(filter-out $(addsuffix =%,$(kebab_display_property_names)),$(PRODUCT_PROPERTY_OVERRIDES))
 PRODUCT_VENDOR_PROPERTIES := $(filter-out $(addsuffix =%,$(kebab_display_property_names)),$(PRODUCT_VENDOR_PROPERTIES))
 PRODUCT_VENDOR_PROPERTIES += $(kebab_display_properties)
+
+# Optical fingerprint wrapper, geometry and composition extension.
+# Use the wrapper supplied by aospa-trees/hardware/oplus (calcite).
+PRODUCT_SOONG_NAMESPACES += hardware/oplus
+PRODUCT_PACKAGES += android.hardware.biometrics.fingerprint@2.3-service.oplus
+
+# The inspected calcite CompositionEngine uses this Soong selector directly.
+$(call soong_config_set,surfaceflinger,udfps_lib,//device/oneplus/kebab:libudfps_extension.kebab)
+
+PRODUCT_VENDOR_PROPERTIES += \
+    persist.vendor.fingerprint.sensor_type=optical \
+    persist.vendor.qfp=true
+
+PRODUCT_COPY_FILES += \
+    frameworks/native/data/etc/android.hardware.fingerprint.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.fingerprint.xml

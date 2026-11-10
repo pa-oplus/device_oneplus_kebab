@@ -1,0 +1,10 @@
+// Copyright (C) 2026 Paranoid Android
+// SPDX-License-Identifier: Apache-2.0
+cc_library_static {
+    name: "libudfps_extension.kebab",
+    srcs: ["UdfpsExtension.cpp"],
+    include_dirs: [
+        "frameworks/native/services/surfaceflinger/CompositionEngine/include",
+    ],
+    header_libs: ["generated_kernel_headers"],
+}
