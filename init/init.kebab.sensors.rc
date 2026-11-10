@@ -1,0 +1,6 @@
+# Copyright (C) 2026 Paranoid Android
+# SPDX-License-Identifier: Apache-2.0
+
+on init
+    chown system system /sys/kernel/oplus_display/fp_state
+    chmod 0440 /sys/kernel/oplus_display/fp_state

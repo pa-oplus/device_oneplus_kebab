@@ -66,6 +66,13 @@ prebuilt_etc {
     vendor: true,
 }
 
+prebuilt_etc {
+    name: "init.kebab.sensors.rc",
+    src: "init.kebab.sensors.rc",
+    sub_dir: "init",
+    vendor: true,
+}
+
 sh_binary {
     name: "tri-state-key-calibrate",
     src: "tri-state-key-calibrate.sh",
