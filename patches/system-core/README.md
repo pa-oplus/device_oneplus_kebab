@@ -1,8 +1,8 @@
 # PA init vendor hook
 
 Apply 0001-init-load-device-properties.patch to the final `system/core` repository
-when preparing the PA source checkout. This patch is staged here and has not been
-applied to the read-only reference checkout. The original commit and input/output
+when preparing the PA source checkout. This patch remains staged here for other checkouts and is now applied in the
+authorized local pa checkout on branch kebab-init-hook (eee4afd). The original commit and input/output
 hashes are recorded in reference.json; re-check newer source versions before use.
 
 The patch adds vendor_init_defaults to normal and recovery second-stage init

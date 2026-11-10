@@ -353,3 +353,20 @@ checkout currently reports 11 source-integration gaps, including the unapplied
 hook. This is a concrete blocker report, not a complete Soong graph/build test.
 Kernel/vendor acquisition, header/config merge, fixups, ABI, complete VINTF/policy
 and build/device validation remain deferred.
+
+## Authorized local PA source assembly
+
+The selected PA Oplus repository is installed at hardware/oplus; Sanji calcite
+thermal/display/audio snapshots are installed at the canonical paths recorded in
+source-assembly.json. Independent local Git clones preserve the reference sources.
+The previous thermal checkout at vendor/qcom/opensource/thermal-hal is backed up
+outside the build tree to avoid duplicate service definitions. A local repo
+manifest records the replacements and excludes that old thermal project.
+
+The init patch is now applied and committed in pa/system/core on kebab-init-hook
+at eee4afd. Both patched-file hashes match the prepared outputs. The actual pa
+source-provider/hook audit passes, replacing the previous eleven reported gaps.
+Nineteen actual source/local manifests merge to 29 instances; selected snapshot
+hashes and source worktrees are clean. The 43 vendor/WFD reference records remain
+unresolved. No full product configuration/build, kernel/vendor fetch or device
+validation was performed. See source-assembly.md for the current scope.

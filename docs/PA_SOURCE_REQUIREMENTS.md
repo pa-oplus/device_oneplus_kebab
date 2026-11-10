@@ -9,21 +9,18 @@ is not a claim that the source patches have been implemented.
 `BoardConfig.mk` selects `//device/oneplus/kebab:libinit_kebab` using
 `TARGET_INIT_VENDOR_LIB`, matching the alioth integration contract.
 
-The inspected PA source exports that setting through
-`vendor/aospa/target/board/BoardConfigSoong.mk`. Its
-`vendor/aospa/soong/Android.bp` defines `vendor_init_defaults`, but the inspected
-`system/core/init/Android.bp` does not consume those defaults and
-`system/core/init/property_service.cpp` does not call `vendor_load_properties()`.
-Consequently, the selector alone will not link or invoke the device library.
+The PA build exports that setting through BoardConfigSoong.mk and supplies
+vendor_init_defaults with whole-static linkage. The original inspected init did
+not consume it or call vendor_load_properties(). The staged patch under
+patches/system-core is now applied in the local pa integration checkout, on
+branch kebab-init-hook at eee4afd. Normal/recovery second-stage init link the
+provider and call it after loading property files, before deriving product
+identity/fingerprint. The four selected external source repositories are also
+assembled; the recorded source audit now reports no missing critical contracts.
 
-Before a full build, verify the final PA branch links the selected library into
-normal and recovery init and invokes its property hook after loading partition
-properties and before deriving the final `ro.product.*` identity. This needs a
-source change outside this tree if the inspected implementation is retained.
-A concrete patch is now staged in patches/system-core; it passes apply checks
-against the recorded PA source but has not been applied there. It links the
-provider into normal/recovery second-stage binaries and calls the hook at that
-point. Do not mark regional detection functional before final build/device checks.
+This resolves source wiring, not full Android linkage or regional model behavior
+on hardware. Keep build/recovery/device validation pending. See source-assembly.md
+and source-assembly.json for selected snapshots and backup details.
 
 The device hook preserves Lineage's five kebab RF-to-model mappings and DDR
 property extraction. Unknown or malformed RF versions leave the product's default
@@ -144,8 +141,9 @@ device/qcom/vendor-common/memtrack; full ABI/build validation remains pending. S
 ## Reproducible source checks
 
 See source-readiness.md and tools/check-source-readiness.py for critical source
-providers and init-hook consumption checks. The staged system/core patch is
-reviewable and apply-checked, not automatically applied to reference sources.
+providers and init-hook consumption checks. The staged system/core patch remains
+reviewable and is now explicitly applied in the authorized local pa checkout.
 Normal/recovery binaries require whole-static provider linkage; adding the device
 library only to a libinit archive is insufficient for the optional weak hook.
-The current pa checkout still needs assembly/integration before a real build.
+The recorded critical source assembly is complete; final product dependencies and
+build integration still require the deferred kernel/vendor/ABI checks.

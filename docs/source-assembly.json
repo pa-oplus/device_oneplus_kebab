@@ -1,0 +1,47 @@
+{
+  "source_root": "pa",
+  "sources": [
+    {
+      "path": "hardware/oplus",
+      "repository": "clo-oscaro/hardware_oplus",
+      "branch": "calcite",
+      "commit": "cc126d9674aa6c3e2661303387498c410cf4b14a"
+    },
+    {
+      "path": "hardware/qcom/thermal",
+      "repository": "pa-sanji/android_hardware_qcom_thermal",
+      "branch": "calcite",
+      "commit": "339ecff03f7509351035c6d33cef2b5768c86f6d"
+    },
+    {
+      "path": "hardware/qcom/display",
+      "repository": "pa-sanji/android_hardware_qcom_display",
+      "branch": "calcite",
+      "commit": "86a98cacda4e2dc6014bdf69c407f9d29c377af1"
+    },
+    {
+      "path": "vendor/qcom/opensource/audio-hal/primary-hal",
+      "repository": "pa-sanji/android_hardware_qcom_audio",
+      "branch": "calcite",
+      "commit": "da8e3bed19be1398964418475e208a86f67bc1c2"
+    }
+  ],
+  "system_core": {
+    "base": "a39957699ee525fb94a11839e4e0fd2041503309",
+    "local_commit": "eee4afd00cdcf4ba615cfe17d9ef65b8adabe60e",
+    "local_branch": "kebab-init-hook",
+    "patch": "patches/system-core/0001-init-load-device-properties.patch"
+  },
+  "replaced_thermal": {
+    "path": "vendor/qcom/opensource/thermal-hal",
+    "original_commit": "e6606b4637b49ca0d993661015689bcad2d9f46c"
+  },
+  "workspace_backup": "pa-kona/backups/pa-source-assembly-lqks196g",
+  "checks": {
+    "critical_source_gaps": 0,
+    "manifest_inputs": 19,
+    "declared_instances": 29,
+    "remaining_reference_records": 43
+  },
+  "limits": "No full product configuration/build, kernel/vendor acquisition, ABI/policy or device validation."
+}

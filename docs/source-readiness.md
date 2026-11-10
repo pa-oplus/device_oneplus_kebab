@@ -16,8 +16,9 @@ The report always lists the remaining kernel/vendor/interface/policy/build gates
 The checker was exercised against an isolated canonical view of the selected
 reference sources: it rejected the original missing hook, reported the staged
 patch applicable, and passed the recorded checks after patching temporary init
-copies. The actual pa checkout remains blocked/unpatched; no reference checkout
-was changed. Use the tool against the eventual assembled source checkout rather
+copies. That initial test left pa blocked/unpatched. The subsequent authorized source
+assembly now installs the selected providers and applies the hook in pa; see
+source-assembly.md for the current state. Use the tool against the eventual assembled source checkout rather
 than interpreting the temporary reference view as a bootable Android product.
 
 The memtrack provider is now identified at device/qcom/vendor-common/memtrack.

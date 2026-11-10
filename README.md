@@ -33,8 +33,8 @@ See [BRINGUP.md](docs/BRINGUP.md) for source comparisons, checks and remaining w
 [STORAGE_USB.md](docs/STORAGE_USB.md) for storage and USB review findings,
 and [VENDOR_INTEGRATION.md](docs/VENDOR_INTEGRATION.md) for deferred vendor interfaces.
 
-The target PA branch and Android version remain to be confirmed. Kernel and
-proprietary vendor acquisition/output generation remain deferred.
+The local PA source assembly is recorded in [source-assembly.md](docs/source-assembly.md).
+Kernel and proprietary vendor acquisition/output generation remain deferred.
 
 ## Reference sources
 
