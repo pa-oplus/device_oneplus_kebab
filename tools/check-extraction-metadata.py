@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # Copyright (C) 2026 Paranoid Android
 # SPDX-License-Identifier: Apache-2.0
-"""Parse staged lists without extracting blobs or generating vendor makefiles."""
+"""Check the single producer and unique merged metadata destinations."""
 import argparse
 import importlib.util
 from pathlib import Path
@@ -21,12 +21,14 @@ def main():
     spec = importlib.util.spec_from_file_location("kebab_extraction", ROOT / "extract-files.py")
     definition = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(definition)
-    modules = [definition.module, definition.common_module]
-    assert [m.device for m in modules] == ["kebab", "sm8250-common"]
+    modules = [definition.module]
+    assert [m.device for m in modules] == ["kebab"]
     assert all(m.device_rel_path == "device/oneplus/kebab" for m in modules)
+    assert not hasattr(definition, "common_module")
+    assert not (ROOT / "proprietary-files-common.txt").exists()
     destinations = {}
     total = 0
-    for name in ("proprietary-files.txt", "proprietary-files-common.txt"):
+    for name in ("proprietary-files.txt",):
         files = FileList(check_elf=True)
         files.add_from_file(str(ROOT / name))
         count = 0
@@ -37,7 +39,7 @@ def main():
             count += 1
         total += count
         print(f"{name}: {count} parsed entries")
-    print(f"{total} unique destinations; two vendor producers; no extraction or makefile generation run.")
+    print(f"{total} unique destinations; one vendor producer; no extraction or makefile generation run.")
     print("Reference fixups and final ABI/module ownership remain unvalidated.")
 
 
