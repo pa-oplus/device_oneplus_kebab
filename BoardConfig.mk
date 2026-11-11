@@ -187,8 +187,9 @@ DEVICE_MANIFEST_FILE += $(DEVICE_PATH)/configs/vintf/manifest-security.xml
 # The selected HIDL audio service has RC but no service-owned manifest fragment.
 DEVICE_MANIFEST_FILE += $(DEVICE_PATH)/configs/vintf/manifest-audio.xml
 
-# Framework-side optional Oplus/Pixelworks contracts from the selected PA hardware.
+# Framework-side optional Oplus/Pixelworks contracts and vendor HALs.
 DEVICE_FRAMEWORK_COMPATIBILITY_MATRIX_FILE += \
+    $(DEVICE_PATH)/configs/vintf/vendor_framework_compatibility_matrix.xml \
     hardware/oplus/vintf/device_framework_matrix.xml
 
 # Device-owned OnePlus nodes/services; common QTI policy is selected by PA.
