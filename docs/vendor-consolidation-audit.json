@@ -577,5 +577,13 @@
   "tool_repository": {
     "path": "des/tools/extract-utils",
     "commit": "78ba5d58c4b06712e18bb387a2a72eac8fbc8d70"
+  },
+  "current_device_integration": {
+    "single_producer": true,
+    "strict_vendor_includes": true,
+    "vendor_repository": "https://github.com/pa-oplus/proprietary_vendor_oneplus_kebab",
+    "published_baseline": "52d6e8e59d44f19188f2fa6b40da5d283c38eb76",
+    "checks": "docs/vendor-integration-checks.json",
+    "limits": "No active full PA checkout; system perf2/HIDL compatibility, full source graph/ABI/VINTF/policy and hardware validation remain pending."
   }
 }

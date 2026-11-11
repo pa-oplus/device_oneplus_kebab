@@ -1,106 +1,66 @@
-# Deferred vendor integration
+# Device/vendor ownership
 
-Vendor references are now cloned separately and a unified staging output has
-been generated for review; no proprietary binaries are stored in this device
-repository or activated in the PA product. The standalone device tree initially
-retained the two vendor outputs referenced by
-Lineage's kebab and sm8250-common device configuration. Combining device source
-configuration does not by itself combine generated vendor outputs.
+The product strictly inherits `vendor/oneplus/kebab/kebab-vendor.mk` and includes
+its BoardConfigVendor.mk. There is one proprietary producer and one Soong vendor
+namespace. This is activated in the device configuration, but no complete PA
+checkout is currently available for a product build.
 
-## Expected interfaces
+The source selection remains PA Oplus, source audio, sensors, power, display,
+thermal, health, USB, boot control and AIDL NXP NFC. The unified vendor owns the
+OnePlus camera/ISP, radio/modem/IMS, fingerprint backend, Widevine, secure element,
+gatekeeper/keymaster and other stock proprietary services/libraries. Final source
+module variants and the complete install graph still require a product build.
 
-Paths below are relative to the Android source root, not this repository.
+## Compatibility libraries
 
-| Producer | Product makefile | Board configuration |
-|---|---|---|
-| OnePlus sm8250 common extraction | `vendor/oneplus/sm8250-common/sm8250-common-vendor.mk` | `vendor/oneplus/sm8250-common/BoardConfigVendor.mk` |
-| OnePlus kebab extraction | `vendor/oneplus/kebab/kebab-vendor.mk` | `vendor/oneplus/kebab/BoardConfigVendor.mk` |
+- `libshims_fingerprint.oplus` is supplied locally under compat/fingerprint with
+  the original Lineage source notice preserved. It returns unlocked/orange for
+  the fingerprint backend's two verified-boot property reads; other properties
+  are forwarded. It does not change the platform property store. Both APIs and
+  forwarding were host-tested. Target symbol versioning/interposition is pending.
+- `libcamera_metadata_shim` comes from PA hardware/lineage/compat. Its vendor
+  library filters SYSTEM_CAMERA capability from metadata insertion/update calls.
+  The camera blob already names it as a dependency.
+- `libcrypto_shim.vendor` selects the vendor variant of PA's existing compatibility
+  module. The Widevine inputs require CBS_init; its source exports that function.
+  No duplicate device-local camera or crypto provider is introduced.
 
-These are recorded interfaces, not active includes. When vendor integration is
-implemented, inherit the common product before the device product, matching
-Lineage's current effective order, and include the common board configuration
-before the kebab board configuration. Resolve duplicate package/copy ownership
-with common QTI components before enabling those dependencies. If extraction
-later generates a unified vendor tree, update both product and board references
-in the same change.
+The PA reference provider definitions and required source functions were checked.
+These are not compiled target-library or full undefined-symbol-resolution tests.
 
-Required vendor dependencies should use strict product/board includes when wired.
-Do not hide missing proprietary trees behind optional includes and report a
-successful configuration as a complete build.
+## Perf and power
 
-## Firmware link contract
+OnePlus owns vendor perf HIDL 2.2, its RC, six perf config files and both-architecture
+client/backend libraries. `perf` is removed from TARGET_COMMON_QTI_COMPONENTS,
+which avoids importing the generic common vendor perf stack and its configs.
+The common system/perf recipe remains explicitly included for PA framework clients.
+The vendor properties select perf HAL 2.2 and libqti-perfd-client.so.
 
-The two modules in `Android.bp` preserve the OnePlus reference destinations:
+The stock client exports perf_lock_acq, perf_lock_rel, perf_hint and perf_get_prop
+in both architectures, matching the dlsym entrypoints of the original PA Power HAL.
+The source Power HAL and kebab double-tap mode extension remain selected. The
+vendor output supplies OnePlus powerhint.xml, avoiding the previous source/vendor
+copy collision. Runtime hint behavior and enum/resource compatibility are untested.
 
-| Installed vendor-relative link | Absolute target |
-|---|---|
-| `firmware/wlan/qca_cld/WCNSS_qcom_cfg.ini` | `/odm/vendor/etc/wifi/WCNSS_qcom_cfg.ini` |
-| `firmware/wlan/qca_cld/wlan_mac.bin` | `/mnt/vendor/persist/qca6390/wlan_mac.bin` |
+**Open contract:** PA's system perf client binaries reference AIDL perf2, while the
+stock vendor service registers HIDL 2.2. Preserving their packaging does not bridge
+those protocols. This needs a compatible framework client/adapter selection and
+runtime validation; no system perf compatibility claim is made here.
 
-The common Lineage blob list includes `odm/vendor/etc/wifi/WCNSS_qcom_cfg.ini`.
-The WLAN MAC file belongs to device persist data, not a file to manufacture or
-copy from another handset. Preserve the corresponding mount and provisioning
-behavior during OnePlus init integration. Defining a link does not establish
-that its target is available at runtime.
+## VINTF
 
-## Before enabling vendor integration
+The stock perf service has no packaged fragment, so manifest-perf.xml declares
+vendor.qti.hardware.perf@2.2::IPerf/default locally. The existing local radio,
+secure-element, gatekeeper/keymaster and audio declarations remain in place.
 
-- Confirm the chosen proprietary source versions, extraction format and generated paths.
-- Compare common QTI package/configuration ownership against both OnePlus blob lists.
-- Resolve audio HAL/effects, power/perf and media ABI choices before applying fixups.
-- Reconcile manifests, init services, security patch metadata and SELinux policy.
-- Wire strict includes and verify missing-dependency failures as well as the complete product.
+The ODM fingerprint fragment intentionally overrides the standard fingerprint 2.3
+entry with the same interface/instance supplied by the PA wrapper, while declaring
+the separate Oplus backend. Its bytes and override=true are preserved. The
+ownership checker accepts only this recorded override shape; other duplicates or
+unreviewed overrides fail. Reference source fragments are processed before vendor
+then ODM fragments, matching the relevant override direction.
 
-Kernel/vendor acquisition, extraction and generated vendor makefiles remain
-outside the current five-step implementation batch.
-
-## Connectivity ownership established during bring-up
-
-- Bluetooth: OnePlus vendor HIDL 1.0 transport/RC, libbtnv and controller firmware;
-  the device declares its baseline HAL instance and PA common owns stack integration.
-- Wi-Fi: OnePlus cnss-daemon, vendor supplicant overlays and ODM WCNSS config;
-  source AIDL service/qcwcn libraries and generated base config are device-selected.
-- GNSS: OnePlus 2.1 service/RC and Android/vendor.qti.gnss manifests, support
-  libraries/daemons and vendor configs; the device owns only ODM gps.conf and the
-  feature permission. Do not also inherit the generic source GNSS product.
-
-Reconcile extraction and module/manifest ownership before enabling the vendor
-includes. The chosen init services and manifests must agree with actual binaries.
-
-## Additional service ownership established
-
-- NFC: source NXP AIDL V1 HAL; OnePlus vendor libnfc configuration/SN100 firmware.
-- Secure element: OnePlus ODM QTI HIDL 1.2 backend; local SIM1/SIM2/eSE1 declaration.
-- USB and boot control: selected source services install their own manifests/RCs;
-  Oplus USB compositions are ODM data from hardware/oplus.
-- Radio/IMS: local legacy radio/config declarations and carrier overlay; OnePlus
-  vendor RIL/IMS/modem outputs plus PA's common framework/data integration must be
-  reconciled together before enabling strict vendor includes.
-- DRM: source ClearKey fragment and PA Oplus reference helper; OnePlus ODM Widevine
-  1.3 service/OEMCrypto/manifest and QSEECom outputs. WFD/HDCP is still separate.
-
-## Security and audio manifest boundary
-
-The common OnePlus vendor producer owns QTI gatekeeper 1.0 and keymaster libraries;
-the kebab producer owns the QTI keymaster 4.1 service/RC. Generic QTI keymaster
-vendor inheritance is disabled to avoid competing producers. Their default
-instances are declared by manifest-security.xml. Source audio/effect 6.0 and
-sound-trigger 2.3 use manifest-audio.xml. Vendor extraction must not add duplicate
-fragments for these locally declared instances.
-
-## Standalone extraction module registration
-
-extract-files.py now registers the kebab and sm8250-common producers directly,
-with both metadata lists hosted in this repository. It does not discover or
-require a sibling common device checkout. The two product/board output interfaces
-above remain the intended contracts; this change does not activate their includes.
-See extraction.md for the raw-metadata/fixup boundary and read-only parser command.
-No extractor or makefile generator was run on proprietary files during this step.
-
-## Unified target selected
-
-The desired production output is now one vendor/oneplus/kebab repository and one
-proprietary list. The original two outputs above describe the current scripts,
-not a requirement to keep two vendor trees. The reviewed prototype and migration
-steps are recorded in vendor-consolidation.md; change the active includes and
-extractor together when executing that migration.
+`assemble_vintf` merges 31 recorded local/reference/vendor fragments into 50
+unique instances. Ten legacy reference records are covered and 42 remain open,
+including vendor/WFD/common-provider reconciliation. This is not complete product
+matrix compatibility, runtime registration or enforcement validation.

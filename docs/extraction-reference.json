@@ -1,22 +1,6 @@
 {
   "schema_version": 1,
-  "state": "reference metadata; binary/config fixups not ported or validated",
-  "list_origins": [
-    {
-      "list": "proprietary-files.txt",
-      "repository": "LineageOS/android_device_oneplus_kebab",
-      "commit": "57fb7d1ca3860ac841d951893073ceaaf5dfdc77",
-      "source": "proprietary-files.txt",
-      "sha256": "e7a3d16d7dd4f18cc555d019228c353d464b2cf5d2bf6f5f80b99832ee28cee2"
-    },
-    {
-      "list": "proprietary-files-common.txt",
-      "repository": "LineageOS/android_device_oneplus_sm8250-common",
-      "commit": "581b5f42234402b8d82ce669e3c733a33ce8250f",
-      "source": "proprietary-files.txt",
-      "sha256": "2e870c6814788a415fcc70290692847a3151bbf1ae02bdf24225a6686360093c"
-    }
-  ],
+  "state": "One merged processed-input list; no stock-dump fixups replayed. Binary bytes, 32 allowed pins and generation checked against supplied vendor clones.",
   "fixup_reference": {
     "path": "extract-files.py",
     "repository": "LineageOS/android_device_oneplus_sm8250-common",
@@ -52,5 +36,28 @@
   "helper_api": {
     "local_path": "pa/tools/extract-utils/extract_utils/module.py",
     "sha256": "ecb52b20e5b8a27c734b131d50145973c5e36d10c1a5dffb589fb8297ed72b38"
+  },
+  "historical_list_origins": [
+    {
+      "list": "proprietary-files.txt",
+      "repository": "LineageOS/android_device_oneplus_kebab",
+      "commit": "57fb7d1ca3860ac841d951893073ceaaf5dfdc77",
+      "source": "proprietary-files.txt",
+      "sha256": "e7a3d16d7dd4f18cc555d019228c353d464b2cf5d2bf6f5f80b99832ee28cee2"
+    },
+    {
+      "list": "proprietary-files-common.txt",
+      "repository": "LineageOS/android_device_oneplus_sm8250-common",
+      "commit": "581b5f42234402b8d82ce669e3c733a33ce8250f",
+      "source": "proprietary-files.txt",
+      "sha256": "2e870c6814788a415fcc70290692847a3151bbf1ae02bdf24225a6686360093c"
+    }
+  ],
+  "active_list": {
+    "list": "proprietary-files.txt",
+    "sha256": "57ee2f7473acde7064ccc8829cc0fd239df1ba5622faf4bf6f69a2fb8672e6fc",
+    "files": 2550,
+    "output": "vendor/oneplus/kebab",
+    "origin": "Merged historical device/common entries with comments, flags and pins preserved"
   }
 }

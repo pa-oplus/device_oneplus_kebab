@@ -1,0 +1,164 @@
+{
+  "files": 2550,
+  "allowed_pins": 32,
+  "reference_content_matches": 2550,
+  "unique_vendor_modules": 777,
+  "local_vendor_module_collisions": 0,
+  "explicit_copy_collisions": 0,
+  "generated_build_files_identical": 4,
+  "compatibility_provider_definitions": [
+    "libcamera_metadata_shim",
+    "libcrypto_shim"
+  ],
+  "perf_client_exports_checked": {
+    "arm": [
+      "perf_lock_acq",
+      "perf_lock_rel",
+      "perf_hint",
+      "perf_get_prop"
+    ],
+    "arm64": [
+      "perf_lock_acq",
+      "perf_lock_rel",
+      "perf_hint",
+      "perf_get_prop"
+    ]
+  },
+  "limits": "Static explicit contracts only: no full module graph/variant/symbol-version, product build, ABI, policy or device validation.",
+  "vintf_reference_merge": {
+    "inputs": 31,
+    "unique_instances": 50,
+    "reviewed_overrides": 1,
+    "legacy_reference_records_covered": 10,
+    "legacy_reference_records_unresolved": 42,
+    "assemble_vintf": "passed using DES host tool with BOARD_SEPOLICY_VERS=202504",
+    "scope": "Local declarations plus reference-source fragments and current unified vendor fragments; not a live PA product compatibility check.",
+    "input_provenance": [
+      {
+        "path": "pa-kona/device_oneplus_kebab/configs/vintf/manifest-audio.xml",
+        "sha256": "65e91a64e45317543cb782e081bb70450365a74973b0fdab79f1790a51e5bd02"
+      },
+      {
+        "path": "pa-kona/device_oneplus_kebab/configs/vintf/manifest-bluetooth.xml",
+        "sha256": "2a8c03c15dca84c6d85ecaa6b0925000855a4ab12953b819fef88f10c7938f8e"
+      },
+      {
+        "path": "pa-kona/device_oneplus_kebab/configs/vintf/manifest-camera.xml",
+        "sha256": "287d1315a8495eb9dddd5dee2c44c2e80b9b568359f176ac5132de27fed5c286"
+      },
+      {
+        "path": "pa-kona/device_oneplus_kebab/configs/vintf/manifest-perf.xml",
+        "sha256": "2fbd117647d58c8677323cd15f0c198b0367816d3d6fead96218f12b759c3a94"
+      },
+      {
+        "path": "pa-kona/device_oneplus_kebab/configs/vintf/manifest-radio.xml",
+        "sha256": "b880673c0af27b9b52f8dfae1b1c32c82744422c2ae524a43b7b74748fdaba92"
+      },
+      {
+        "path": "pa-kona/device_oneplus_kebab/configs/vintf/manifest-secure-element.xml",
+        "sha256": "2e79ff389b2108968c566864199496b34a7a30dbd229272bd99c5ad85d3df98b"
+      },
+      {
+        "path": "pa-kona/device_oneplus_kebab/configs/vintf/manifest-security.xml",
+        "sha256": "7677f307f1b03917b63812becaafa0c245d88ae17a4cd5777ab8217ca57224a7"
+      },
+      {
+        "path": "aospa-trees/vendor/qcom/opensource/power/power-v6.xml",
+        "sha256": "d1b743e68f4e212fe964c439142abbc2955ea1984e95a59dc7c18253dbb225f0"
+      },
+      {
+        "path": "aospa-trees/hardware/interfaces/sensors/aidl/multihal/android.hardware.sensors-multihal.xml",
+        "sha256": "1fec5262cdfb7c4c66113b5b738618d7b7627380668ae90fea88127d86e92e5f"
+      },
+      {
+        "path": "pa-kona/pa-alioth/android_hardware_qcom_thermal/android.hardware.thermal-service.qti.xml",
+        "sha256": "5138abdf999034d08efc003ef8f24cb36b1da979eb276bafff9edb224fb1614b"
+      },
+      {
+        "path": "aospa-trees/hardware/oplus/hidl/fingerprint/android.hardware.biometrics.fingerprint@2.3-service.oplus.xml",
+        "sha256": "f160f8bff116964a11bf07019fdbe761b15682d003eabd826a59d333edfffc75"
+      },
+      {
+        "path": "aospa-trees/hardware/oplus/aidl/vibrator/qti/vendor.qti.hardware.vibrator.service.oplus.xml",
+        "sha256": "d47ac9c8369f267215e1838c56e786081fa28a03027d4b9678562dddd73e6ac0"
+      },
+      {
+        "path": "aospa-trees/vendor/qcom/opensource/usb/hal/android.hardware.usb-service.qti.xml",
+        "sha256": "2802f66040f00874a50827073b1dc29b283e295609ddcc4d659b97c2d824ae5e"
+      },
+      {
+        "path": "aospa-trees/vendor/qcom/opensource/usb/hal/android.hardware.usb.gadget-service.qti.xml",
+        "sha256": "f9649125d465220fe9cb70f0f1316cb90708f6136b11725863c4a7ea8196c2a9"
+      },
+      {
+        "path": "aospa-trees/hardware/qcom/bootctrl/aidl/boot-service.qti.xml",
+        "sha256": "6fd2525ff6ff75166a8167bd8f7b244c9cac22270ad7d0284a20b6bcfa7a7202"
+      },
+      {
+        "path": "aospa-trees/vendor/qcom/opensource/healthd-ext/aidl/android.hardware.health-service.qti.xml",
+        "sha256": "f89785449915bf22ac7e68a50e10439974e7ecd1b8fda483415afa97f87c4f28"
+      },
+      {
+        "path": "aospa-trees/hardware/nxp/nfc/snxxx/aidl/1.0/nfc-service-nxp.xml",
+        "sha256": "9d174927508f7aed73f367626b4be90b896dbb5617fa1d9257eadcb9ffa4fd6c"
+      },
+      {
+        "path": "pa-kona/pa-reviewed/frameworks/av/drm/mediadrm/plugins/clearkey/aidl/android.hardware.drm-service.clearkey.xml",
+        "sha256": "e3050ef312aaa40784b360a924982447793aa7833f2109b39cc87fc14eb99013"
+      },
+      {
+        "path": "aospa-trees/hardware/interfaces/wifi/aidl/default/android.hardware.wifi-service.xml",
+        "sha256": "f53629a8ec4c86425a99c20e5aa9327220aa59e52b1bb1f10c50d91a4e951a62"
+      },
+      {
+        "path": "aospa-trees/device/qcom/vendor-common/memtrack/memtrack_qti.xml",
+        "sha256": "99e2bfc0a109272a94aa3fc2da9c2ff80480e701190a497e3da14030dc4e61a8"
+      },
+      {
+        "path": "pa-kona/proprietary_vendor_oneplus_kebab/proprietary/vendor/etc/vintf/manifest/android.hardware.gnss@2.1-service-qti.xml",
+        "sha256": "b12c00daff67f15983eaf9952d0ded199b2868ad1b9fb512fcab5f6bf813773d"
+      },
+      {
+        "path": "pa-kona/proprietary_vendor_oneplus_kebab/proprietary/vendor/etc/vintf/manifest/android.hardware.neuralnetworks@1.3-service-qti-hta.xml",
+        "sha256": "7f64773bee106cd0fd1e7328490376951f3d95eb35bb2876a1da4eca598f8695"
+      },
+      {
+        "path": "pa-kona/proprietary_vendor_oneplus_kebab/proprietary/vendor/etc/vintf/manifest/android.hardware.neuralnetworks@1.3-service-qti.xml",
+        "sha256": "1fe231b6b3fd8ec56d0d4063ec9e547be4248da930b9c471212ff9cc9f4afc99"
+      },
+      {
+        "path": "pa-kona/proprietary_vendor_oneplus_kebab/proprietary/vendor/etc/vintf/manifest/c2_manifest_vendor.xml",
+        "sha256": "f91b889f1dee3d7740862fae4632df0e9e553fea8ba11b23d6ae86f97e088f29"
+      },
+      {
+        "path": "pa-kona/proprietary_vendor_oneplus_kebab/proprietary/vendor/etc/vintf/manifest/manifest_oplus_osiesr.xml",
+        "sha256": "7ab21b9e231fcd2646b642b536221ea5a0fc863a5f9ee74bb0eacd1f7bd5b4fd"
+      },
+      {
+        "path": "pa-kona/proprietary_vendor_oneplus_kebab/proprietary/vendor/etc/vintf/manifest/vendor.qti.gnss@4.0-service.xml",
+        "sha256": "a2febcc396f453bdabfe60f8adc9b0bc89b110845b3bd4b0c582ce35054a5f4e"
+      },
+      {
+        "path": "pa-kona/proprietary_vendor_oneplus_kebab/proprietary/odm/etc/vintf/manifest/manifest_android.hardware.drm@1.3-service.widevine.xml",
+        "sha256": "61cee1f6a061cf5348ca82f5326bd09cedda6bf2eea016c9ad3374f2cd03df7a"
+      },
+      {
+        "path": "pa-kona/proprietary_vendor_oneplus_kebab/proprietary/odm/etc/vintf/manifest/manifest_oplusSensor.xml",
+        "sha256": "3e0dd542acfb10a9d462cd0d6bb7ee671321649b359fc515417f303cf8b552c0"
+      },
+      {
+        "path": "pa-kona/proprietary_vendor_oneplus_kebab/proprietary/odm/etc/vintf/manifest/manifest_oplus_fingerprint.xml",
+        "sha256": "9980b3029141e91eccd4a03b3dd3db513e1aa373dc1578354dbdc88f00ce87d1"
+      },
+      {
+        "path": "pa-kona/proprietary_vendor_oneplus_kebab/proprietary/odm/etc/vintf/manifest/vendor.pixelworks.hardware.display.iris-service.xml",
+        "sha256": "94c6c3f0366f60eda3fa2218f4937adbb9e07947099333a1390ba28900380615"
+      },
+      {
+        "path": "pa-kona/proprietary_vendor_oneplus_kebab/proprietary/odm/etc/vintf/manifest/vendor.pixelworks.hardware.feature.irisfeature-service.xml",
+        "sha256": "36549582116c32c689288fd31c15423e602b3a57d4191e09e1ce4a0cfa3130a9"
+      }
+    ]
+  },
+  "fingerprint_host_check": "Both property APIs: two substitutions and unrelated-property forwarding passed; target linker symbol-version/interposition behavior still needs device validation."
+}
