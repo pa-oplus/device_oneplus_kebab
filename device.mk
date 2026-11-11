@@ -637,7 +637,8 @@ PRODUCT_VENDOR_PROPERTIES += \
     ro.hardware.egl=adreno \
     ro.hardware.vulkan=adreno \
     ro.opengles.version=196610 \
-    graphics.gpu.profiler.support=true
+    graphics.gpu.profiler.support=true \
+    ro.surface_flinger.supports_background_blur=1
 
 # ADPF hint sessions for SurfaceFlinger and HWUI (50% CPU frame budget)
 PRODUCT_PRODUCT_PROPERTIES += \

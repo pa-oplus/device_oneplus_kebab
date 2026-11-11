@@ -104,6 +104,7 @@ endif
 # Platform
 BOARD_USES_QCOM_HARDWARE := true
 TARGET_BOARD_PLATFORM := kona
+TARGET_USES_BLUR := true
 
 # Recovery
 BOARD_INCLUDE_DTB_IN_BOOTIMG := true
