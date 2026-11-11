@@ -35,7 +35,6 @@ TARGET_COMMON_QTI_COMPONENTS := \
     bt \
     init \
     overlay \
-    perf \
     wfd
 
 # Shipping API
@@ -299,8 +298,13 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
     vendor/qcom/opensource/power/config/kona/powerhint.xml:$(TARGET_COPY_OUT_VENDOR)/etc/powerhint.xml
 
-# Perf stays owned by the common QTI perf component. Do not set the stock-blob
-# override until a complete OnePlus perf ABI/configuration set has been verified.
+# OnePlus owns vendor perf: service, client libraries and six stock config files.
+# Keep framework-side perf clients separate; do not inherit common vendor perf.
+include device/qcom/common/system/perf/qti-perf.mk
+PRODUCT_VENDOR_PROPERTIES += \
+    ro.vendor.perf-hal.ver=2.2 \
+    ro.vendor.extension_library=libqti-perfd-client.so
+# Compatibility of PA's system perf2 clients with HIDL 2.2 remains a runtime gate.
 
 # OnePlus display properties and framework calibration overlay.
 # Include the common recipes once, locally, so device properties can replace

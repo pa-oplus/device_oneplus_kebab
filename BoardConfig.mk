@@ -191,3 +191,6 @@ SYSTEM_EXT_PRIVATE_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy/private
 
 # Fail product configuration if the unified vendor output is missing.
 include vendor/oneplus/kebab/BoardConfigVendor.mk
+
+# The stock perf binary ships RC but no service-owned VINTF fragment.
+DEVICE_MANIFEST_FILE += $(DEVICE_PATH)/configs/vintf/manifest-perf.xml
