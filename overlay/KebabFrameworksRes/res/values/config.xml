@@ -3,6 +3,14 @@
      Copyright (C) 2026 Paranoid Android
      SPDX-License-Identifier: Apache-2.0 -->
 <resources>
+    <!-- The deprecated network scorer API is still advertised by GMS
+         (PersistentBoundBrokerService / android.net.action.RECOMMEND_NETWORKS),
+         but its Chimera implementation is missing and returns a 4 MiB
+         NullBinder reply. That forces TransactionTooLargeException and spams
+         libbinder with "Large reply transaction" on every network change.
+         Keep the AOSP default: no network scorer. -->
+    <string translatable="false" name="config_defaultNetworkRecommendationProviderPackage"></string>
+
     <bool name="config_automatic_brightness_available">true</bool>
     <integer-array name="config_ambientBrighteningThresholds">
         <item>600</item>
