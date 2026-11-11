@@ -303,16 +303,7 @@ PRODUCT_VENDOR_PROPERTIES += \
 # The reviewed PA clients fall back to HIDL 2.2 for API 30 when perf2 is absent.
 # Keep their AIDL library dependencies; runtime service/linker validation is pending.
 
-# Install only the servicetracker AIDL service, manifest and init script;
-# do not inherit perf-vendor.mk wholesale because that also brings incompatible generic perf2.
-PRODUCT_SOONG_NAMESPACES += vendor/qcom/common/vendor/perf
-PRODUCT_PACKAGES += \
-    vendor.qti.hardware.servicetrackeraidl-impl \
-    vendor.qti.hardware.servicetrackeraidl-service \
-    vendor.qti.hardware.servicetrackeraidl-service.xml
-
-PRODUCT_COPY_FILES += \
-    vendor/qcom/common/vendor/perf/proprietary/vendor/etc/init/vendor.qti.hardware.servicetrackeraidl-service.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/vendor.qti.hardware.servicetrackeraidl-service.rc
+# Servicetracker omitted; unified vendor provides stock perf.
 
 # OnePlus display properties and framework calibration overlay.
 # Include the common recipes once, locally, so device properties can replace
@@ -320,7 +311,7 @@ PRODUCT_COPY_FILES += \
 QCOM_COMMON_PATH := device/qcom/common
 TARGET_USE_AIDL_QTI_MEMTRACK := true
 include $(QCOM_COMMON_PATH)/system/display/qti-display.mk
-include $(QCOM_COMMON_PATH)/vendor/display/qti-display.mk
+# include $(QCOM_COMMON_PATH)/vendor/display/qti-display.mk
 
 PRODUCT_PACKAGES += KebabFrameworksRes
 
@@ -573,9 +564,7 @@ PRODUCT_SYSTEM_PROPERTIES += \
     persist.logd.logpersistd.rotate_kbytes=2048 \
     persist.logd.logpersistd.buffer=all
 
-# Telephony: evaluate common PA source integration once, then apply OnePlus values.
-include $(QCOM_COMMON_PATH)/system/telephony/qti-telephony.mk
-include $(QCOM_COMMON_PATH)/vendor/telephony/qti-telephony.mk
+# Telephony is fully provided by unified vendor tree.
 
 kebab_radio_vendor_properties := \
     persist.vendor.dpmhalservice.enable=1 \
