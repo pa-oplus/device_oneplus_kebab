@@ -32,78 +32,6 @@
       "commit": "da8e3bed19be1398964418475e208a86f67bc1c2"
     },
     {
-      "path": "build/make",
-      "repository": "pa-sanji/build_make",
-      "branch": "calcite",
-      "commit": "08b66c720fbcc3c1871e42d474c59e32aef3fc29"
-    },
-    {
-      "path": "build/soong",
-      "repository": "pa-sanji/build_soong",
-      "branch": "calcite",
-      "commit": "02938b5924ad259819e0e022194ba0899a3abe2e"
-    },
-    {
-      "path": "device/qcom/common",
-      "repository": "pa-sanji/android_device_qcom_common",
-      "branch": "calcite",
-      "commit": "995303ab9aa7e81da787bd41a85688cda7f7e5bd"
-    },
-    {
-      "path": "hardware/samsung-ext/interfaces",
-      "repository": "pa-sanji/hardware_samsung-extra_interfaces",
-      "branch": "calcite",
-      "commit": "697f9cb769118ee33e76cbb593fcc7479f6bdc37"
-    },
-    {
-      "path": "device/qcom/sepolicy_vndr",
-      "repository": "pa-sanji/android_device_qcom_sepolicy_vndr",
-      "branch": "calcite",
-      "commit": "d6709e1b2b1361b3c0ab94f8a348510fe9dcfb50"
-    },
-    {
-      "path": "system/libhwbinder",
-      "repository": "pa-sanji/android_system_libhwbinder",
-      "branch": "calcite",
-      "commit": "a76d5def48437a73a1c0e7e7e216a1032311920d"
-    },
-    {
-      "path": "frameworks/av",
-      "repository": "pa-sanji/frameworks_av",
-      "branch": "calcite",
-      "commit": "6c91a1be53cf8db90a7d8a567dbbf8969d16f3c4"
-    },
-    {
-      "path": "build/release",
-      "repository": "pa-sanji/android_build_release",
-      "branch": "calcite",
-      "commit": "b8badbd159ed5f6a54fb063798c3659078a156df"
-    },
-    {
-      "path": "device/qcom/sepolicy",
-      "repository": "pa-sanji/device_qcom_sepolicy",
-      "branch": "calcite",
-      "commit": "f074369b27d88089e73a0efa5c04fa63443e4765"
-    },
-    {
-      "path": "hardware/interfaces",
-      "repository": "pa-sanji/hardware_interfaces",
-      "branch": "calcite",
-      "commit": "35664468268e87565ffc646773e76e67b40e78c2"
-    },
-    {
-      "path": "packages/modules/Connectivity",
-      "repository": "pa-sanji/packages_modules_Connectivity",
-      "branch": "calcite",
-      "commit": "7989a13dcc898a5caa2b957bd4ea9a62d250fa5c"
-    },
-    {
-      "path": "vendor/qcom/opensource/power",
-      "repository": "pa-sanji/vendor_qcom_opensource_power",
-      "branch": "calcite",
-      "commit": "879bf805323258eb77f95c0624216ff31144ed4a"
-    },
-    {
       "path": "hardware/oplus",
       "repository": "clo-oscaro/hardware_oplus",
       "branch": "calcite",
@@ -127,12 +55,6 @@
     "original_commit": "e6606b4637b49ca0d993661015689bcad2d9f46c"
   },
   "workspace_backup": "pa-kona/backups/pa-source-assembly-lqks196g",
-  "checks": {
-    "critical_source_gaps": 0,
-    "manifest_inputs": 19,
-    "declared_instances": 29,
-    "remaining_reference_records": 43
-  },
   "limits": "Recorded source-provider and declaration checks only. No full product build, kernel integration, complete ABI/SELinux/VINTF or hardware validation.",
   "shared_kona_alignment": {
     "reference_repository": "pa-sanji/android_vendor_aospapengu",
@@ -140,7 +62,7 @@
     "reference_commit": "087cf18eb8abf796f64ed9f073e611f53960e9ed",
     "workspace_backup": "pa-kona/backups/pa-calcite-shared-1cb8m11j",
     "preserved_soong_patch": "pa-kona/backups/pa-calcite-shared-1cb8m11j/soong-workspace.patch",
-    "soong_status": "Original local Ninja/RBE edits reapplied without conflicts; only ui/build/config.go and ui/build/rbe.go differ from selected HEAD.",
+    "soong_status": "The original local user Ninja/RBE patch is saved in the backup; reapply to original PA Soong when the current source root is identified.",
     "retained": [
       "PA vendor/aospa product configuration (PenguinOS product replacement excluded)",
       "hardware/oplus from aospa-trees",
@@ -156,8 +78,24 @@
       "alioth legacy NXP HIDL sources",
       "PenguinOS frameworks/basepengu and android_frameworks_nativepengu; original PA checkouts restored"
     ],
-    "installation": "Standalone local clones; local repo manifest records replacements. No repo sync/force-sync performed.",
+    "installation": "Former pa checkout is absent. The manifest is a prepared source selection, not a completed source installation.",
     "full_build_validated": false,
-    "correction": "17 shared repositories remain selected. The two PenguinOS framework clones are preserved outside PA under excluded-penguin in the alignment backup."
+    "correction": "Review narrows the original nineteen to five HAL candidates, plus the previously selected thermal/Oplus sources; platform forks return to original PA manifest selection. Application awaits the current PA source path."
+  },
+  "historical_checks_2026_11_10": {
+    "critical_source_gaps": 0,
+    "manifest_inputs": 19,
+    "declared_instances": 29,
+    "remaining_reference_records": 43
+  },
+  "application_status": "Prepared manifest only; former pa checkout is absent. No current full PA build verified.",
+  "scope_review": "docs/sanji-source-audit.md",
+  "frameworks_av_restore": {
+    "path": "pa-kona/pa-reviewed/frameworks/av",
+    "repository": "AOSPA/android_frameworks_av",
+    "commit": "d0cf9d91af5d97de09b80dc4a9ca9088ed05cfdd",
+    "tree": "517fd7638a18a3e91620c8c1882af978c77d84d9",
+    "method": "Reconstructed exact commit from saved original files; tree and commit hashes verified.",
+    "additional_patches": []
   }
 }
