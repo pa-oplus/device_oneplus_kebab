@@ -1,15 +1,6 @@
 <!-- Copyright (C) 2026 Paranoid Android; SPDX-License-Identifier: Apache-2.0 -->
 <manifest version="1.0" type="device">
     <hal format="hidl">
-        <name>android.hardware.media.c2</name>
-        <transport>hwbinder</transport>
-        <version>1.0</version>
-        <interface>
-            <name>IComponentStore</name>
-            <instance>default</instance>
-        </interface>
-    </hal>
-    <hal format="hidl">
         <name>android.hardware.media.omx</name>
         <transport>hwbinder</transport>
         <version>1.0</version>
