@@ -607,3 +607,10 @@ PRODUCT_PACKAGES += KebabSettingsProviderRes
 
 # One unified, required proprietary output.
 $(call inherit-product, vendor/oneplus/kebab/kebab-vendor.mk)
+
+# Compatibility dependencies already present in the processed vendor inputs.
+# Camera/crypto providers come from PA hardware/lineage/compat.
+PRODUCT_PACKAGES += \
+    libshims_fingerprint.oplus \
+    libcamera_metadata_shim \
+    libcrypto_shim.vendor
