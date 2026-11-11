@@ -188,3 +188,6 @@ BOARD_VENDOR_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy/vendor
 # Export only the OnePlus platform-facing config property type to vendor policy.
 SYSTEM_EXT_PUBLIC_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy/public
 SYSTEM_EXT_PRIVATE_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy/private
+
+# Fail product configuration if the unified vendor output is missing.
+include vendor/oneplus/kebab/BoardConfigVendor.mk
