@@ -65,6 +65,11 @@ on post-fs-data
     mkdir /vendor/data/tombstones 0771 system system
     # Enable WLAN cold boot calibration
     write /sys/devices/platform/soc/b0000000.qcom,cnss-qca6390/fs_ready 1
+    # Tri-state key
+    chown system system /proc/tristatekey/hall_data_calib
+    chmod 0660 /proc/tristatekey/hall_data_calib
+    chown system system /proc/tristatekey/tri_state
+    chmod 0440 /proc/tristatekey/tri_state
 
 on early-boot
     start vendor.sensors
