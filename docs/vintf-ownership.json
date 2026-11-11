@@ -924,5 +924,23 @@
         }
       ]
     }
+  ],
+  "allowed_vendor_overrides": [
+    {
+      "path": "odm/etc/vintf/manifest/manifest_oplus_fingerprint.xml",
+      "name": "android.hardware.biometrics.fingerprint",
+      "format": "hidl",
+      "versions": [
+        "2.3"
+      ],
+      "interfaces": [
+        {
+          "name": "IBiometricsFingerprint",
+          "instances": [
+            "default"
+          ]
+        }
+      ]
+    }
   ]
 }

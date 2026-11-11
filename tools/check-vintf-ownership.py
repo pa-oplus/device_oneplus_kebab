@@ -59,16 +59,32 @@ def main():
     args = parser.parse_args()
     data = json.loads((ROOT / "docs/vintf-ownership.json").read_text())
     paths = sorted((ROOT / "configs/vintf").glob("manifest-*.xml"))
-    paths += args.extra_manifest
     if args.source_root:
         paths += [args.source_root / p["path"] for p in data["source_fragments"]]
+    paths += args.extra_manifest
     owners = {}
+    override_count = 0
     for path in paths:
         root = ET.parse(path).getroot()
         if root.tag != "manifest" or root.get("type") != "device":
             raise ValueError(f"Not a device manifest: {path}")
         for hal in root.findall("hal"):
-            for key in instances(records(hal)):
+            record = records(hal)
+            if hal.get("override") == "true":
+                allowed = next((o for o in data.get("allowed_vendor_overrides", [])
+                                if path.as_posix().endswith("/" + o["path"])
+                                and record["name"] == o["name"]), None)
+                if not allowed or record["format"] != allowed["format"] or \
+                        record["versions"] != allowed["versions"] or \
+                        record["interfaces"] != allowed["interfaces"] or record["fqnames"]:
+                    raise ValueError(f"Unreviewed vendor override: {path}: {record['name']}")
+                keys = instances(record)
+                groups = {key[:3] for key in keys}
+                for key in list(owners):
+                    if key[:3] in groups:
+                        del owners[key]
+                override_count += 1
+            for key in instances(record):
                 if key in owners:
                     raise ValueError(f"Duplicate HAL instance {key}: {owners[key]} and {path}")
                 owners[key] = str(path)
@@ -78,6 +94,7 @@ def main():
           f"{len(unresolved)} unresolved (vendor/WFD/common-provider reconciliation pending).")
     for provider in data["unresolved_providers"]:
         print(f"Unresolved provider: {provider['module']}: {provider['reason']}")
+    print(f"Reviewed vendor override declarations: {override_count} (input order matters).")
     print("This checks recorded declarations, not the complete product or runtime registration.")
     if args.require_reference_coverage and (unresolved or data["unresolved_providers"]):
         return 1
