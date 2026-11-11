@@ -202,3 +202,6 @@ DEVICE_MANIFEST_FILE += $(DEVICE_PATH)/configs/vintf/manifest-tetheroffload.xml
 
 # The supplemental DSP server registers the legacy dspservice instance.
 DEVICE_MANIFEST_FILE += $(DEVICE_PATH)/configs/vintf/manifest-dsp.xml
+
+# Vendor media codec and Widevine DRM services.
+DEVICE_MANIFEST_FILE += $(DEVICE_PATH)/configs/vintf/manifest-media.xml
