@@ -531,6 +531,7 @@ include vendor/qcom/opensource/usb/vendor_product.mk
 PRODUCT_SOONG_NAMESPACES += \
     device/qcom/common/vendor/usb \
     vendor/qcom/opensource/usb/etc
+PRODUCT_HAS_GADGET_HAL := true
 PRODUCT_PACKAGES += \
     init.aospa.usb.rc \
     oplus_usb_compositions.conf
@@ -552,6 +553,13 @@ PRODUCT_VENDOR_PROPERTIES += \
     vendor.usb.rndis.func.name=gsi \
     vendor.usb.use_ffs_mtp=1 \
     vendor.usb.use_gadget_hal=1
+
+# Persistent logcat: keep rotating logcat in /data/misc/logd for boot failure diagnosis.
+PRODUCT_SYSTEM_PROPERTIES += \
+    persist.logd.logpersistd=logcatd \
+    persist.logd.logpersistd.size=16 \
+    persist.logd.logpersistd.rotate_kbytes=2048 \
+    persist.logd.logpersistd.buffer=all
 
 # Telephony: evaluate common PA source integration once, then apply OnePlus values.
 include $(QCOM_COMMON_PATH)/system/telephony/qti-telephony.mk
