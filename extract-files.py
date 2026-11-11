@@ -2,7 +2,7 @@
 # SPDX-FileCopyrightText: 2024 The LineageOS Project
 # SPDX-FileCopyrightText: 2026 Paranoid Android
 # SPDX-License-Identifier: Apache-2.0
-"""Two OnePlus vendor producers hosted by the standalone kebab device tree."""
+"""Generate one kebab vendor tree from the unified, preprocessed input list."""
 from pathlib import Path
 import sys
 
@@ -32,14 +32,6 @@ common_lib_fixups = {
 module = ExtractUtilsModule(
     "kebab",
     "oneplus",
-    namespace_imports=["vendor/oneplus/sm8250-common"],
-)
-
-common_module = ExtractUtilsModule(
-    "sm8250-common",
-    "oneplus",
-    device_rel_path="device/oneplus/kebab",
-    skip_main_proprietary_file=True,
     lib_fixups=common_lib_fixups,
     namespace_imports=[
         "device/oneplus/kebab",
@@ -47,8 +39,7 @@ common_module = ExtractUtilsModule(
         "hardware/qcom/wlan/qcwcn",
     ],
 )
-common_module.add_proprietary_file("proprietary-files-common.txt")
 
 if __name__ == "__main__":
-    # No automatic common-device checkout or vendor download is performed here.
-    ExtractUtils(module, [common_module]).run()
+    # Inputs are already processed; binary/config fixups are not rerun here.
+    ExtractUtils(module).run()
