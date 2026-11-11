@@ -339,6 +339,17 @@
         <!-- TODO: parameters are copied from kona omx -->
     </Decoders>
     <Encoders>
+        <!-- Software AAC encoder for camera/MediaRecorder. The OMX entry in
+             media_codecs_google_audio.xml (OMX.google.aac.encoder) needs
+             libstagefright_soft_aacenc.so, which does not exist on Android 17:
+             ACodec then fails with "Unexpected nullptr for codec information".
+             Naming the Codec2 component explicitly makes MediaCodecSource pick
+             c2.android.aac.encoder (CCodec) before the dead OMX entry. -->
+        <MediaCodec name="c2.android.aac.encoder" type="audio/mp4a-latm">
+            <Limit name="channel-count" max="6" />
+            <Limit name="sample-rate" ranges="8000,11025,12000,16000,22050,24000,32000,44100,48000" />
+            <Limit name="bitrate" range="8000-960000" />
+        </MediaCodec>
         <!-- C2 encoders -->
         <MediaCodec name="c2.qti.avc.encoder" type="video/avc">
             <Limit name="size" min="128x128" max="4096x2304" />
