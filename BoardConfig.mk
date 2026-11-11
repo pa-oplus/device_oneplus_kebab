@@ -194,3 +194,6 @@ include vendor/oneplus/kebab/BoardConfigVendor.mk
 
 # The stock perf binary ships RC but no service-owned VINTF fragment.
 DEVICE_MANIFEST_FILE += $(DEVICE_PATH)/configs/vintf/manifest-perf.xml
+
+# Provider-backed legacy OnePlus services not carrying packaged fragments.
+DEVICE_MANIFEST_FILE += $(DEVICE_PATH)/configs/vintf/manifest-oneplus-vendor.xml

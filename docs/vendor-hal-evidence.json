@@ -1,0 +1,1324 @@
+{
+  "reference": {
+    "repository": "LineageOS/android_device_oneplus_sm8250-common",
+    "commit": "581b5f42234402b8d82ce669e3c733a33ce8250f",
+    "path": "manifest.xml",
+    "sha256": "234db61f636f67a9c25bda74bd2bc11d00db2acfe9ee60516781645fbb24b771"
+  },
+  "declared_records": [
+    {
+      "reference_record": 4,
+      "name": "android.hardware.drm",
+      "process": "wfdhdcphalservice",
+      "declaration_origin": "Unchanged interface/version/instances from the matching Lineage device reference manifest.",
+      "evidence": [
+        {
+          "path": "vendor/bin/wfdhdcphalservice",
+          "sha256": "86a276cf826cc756d47497dd68909a8bc6551dfe597855a626326617b994924f"
+        },
+        {
+          "path": "vendor/etc/init/android.hardware.drm@1.1-service.wfdhdcp.rc",
+          "sha256": "a81f13b6a2e10337ea9e550421f1ffb1e38dd30f0573f3ffdc6f142402a4cf0b"
+        }
+      ],
+      "registration_imports": {
+        "odm/bin/hw/android.hardware.drm@1.3-service.widevine": [
+          "android::hardware::drm::V1_3::IDrmFactory::registerAsService(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> > const&)",
+          "android::hardware::drm::V1_3::ICryptoFactory::registerAsService(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> > const&)"
+        ],
+        "vendor/bin/wfdhdcphalservice": [
+          "android::hardware::drm::V1_3::IDrmFactory::registerAsService(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> > const&)",
+          "android::hardware::drm::V1_3::ICryptoFactory::registerAsService(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> > const&)"
+        ]
+      },
+      "scope": "Static process/implementation mapping; runtime registration, linker/policy and service behavior untested."
+    },
+    {
+      "reference_record": 12,
+      "name": "com.dsi.ant",
+      "process": "vendor.bluetooth-1-0-qti",
+      "declaration_origin": "Unchanged interface/version/instances from the matching Lineage device reference manifest.",
+      "evidence": [
+        {
+          "path": "vendor/bin/hw/android.hardware.bluetooth@1.0-service-qti",
+          "sha256": "339978ada70003a290ea2f694042c68938f808c9683f8eac894cb7ed07d17d67"
+        },
+        {
+          "path": "vendor/etc/init/android.hardware.bluetooth@1.0-service-qti.rc",
+          "sha256": "b4fabb4ad49d13da8f7152b7f0831b51d57f0f6dfd4c13a41d6a9699a5508085"
+        }
+      ],
+      "registration_imports": {},
+      "scope": "Static process/implementation mapping; runtime registration, linker/policy and service behavior untested."
+    },
+    {
+      "reference_record": 13,
+      "name": "com.qualcomm.qti.dpm.api",
+      "process": "dpmQmiMgr",
+      "declaration_origin": "Unchanged interface/version/instances from the matching Lineage device reference manifest.",
+      "evidence": [
+        {
+          "path": "system_ext/lib64/com.qualcomm.qti.dpm.api@1.0.so",
+          "sha256": "a39d2abb98263d13ab151df3871e7ccc7ec929b0523ca8421c829f8794353f16"
+        },
+        {
+          "path": "vendor/bin/dpmQmiMgr",
+          "sha256": "d6385e6cd7c3f0920885afbf1ab2fb31e8b1700ee80355e97ca8a7063ba94a79"
+        },
+        {
+          "path": "vendor/etc/init/dpmQmiMgr.rc",
+          "sha256": "525fba1911f28e3ee37bebc84033d94ea5c15ed89ce91c8ddeb02919ff8805dc"
+        },
+        {
+          "path": "vendor/lib64/com.qualcomm.qti.dpm.api@1.0.so",
+          "sha256": "a8d81c01fbfd108e3955207bb885d78302cbebd045470b7e83c1f2b61149cec8"
+        },
+        {
+          "path": "vendor/lib64/libdpmqmihal.so",
+          "sha256": "bce12d6b9e4f995658454747ff9d511d30c88f134f3365d9c4e96d578bc0fa5e"
+        }
+      ],
+      "registration_imports": {},
+      "scope": "Static process/implementation mapping; runtime registration, linker/policy and service behavior untested."
+    },
+    {
+      "reference_record": 14,
+      "name": "com.qualcomm.qti.imscmservice",
+      "process": "vendor.imsrcsservice",
+      "declaration_origin": "Unchanged interface/version/instances from the matching Lineage device reference manifest.",
+      "evidence": [
+        {
+          "path": "vendor/bin/imsrcsd",
+          "sha256": "960b147969cdc06a6fc24583fe070ddb278b056f4cedde2b391a07e704915fb5"
+        },
+        {
+          "path": "vendor/etc/init/imsrcsd.rc",
+          "sha256": "446252650bd8932228b3a09de919182ee1ccd1773a9f5bdf838d000d48ac1eaa"
+        },
+        {
+          "path": "vendor/lib64/lib-imsrcs-v2.so",
+          "sha256": "a7c874d93f8c83c74815fdbb3cd731c2c87310dabc0df7946e7c7fcdc0b96e13"
+        },
+        {
+          "path": "vendor/lib64/lib-imsrcsbaseimpl.so",
+          "sha256": "b1fc83dfaabcbac4b964ae86fb2818fc051d5fe94afe6587cf2f6a056b6614ad"
+        },
+        {
+          "path": "vendor/lib64/lib-uceservice.so",
+          "sha256": "c5df3f0d07b802a318a1d41a38abf08c9502e584c4866ab388520a0ed766e10c"
+        }
+      ],
+      "registration_imports": {
+        "vendor/lib64/lib-uceservice.so": [
+          "com::qualcomm::qti::imscmservice::V2_0::IImsCmService::registerAsService(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> > const&)"
+        ],
+        "vendor/lib64/lib-imsrcsbaseimpl.so": [
+          "com::qualcomm::qti::imscmservice::V2_0::IImsCmService::registerAsService(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> > const&)",
+          "com::qualcomm::qti::imscmservice::V2_1::IImsCmService::registerAsService(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> > const&)",
+          "com::qualcomm::qti::imscmservice::V2_2::IImsCmService::registerAsService(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> > const&)"
+        ],
+        "vendor/lib64/lib-imsrcs-v2.so": [
+          "com::qualcomm::qti::imscmservice::V2_2::IImsCmService::registerAsService(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> > const&)"
+        ]
+      },
+      "scope": "Static process/implementation mapping; runtime registration, linker/policy and service behavior untested."
+    },
+    {
+      "reference_record": 15,
+      "name": "com.qualcomm.qti.uceservice",
+      "process": "vendor.imsrcsservice",
+      "declaration_origin": "Unchanged interface/version/instances from the matching Lineage device reference manifest.",
+      "evidence": [
+        {
+          "path": "vendor/bin/imsrcsd",
+          "sha256": "960b147969cdc06a6fc24583fe070ddb278b056f4cedde2b391a07e704915fb5"
+        },
+        {
+          "path": "vendor/etc/init/imsrcsd.rc",
+          "sha256": "446252650bd8932228b3a09de919182ee1ccd1773a9f5bdf838d000d48ac1eaa"
+        },
+        {
+          "path": "vendor/lib64/lib-imsrcs-v2.so",
+          "sha256": "a7c874d93f8c83c74815fdbb3cd731c2c87310dabc0df7946e7c7fcdc0b96e13"
+        },
+        {
+          "path": "vendor/lib64/lib-imsrcsbaseimpl.so",
+          "sha256": "b1fc83dfaabcbac4b964ae86fb2818fc051d5fe94afe6587cf2f6a056b6614ad"
+        },
+        {
+          "path": "vendor/lib64/lib-uceservice.so",
+          "sha256": "c5df3f0d07b802a318a1d41a38abf08c9502e584c4866ab388520a0ed766e10c"
+        }
+      ],
+      "registration_imports": {
+        "vendor/lib64/lib-uceservice.so": [
+          "com::qualcomm::qti::uceservice::V2_0::IUceService::registerAsService(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> > const&)"
+        ],
+        "vendor/lib64/lib-imsrcsbaseimpl.so": [
+          "com::qualcomm::qti::uceservice::V2_0::IUceService::registerAsService(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> > const&)",
+          "com::qualcomm::qti::uceservice::V2_1::IUceService::registerAsService(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> > const&)",
+          "com::qualcomm::qti::uceservice::V2_2::IUceService::registerAsService(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> > const&)",
+          "com::qualcomm::qti::uceservice::V2_3::IUceService::registerAsService(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> > const&)"
+        ],
+        "vendor/lib64/lib-imsrcs-v2.so": [
+          "com::qualcomm::qti::uceservice::V2_3::IUceService::registerAsService(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> > const&)"
+        ]
+      },
+      "scope": "Static process/implementation mapping; runtime registration, linker/policy and service behavior untested."
+    },
+    {
+      "reference_record": 16,
+      "name": "vendor.oplus.hardware.appradio",
+      "process": "vendor.qcrild",
+      "declaration_origin": "Unchanged interface/version/instances from the matching Lineage device reference manifest.",
+      "evidence": [
+        {
+          "path": "odm/lib64/vendor.oplus.hardware.appradio@1.0.so",
+          "sha256": "c687b655736f998e1cc56caf5da96af041b7f6f45604985a10f854dcee0403bd"
+        },
+        {
+          "path": "vendor/bin/hw/qcrild",
+          "sha256": "62a89e9f72dc16eed55109366174401e2c0037185cba51274248436c6c90380f"
+        },
+        {
+          "path": "vendor/etc/init/qcrild.rc",
+          "sha256": "b20c9beac2933934bf12427c38f4127ae16ace3ac39fe04175b5dd45d181ed88"
+        },
+        {
+          "path": "vendor/lib64/libril-qc-hal-qmi.so",
+          "sha256": "2ad2f72fa7f19f15eb3103860a2b997bf65c5b083d402b07f2e3f8b8e04220df"
+        }
+      ],
+      "registration_imports": {
+        "vendor/lib64/libril-qc-hal-qmi.so": [
+          "vendor::oplus::hardware::appradio::V1_0::IOplusAppRadio::registerAsService(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> > const&)"
+        ]
+      },
+      "scope": "Static process/implementation mapping; runtime registration, linker/policy and service behavior untested."
+    },
+    {
+      "reference_record": 17,
+      "name": "vendor.oplus.hardware.ims",
+      "process": "vendor.qcrild",
+      "declaration_origin": "Unchanged interface/version/instances from the matching Lineage device reference manifest.",
+      "evidence": [
+        {
+          "path": "odm/lib64/vendor.oplus.hardware.ims@1.0.so",
+          "sha256": "8e336af95912b87d7e6d2140a79f42be970579c8bcd3bebdc9035969a4ade64b"
+        },
+        {
+          "path": "vendor/bin/hw/qcrild",
+          "sha256": "62a89e9f72dc16eed55109366174401e2c0037185cba51274248436c6c90380f"
+        },
+        {
+          "path": "vendor/etc/init/qcrild.rc",
+          "sha256": "b20c9beac2933934bf12427c38f4127ae16ace3ac39fe04175b5dd45d181ed88"
+        },
+        {
+          "path": "vendor/lib64/libril-qc-hal-qmi.so",
+          "sha256": "2ad2f72fa7f19f15eb3103860a2b997bf65c5b083d402b07f2e3f8b8e04220df"
+        }
+      ],
+      "registration_imports": {
+        "vendor/lib64/libril-qc-hal-qmi.so": [
+          "vendor::oplus::hardware::ims::V1_0::IOplusImsRadio::registerAsService(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> > const&)"
+        ]
+      },
+      "scope": "Static process/implementation mapping; runtime registration, linker/policy and service behavior untested."
+    },
+    {
+      "reference_record": 18,
+      "name": "vendor.oplus.hardware.radio",
+      "process": "vendor.qcrild",
+      "declaration_origin": "Unchanged interface/version/instances from the matching Lineage device reference manifest.",
+      "evidence": [
+        {
+          "path": "vendor/bin/hw/qcrild",
+          "sha256": "62a89e9f72dc16eed55109366174401e2c0037185cba51274248436c6c90380f"
+        },
+        {
+          "path": "vendor/etc/init/qcrild.rc",
+          "sha256": "b20c9beac2933934bf12427c38f4127ae16ace3ac39fe04175b5dd45d181ed88"
+        },
+        {
+          "path": "vendor/lib64/libril-qc-hal-qmi.so",
+          "sha256": "2ad2f72fa7f19f15eb3103860a2b997bf65c5b083d402b07f2e3f8b8e04220df"
+        }
+      ],
+      "registration_imports": {},
+      "scope": "Static process/implementation mapping; runtime registration, linker/policy and service behavior untested."
+    },
+    {
+      "reference_record": 20,
+      "name": "vendor.qti.esepowermanager",
+      "process": "qti_esepowermanager_service_1_1",
+      "declaration_origin": "Unchanged interface/version/instances from the matching Lineage device reference manifest.",
+      "evidence": [
+        {
+          "path": "odm/bin/hw/vendor.qti.esepowermanager@1.1-service",
+          "sha256": "6297087cd234f0c88041392eed77989a0525e6837cfaa7364e884a22d1e95a1a"
+        },
+        {
+          "path": "odm/etc/init/vendor.qti.esepowermanager@1.1-service.rc",
+          "sha256": "6a80d2318bfde0ffe6e9532907948f9dec1c8a458ea403cf8c6e5154fe136463"
+        },
+        {
+          "path": "odm/lib64/vendor.qti.esepowermanager@1.0.so",
+          "sha256": "ce30d71dfd29ef343f962f0e9f3cd6290f0c7e3a7874d528bae9e8d4e955db07"
+        },
+        {
+          "path": "odm/lib64/vendor.qti.esepowermanager@1.1.so",
+          "sha256": "448837ccb267a3e7143ca6680be8a8f90bbb751c267e3daaac946542c0349ec5"
+        }
+      ],
+      "registration_imports": {},
+      "scope": "Static process/implementation mapping; runtime registration, linker/policy and service behavior untested."
+    },
+    {
+      "reference_record": 21,
+      "name": "vendor.qti.data.factory",
+      "process": "vendor.cnd",
+      "declaration_origin": "Unchanged interface/version/instances from the matching Lineage device reference manifest.",
+      "evidence": [
+        {
+          "path": "vendor/bin/cnd",
+          "sha256": "d6d8acd90e3d1e6d971f96cca3afbd4b50aaa95d54f81382668bb16977722287"
+        },
+        {
+          "path": "vendor/etc/init/cnd.rc",
+          "sha256": "1f861f9e0431640549e58fbb1733f57d1f2db1ef0956d05c8777f10aa7e5cf62"
+        },
+        {
+          "path": "vendor/lib64/libcne.so",
+          "sha256": "dfb26c04c0078506056849a91e6ac9e390104e061675cfffc7a13820a3d8c414"
+        },
+        {
+          "path": "vendor/lib64/libcneapiclient.so",
+          "sha256": "9c5b2e08eb8226d491b18063646bd09ec45df25f9827b1b5062eeb41cb700cd6"
+        },
+        {
+          "path": "vendor/lib64/vendor.qti.data.factory@2.0.so",
+          "sha256": "64436c5fc6c9b177bfd0fdedf9b181d9fa6ebc100f7a71e511364149d3148f44"
+        },
+        {
+          "path": "vendor/lib64/vendor.qti.data.factory@2.1.so",
+          "sha256": "855e772e11bfcbcbd6156bba653ca15a83b694d5570ed6a516ace50cd6ce29a5"
+        },
+        {
+          "path": "vendor/lib64/vendor.qti.data.factory@2.2.so",
+          "sha256": "a7f067f6fb4353efa2372d9939ac455347cd23491810184a94713437994df513"
+        },
+        {
+          "path": "vendor/lib64/vendor.qti.data.factory@2.3.so",
+          "sha256": "205b1b466513af6fed5fba0a726acc60d5ff7df7c11e72a4b8cf9f20603f3ab1"
+        }
+      ],
+      "registration_imports": {
+        "vendor/bin/cnd": [
+          "vendor::qti::data::factory::V2_3::IFactory::registerAsService(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> > const&)",
+          "vendor::qti::data::factory::V2_2::IFactory::registerAsService(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> > const&)"
+        ],
+        "vendor/lib64/libcne.so": [
+          "vendor::qti::data::factory::V2_3::IFactory::registerAsService(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> > const&)",
+          "vendor::qti::data::factory::V2_2::IFactory::registerAsService(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> > const&)"
+        ]
+      },
+      "scope": "Static process/implementation mapping; runtime registration, linker/policy and service behavior untested."
+    },
+    {
+      "reference_record": 22,
+      "name": "vendor.qti.hardware.alarm",
+      "process": "alarm-hal-1-0",
+      "declaration_origin": "Unchanged interface/version/instances from the matching Lineage device reference manifest.",
+      "evidence": [
+        {
+          "path": "vendor/bin/hw/vendor.qti.hardware.alarm@1.0-service",
+          "sha256": "35166c3e8282f79082c7cc02705f724404b2c38feed7de63f757b1cc9ddd3794"
+        },
+        {
+          "path": "vendor/etc/init/vendor.qti.hardware.alarm@1.0-service.rc",
+          "sha256": "7897f041fd0c03f1160d50c1f7d2f82b7380b50c69d22ad2bf5e87cda890bfe6"
+        },
+        {
+          "path": "vendor/lib64/vendor.qti.hardware.alarm@1.0.so",
+          "sha256": "ab2e62d022b28adec6486d18b92971361e3ad82340290e8b39d48ae082dc9351"
+        }
+      ],
+      "registration_imports": {},
+      "scope": "Static process/implementation mapping; runtime registration, linker/policy and service behavior untested."
+    },
+    {
+      "reference_record": 24,
+      "name": "vendor.qti.hardware.bluetooth_sar",
+      "process": "vendor.bluetooth-1-0-qti",
+      "declaration_origin": "Unchanged interface/version/instances from the matching Lineage device reference manifest.",
+      "evidence": [
+        {
+          "path": "vendor/bin/hw/android.hardware.bluetooth@1.0-service-qti",
+          "sha256": "339978ada70003a290ea2f694042c68938f808c9683f8eac894cb7ed07d17d67"
+        },
+        {
+          "path": "vendor/etc/init/android.hardware.bluetooth@1.0-service-qti.rc",
+          "sha256": "b4fabb4ad49d13da8f7152b7f0831b51d57f0f6dfd4c13a41d6a9699a5508085"
+        },
+        {
+          "path": "vendor/lib64/vendor.qti.hardware.bluetooth_sar@1.0.so",
+          "sha256": "f6680df67490cf71f692156a8c81b7a6429383c48d7d2acd6a0226e8a1ef5eab"
+        },
+        {
+          "path": "vendor/lib64/vendor.qti.hardware.bluetooth_sar@1.1.so",
+          "sha256": "99d5de91ea436d1132c0dc3cb633a43f098994bcc2c194dfe65f4d8adad70219"
+        }
+      ],
+      "registration_imports": {},
+      "scope": "Static process/implementation mapping; runtime registration, linker/policy and service behavior untested."
+    },
+    {
+      "reference_record": 25,
+      "name": "vendor.qti.hardware.btconfigstore",
+      "process": "vendor.bluetooth-1-0-qti",
+      "declaration_origin": "Unchanged interface/version/instances from the matching Lineage device reference manifest.",
+      "evidence": [
+        {
+          "path": "vendor/bin/hw/android.hardware.bluetooth@1.0-service-qti",
+          "sha256": "339978ada70003a290ea2f694042c68938f808c9683f8eac894cb7ed07d17d67"
+        },
+        {
+          "path": "vendor/etc/init/android.hardware.bluetooth@1.0-service-qti.rc",
+          "sha256": "b4fabb4ad49d13da8f7152b7f0831b51d57f0f6dfd4c13a41d6a9699a5508085"
+        }
+      ],
+      "registration_imports": {},
+      "scope": "Static process/implementation mapping; runtime registration, linker/policy and service behavior untested."
+    },
+    {
+      "reference_record": 26,
+      "name": "vendor.qti.hardware.camera.postproc",
+      "process": "source-camera-provider",
+      "declaration_origin": "Unchanged interface/version/instances from the matching Lineage device reference manifest.",
+      "evidence": [
+        {
+          "path": "vendor/lib64/hw/camera.qcom.so",
+          "sha256": "aa046e52349c39823092549e8225f4d1e3e099fac71c9d0a713a24ea86206e05"
+        },
+        {
+          "path": "vendor/lib64/hw/com.qti.chi.override.so",
+          "sha256": "dc0d34dbf47df5426debccc62375ce104e6cb94c5c536433c848a1772ea2d9ec"
+        },
+        {
+          "path": "vendor/lib64/vendor.qti.hardware.camera.postproc@1.0-service-impl.so",
+          "sha256": "7a30bd8202d82d32d229c2471804509181219bb35eb5d4efd0e41d913634d108"
+        }
+      ],
+      "registration_imports": {
+        "vendor/lib64/vendor.qti.hardware.camera.postproc@1.0-service-impl.so": [
+          "vendor::qti::hardware::camera::postproc::V1_0::IPostProcService::registerAsService(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> > const&)"
+        ]
+      },
+      "scope": "Static process/implementation mapping; runtime registration, linker/policy and service behavior untested."
+    },
+    {
+      "reference_record": 27,
+      "name": "vendor.qti.hardware.capabilityconfigstore",
+      "process": "vendor.capabilityconfigstore",
+      "declaration_origin": "Unchanged interface/version/instances from the matching Lineage device reference manifest.",
+      "evidence": [
+        {
+          "path": "vendor/bin/hw/vendor.qti.hardware.capabilityconfigstore@1.0-service",
+          "sha256": "bab5860bb218a9c9f3e8dafd0cd9de019eff73d4bd39b4318b333f06b8eae4e2"
+        },
+        {
+          "path": "vendor/etc/init/vendor.qti.hardware.capabilityconfigstore@1.0-service.rc",
+          "sha256": "8df50b2fbfc95cd7722648753b4770505adc25c1bce45fcecf7cf605d00fbc7e"
+        }
+      ],
+      "registration_imports": {},
+      "scope": "Static process/implementation mapping; runtime registration, linker/policy and service behavior untested."
+    },
+    {
+      "reference_record": 28,
+      "name": "vendor.qti.hardware.data.connection",
+      "process": "vendor.qcrild",
+      "declaration_origin": "Unchanged interface/version/instances from the matching Lineage device reference manifest.",
+      "evidence": [
+        {
+          "path": "vendor/bin/hw/qcrild",
+          "sha256": "62a89e9f72dc16eed55109366174401e2c0037185cba51274248436c6c90380f"
+        },
+        {
+          "path": "vendor/etc/init/qcrild.rc",
+          "sha256": "b20c9beac2933934bf12427c38f4127ae16ace3ac39fe04175b5dd45d181ed88"
+        },
+        {
+          "path": "vendor/lib64/libril-qc-hal-qmi.so",
+          "sha256": "2ad2f72fa7f19f15eb3103860a2b997bf65c5b083d402b07f2e3f8b8e04220df"
+        },
+        {
+          "path": "vendor/lib64/vendor.qti.hardware.data.connection@1.0.so",
+          "sha256": "52ed020487290974618651e652efa824d93fb31118e50107ea728c240aa2aa5c"
+        },
+        {
+          "path": "vendor/lib64/vendor.qti.hardware.data.connection@1.1.so",
+          "sha256": "4e55833a45e517806e2ba56fbfe7253be45fbac6f8f0a763c4bc44b5a5b053be"
+        }
+      ],
+      "registration_imports": {
+        "vendor/lib64/libril-qc-hal-qmi.so": [
+          "vendor::qti::hardware::data::connection::V1_1::IDataConnection::registerAsService(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> > const&)"
+        ]
+      },
+      "scope": "Static process/implementation mapping; runtime registration, linker/policy and service behavior untested."
+    },
+    {
+      "reference_record": 29,
+      "name": "vendor.qti.hardware.data.iwlan",
+      "process": "vendor.qcrild",
+      "declaration_origin": "Unchanged interface/version/instances from the matching Lineage device reference manifest.",
+      "evidence": [
+        {
+          "path": "vendor/bin/hw/qcrild",
+          "sha256": "62a89e9f72dc16eed55109366174401e2c0037185cba51274248436c6c90380f"
+        },
+        {
+          "path": "vendor/etc/init/qcrild.rc",
+          "sha256": "b20c9beac2933934bf12427c38f4127ae16ace3ac39fe04175b5dd45d181ed88"
+        },
+        {
+          "path": "vendor/lib64/libril-qc-hal-qmi.so",
+          "sha256": "2ad2f72fa7f19f15eb3103860a2b997bf65c5b083d402b07f2e3f8b8e04220df"
+        },
+        {
+          "path": "vendor/lib64/vendor.qti.hardware.data.iwlan@1.0.so",
+          "sha256": "24d82e4a392932411b43ad9954e7f5be4d9e091b242845bada6214450716a150"
+        }
+      ],
+      "registration_imports": {
+        "vendor/lib64/libril-qc-hal-qmi.so": [
+          "vendor::qti::hardware::data::iwlan::V1_0::IIWlan::registerAsService(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> > const&)"
+        ]
+      },
+      "scope": "Static process/implementation mapping; runtime registration, linker/policy and service behavior untested."
+    },
+    {
+      "reference_record": 30,
+      "name": "vendor.qti.hardware.data.latency",
+      "process": "vendor.cnd",
+      "declaration_origin": "Unchanged interface/version/instances from the matching Lineage device reference manifest.",
+      "evidence": [
+        {
+          "path": "vendor/bin/cnd",
+          "sha256": "d6d8acd90e3d1e6d971f96cca3afbd4b50aaa95d54f81382668bb16977722287"
+        },
+        {
+          "path": "vendor/etc/init/cnd.rc",
+          "sha256": "1f861f9e0431640549e58fbb1733f57d1f2db1ef0956d05c8777f10aa7e5cf62"
+        },
+        {
+          "path": "vendor/lib64/libcne.so",
+          "sha256": "dfb26c04c0078506056849a91e6ac9e390104e061675cfffc7a13820a3d8c414"
+        },
+        {
+          "path": "vendor/lib64/vendor.qti.hardware.data.latency@1.0.so",
+          "sha256": "0eaade3a4dbd0644db44485ba378489b2bba724567b164c3bbb0afd6e087c864"
+        }
+      ],
+      "registration_imports": {
+        "vendor/lib64/libcne.so": [
+          "vendor::qti::hardware::data::latency::V1_0::ILinkLatency::registerAsService(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> > const&)"
+        ]
+      },
+      "scope": "Static process/implementation mapping; runtime registration, linker/policy and service behavior untested."
+    },
+    {
+      "reference_record": 32,
+      "name": "vendor.qti.hardware.fm",
+      "process": "vendor.bluetooth-1-0-qti",
+      "declaration_origin": "Unchanged interface/version/instances from the matching Lineage device reference manifest.",
+      "evidence": [
+        {
+          "path": "vendor/bin/hw/android.hardware.bluetooth@1.0-service-qti",
+          "sha256": "339978ada70003a290ea2f694042c68938f808c9683f8eac894cb7ed07d17d67"
+        },
+        {
+          "path": "vendor/etc/init/android.hardware.bluetooth@1.0-service-qti.rc",
+          "sha256": "b4fabb4ad49d13da8f7152b7f0831b51d57f0f6dfd4c13a41d6a9699a5508085"
+        },
+        {
+          "path": "vendor/lib64/vendor.qti.hardware.fm@1.0.so",
+          "sha256": "8eca34e3033cd8ef6ccd6ba4ccbd28601c5e363b258dc65068c5af05c6ad0b01"
+        }
+      ],
+      "registration_imports": {},
+      "scope": "Static process/implementation mapping; runtime registration, linker/policy and service behavior untested."
+    },
+    {
+      "reference_record": 33,
+      "name": "vendor.qti.hardware.mwqemadapter",
+      "process": "vendor.cnd",
+      "declaration_origin": "Unchanged interface/version/instances from the matching Lineage device reference manifest.",
+      "evidence": [
+        {
+          "path": "vendor/bin/cnd",
+          "sha256": "d6d8acd90e3d1e6d971f96cca3afbd4b50aaa95d54f81382668bb16977722287"
+        },
+        {
+          "path": "vendor/etc/init/cnd.rc",
+          "sha256": "1f861f9e0431640549e58fbb1733f57d1f2db1ef0956d05c8777f10aa7e5cf62"
+        },
+        {
+          "path": "vendor/lib64/libcne.so",
+          "sha256": "dfb26c04c0078506056849a91e6ac9e390104e061675cfffc7a13820a3d8c414"
+        },
+        {
+          "path": "vendor/lib64/vendor.qti.hardware.mwqemadapter@1.0.so",
+          "sha256": "389b1b6d8d64fa2f3ee153da6a07a1a9adddd6ae50d20575ef998ac69e2f083a"
+        }
+      ],
+      "registration_imports": {
+        "vendor/lib64/libcne.so": [
+          "vendor::qti::hardware::mwqemadapter::V1_0::IMwqemAdapter::registerAsService(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> > const&)"
+        ]
+      },
+      "scope": "Static process/implementation mapping; runtime registration, linker/policy and service behavior untested."
+    },
+    {
+      "reference_record": 35,
+      "name": "vendor.qti.hardware.qseecom",
+      "process": "qseecom-service",
+      "declaration_origin": "Unchanged interface/version/instances from the matching Lineage device reference manifest.",
+      "evidence": [
+        {
+          "path": "vendor/bin/hw/vendor.qti.hardware.qseecom@1.0-service",
+          "sha256": "af035ebbfc687d101510020ca2614687cd55854c6e2c03a8b7dbaf20352984c6"
+        },
+        {
+          "path": "vendor/etc/init/vendor.qti.hardware.qseecom@1.0-service.rc",
+          "sha256": "fe3a6b4c1fbd70e60f8688be4f580f08ab3bb7949189aabea0750db5d001db79"
+        },
+        {
+          "path": "vendor/lib64/vendor.qti.hardware.qseecom@1.0.so",
+          "sha256": "c7a44495c6818b14d9778480a3c2a85d033002182e615f76f2b75a1bf3bc371c"
+        }
+      ],
+      "registration_imports": {
+        "vendor/bin/hw/vendor.qti.hardware.qseecom@1.0-service": [
+          "vendor::qti::hardware::qseecom::V1_0::IQSEECom::registerAsService(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> > const&)"
+        ]
+      },
+      "scope": "Static process/implementation mapping; runtime registration, linker/policy and service behavior untested."
+    },
+    {
+      "reference_record": 36,
+      "name": "vendor.qti.hardware.qteeconnector",
+      "process": "qteeconnector-hal-1-0",
+      "declaration_origin": "Unchanged interface/version/instances from the matching Lineage device reference manifest.",
+      "evidence": [
+        {
+          "path": "vendor/bin/hw/vendor.qti.hardware.qteeconnector@1.0-service",
+          "sha256": "8938f2de427f887fb09b1d6b09899673e98234af3fcab0f369fda23caad88a96"
+        },
+        {
+          "path": "vendor/etc/init/vendor.qti.hardware.qteeconnector@1.0-service.rc",
+          "sha256": "90ab48bc6399a7ca5a9098d84c8011f7086792449bd1f6ce1500a6cf960016b7"
+        },
+        {
+          "path": "vendor/lib64/vendor.qti.hardware.qteeconnector@1.0.so",
+          "sha256": "9e0aff2f9714adcc0b462a79c49d4457131e418569f35b9f9fb3bf0e6ad06577"
+        }
+      ],
+      "registration_imports": {
+        "vendor/bin/hw/vendor.qti.hardware.qteeconnector@1.0-service": [
+          "vendor::qti::hardware::qteeconnector::V1_0::IAppConnector::registerAsService(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> > const&)",
+          "vendor::qti::hardware::qteeconnector::V1_0::IGPAppConnector::registerAsService(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> > const&)"
+        ]
+      },
+      "scope": "Static process/implementation mapping; runtime registration, linker/policy and service behavior untested."
+    },
+    {
+      "reference_record": 37,
+      "name": "vendor.qti.hardware.radio.am",
+      "process": "vendor.qcrild",
+      "declaration_origin": "Unchanged interface/version/instances from the matching Lineage device reference manifest.",
+      "evidence": [
+        {
+          "path": "vendor/bin/hw/qcrild",
+          "sha256": "62a89e9f72dc16eed55109366174401e2c0037185cba51274248436c6c90380f"
+        },
+        {
+          "path": "vendor/etc/init/qcrild.rc",
+          "sha256": "b20c9beac2933934bf12427c38f4127ae16ace3ac39fe04175b5dd45d181ed88"
+        },
+        {
+          "path": "vendor/lib64/libril-qc-hal-qmi.so",
+          "sha256": "2ad2f72fa7f19f15eb3103860a2b997bf65c5b083d402b07f2e3f8b8e04220df"
+        },
+        {
+          "path": "vendor/lib64/vendor.qti.hardware.radio.am@1.0.so",
+          "sha256": "d27b875cef2c506d0743ee8d356b61b1abec13c48187863fe3d31df918e37310"
+        }
+      ],
+      "registration_imports": {
+        "vendor/lib64/libril-qc-hal-qmi.so": [
+          "vendor::qti::hardware::radio::am::V1_0::IQcRilAudio::registerAsService(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> > const&)"
+        ]
+      },
+      "scope": "Static process/implementation mapping; runtime registration, linker/policy and service behavior untested."
+    },
+    {
+      "reference_record": 38,
+      "name": "vendor.qti.hardware.radio.ims",
+      "process": "vendor.qcrild",
+      "declaration_origin": "Unchanged interface/version/instances from the matching Lineage device reference manifest.",
+      "evidence": [
+        {
+          "path": "vendor/bin/hw/qcrild",
+          "sha256": "62a89e9f72dc16eed55109366174401e2c0037185cba51274248436c6c90380f"
+        },
+        {
+          "path": "vendor/etc/init/qcrild.rc",
+          "sha256": "b20c9beac2933934bf12427c38f4127ae16ace3ac39fe04175b5dd45d181ed88"
+        },
+        {
+          "path": "vendor/lib64/libril-qc-hal-qmi.so",
+          "sha256": "2ad2f72fa7f19f15eb3103860a2b997bf65c5b083d402b07f2e3f8b8e04220df"
+        },
+        {
+          "path": "vendor/lib64/vendor.qti.hardware.radio.ims@1.0.so",
+          "sha256": "8496c37c6d0d1f86bde2f87797c340353d4d7d1a238328174fde93e47b11bf69"
+        },
+        {
+          "path": "vendor/lib64/vendor.qti.hardware.radio.ims@1.1.so",
+          "sha256": "796e12e9422c1c2ab4b2d658f54e0fbd6602e8c6428a1053f6abe930f45ec0d5"
+        },
+        {
+          "path": "vendor/lib64/vendor.qti.hardware.radio.ims@1.2.so",
+          "sha256": "e0d9e96b918fd52b4bc417e4d87766aedc98710385fa0e5fd56ca503daf07dae"
+        },
+        {
+          "path": "vendor/lib64/vendor.qti.hardware.radio.ims@1.3.so",
+          "sha256": "8aa774bacfe08ba1d6078e821274772f59aa862159695ab9d8590821d3d147fd"
+        },
+        {
+          "path": "vendor/lib64/vendor.qti.hardware.radio.ims@1.4.so",
+          "sha256": "f94342067fc7abf1b81ddb73f62dcbce65fcc8ce72151a34c95c88b22c38b8c1"
+        },
+        {
+          "path": "vendor/lib64/vendor.qti.hardware.radio.ims@1.5.so",
+          "sha256": "68f9529d649ea6919f785a6cbe70279347da9efa86d62ccdb3557cbe507db663"
+        },
+        {
+          "path": "vendor/lib64/vendor.qti.hardware.radio.ims@1.6.so",
+          "sha256": "74bd2a5c1cfa5b93b0d0b05c0bc5902db0012483e3bdab6ea2759a957ddfb0aa"
+        },
+        {
+          "path": "vendor/lib64/vendor.qti.hardware.radio.ims@1.7.so",
+          "sha256": "d16977740d8eb6dd71e6543e81ea1880fabfbcac998d7c325fdf96fe86c0223c"
+        }
+      ],
+      "registration_imports": {
+        "vendor/lib64/libril-qc-hal-qmi.so": [
+          "vendor::qti::hardware::radio::ims::V1_4::IImsRadio::registerAsService(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> > const&)",
+          "vendor::qti::hardware::radio::ims::V1_3::IImsRadio::registerAsService(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> > const&)",
+          "vendor::qti::hardware::radio::ims::V1_5::IImsRadio::registerAsService(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> > const&)",
+          "vendor::qti::hardware::radio::ims::V1_7::IImsRadio::registerAsService(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> > const&)",
+          "vendor::qti::hardware::radio::ims::V1_6::IImsRadio::registerAsService(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> > const&)"
+        ]
+      },
+      "scope": "Static process/implementation mapping; runtime registration, linker/policy and service behavior untested."
+    },
+    {
+      "reference_record": 39,
+      "name": "vendor.qti.hardware.radio.internal.deviceinfo",
+      "process": "vendor.qcrild",
+      "declaration_origin": "Unchanged interface/version/instances from the matching Lineage device reference manifest.",
+      "evidence": [
+        {
+          "path": "vendor/bin/hw/qcrild",
+          "sha256": "62a89e9f72dc16eed55109366174401e2c0037185cba51274248436c6c90380f"
+        },
+        {
+          "path": "vendor/etc/init/qcrild.rc",
+          "sha256": "b20c9beac2933934bf12427c38f4127ae16ace3ac39fe04175b5dd45d181ed88"
+        },
+        {
+          "path": "vendor/lib64/libril-qc-hal-qmi.so",
+          "sha256": "2ad2f72fa7f19f15eb3103860a2b997bf65c5b083d402b07f2e3f8b8e04220df"
+        },
+        {
+          "path": "vendor/lib64/vendor.qti.hardware.radio.internal.deviceinfo@1.0.so",
+          "sha256": "dbfa205ccfb6ef8f76cb04a0f7576a5692086ca36c11f62343771af91cbdc5c4"
+        }
+      ],
+      "registration_imports": {
+        "vendor/lib64/deviceInfoServiceModule.so": [
+          "vendor::qti::hardware::radio::internal::deviceinfo::V1_0::IDeviceInfo::registerAsService(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> > const&)"
+        ]
+      },
+      "scope": "Static process/implementation mapping; runtime registration, linker/policy and service behavior untested."
+    },
+    {
+      "reference_record": 40,
+      "name": "vendor.qti.hardware.radio.qcrilhook",
+      "process": "vendor.qcrild",
+      "declaration_origin": "Unchanged interface/version/instances from the matching Lineage device reference manifest.",
+      "evidence": [
+        {
+          "path": "vendor/bin/hw/qcrild",
+          "sha256": "62a89e9f72dc16eed55109366174401e2c0037185cba51274248436c6c90380f"
+        },
+        {
+          "path": "vendor/etc/init/qcrild.rc",
+          "sha256": "b20c9beac2933934bf12427c38f4127ae16ace3ac39fe04175b5dd45d181ed88"
+        },
+        {
+          "path": "vendor/lib64/libril-qc-hal-qmi.so",
+          "sha256": "2ad2f72fa7f19f15eb3103860a2b997bf65c5b083d402b07f2e3f8b8e04220df"
+        },
+        {
+          "path": "vendor/lib64/vendor.qti.hardware.radio.qcrilhook@1.0.so",
+          "sha256": "dd3476751ddc1a370681a8724f4e15953d1b0a459e57bfb76668c22b5ee48112"
+        }
+      ],
+      "registration_imports": {
+        "vendor/lib64/libril-qc-hal-qmi.so": [
+          "vendor::qti::hardware::radio::qcrilhook::V1_0::IQtiOemHook::registerAsService(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> > const&)"
+        ]
+      },
+      "scope": "Static process/implementation mapping; runtime registration, linker/policy and service behavior untested."
+    },
+    {
+      "reference_record": 41,
+      "name": "vendor.qti.hardware.radio.qtiradio",
+      "process": "vendor.qcrild",
+      "declaration_origin": "Unchanged interface/version/instances from the matching Lineage device reference manifest.",
+      "evidence": [
+        {
+          "path": "vendor/bin/hw/qcrild",
+          "sha256": "62a89e9f72dc16eed55109366174401e2c0037185cba51274248436c6c90380f"
+        },
+        {
+          "path": "vendor/etc/init/qcrild.rc",
+          "sha256": "b20c9beac2933934bf12427c38f4127ae16ace3ac39fe04175b5dd45d181ed88"
+        },
+        {
+          "path": "vendor/lib64/libril-qc-hal-qmi.so",
+          "sha256": "2ad2f72fa7f19f15eb3103860a2b997bf65c5b083d402b07f2e3f8b8e04220df"
+        },
+        {
+          "path": "vendor/lib64/vendor.qti.hardware.radio.qtiradio@1.0.so",
+          "sha256": "4eae94865bda902b6b0e99d32138216f43c963e00c3daed1637bed613148d227"
+        },
+        {
+          "path": "vendor/lib64/vendor.qti.hardware.radio.qtiradio@2.0.so",
+          "sha256": "55d46bbb4984072ef759a491b29f5e667a7c9f68dbb62bf5369835e300741897"
+        },
+        {
+          "path": "vendor/lib64/vendor.qti.hardware.radio.qtiradio@2.1.so",
+          "sha256": "af12a9fdf6e5ad5263ea6e2c15bd0f094520dd3ca45a150cabd2f9859a0da104"
+        },
+        {
+          "path": "vendor/lib64/vendor.qti.hardware.radio.qtiradio@2.2.so",
+          "sha256": "9dd3f70af4d76f38811e7ef283558049461d2f5c7129ddbeb38f76b549d25054"
+        },
+        {
+          "path": "vendor/lib64/vendor.qti.hardware.radio.qtiradio@2.3.so",
+          "sha256": "c6f652da3a0ea3d59151d36021ea28098b2c590e6c4786efd4fdfcccc60c976d"
+        },
+        {
+          "path": "vendor/lib64/vendor.qti.hardware.radio.qtiradio@2.4.so",
+          "sha256": "f2f084f4d585576dfb21679e8027c12e762315e75fa801b859935e54624d73af"
+        }
+      ],
+      "registration_imports": {
+        "vendor/lib64/libril-qc-hal-qmi.so": [
+          "vendor::qti::hardware::radio::qtiradio::V2_4::IQtiRadio::registerAsService(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> > const&)",
+          "vendor::qti::hardware::radio::qtiradio::V2_3::IQtiRadio::registerAsService(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> > const&)",
+          "vendor::qti::hardware::radio::qtiradio::V2_2::IQtiRadio::registerAsService(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> > const&)",
+          "vendor::qti::hardware::radio::qtiradio::V2_1::IQtiRadio::registerAsService(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> > const&)",
+          "vendor::qti::hardware::radio::qtiradio::V2_0::IQtiRadio::registerAsService(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> > const&)",
+          "vendor::qti::hardware::radio::qtiradio::V1_0::IQtiRadio::registerAsService(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> > const&)"
+        ]
+      },
+      "scope": "Static process/implementation mapping; runtime registration, linker/policy and service behavior untested."
+    },
+    {
+      "reference_record": 42,
+      "name": "vendor.qti.hardware.radio.qtiradio",
+      "process": "vendor.qcrild",
+      "declaration_origin": "Unchanged interface/version/instances from the matching Lineage device reference manifest.",
+      "evidence": [
+        {
+          "path": "vendor/bin/hw/qcrild",
+          "sha256": "62a89e9f72dc16eed55109366174401e2c0037185cba51274248436c6c90380f"
+        },
+        {
+          "path": "vendor/etc/init/qcrild.rc",
+          "sha256": "b20c9beac2933934bf12427c38f4127ae16ace3ac39fe04175b5dd45d181ed88"
+        },
+        {
+          "path": "vendor/lib64/libril-qc-hal-qmi.so",
+          "sha256": "2ad2f72fa7f19f15eb3103860a2b997bf65c5b083d402b07f2e3f8b8e04220df"
+        },
+        {
+          "path": "vendor/lib64/vendor.qti.hardware.radio.qtiradio@1.0.so",
+          "sha256": "4eae94865bda902b6b0e99d32138216f43c963e00c3daed1637bed613148d227"
+        },
+        {
+          "path": "vendor/lib64/vendor.qti.hardware.radio.qtiradio@2.0.so",
+          "sha256": "55d46bbb4984072ef759a491b29f5e667a7c9f68dbb62bf5369835e300741897"
+        },
+        {
+          "path": "vendor/lib64/vendor.qti.hardware.radio.qtiradio@2.1.so",
+          "sha256": "af12a9fdf6e5ad5263ea6e2c15bd0f094520dd3ca45a150cabd2f9859a0da104"
+        },
+        {
+          "path": "vendor/lib64/vendor.qti.hardware.radio.qtiradio@2.2.so",
+          "sha256": "9dd3f70af4d76f38811e7ef283558049461d2f5c7129ddbeb38f76b549d25054"
+        },
+        {
+          "path": "vendor/lib64/vendor.qti.hardware.radio.qtiradio@2.3.so",
+          "sha256": "c6f652da3a0ea3d59151d36021ea28098b2c590e6c4786efd4fdfcccc60c976d"
+        },
+        {
+          "path": "vendor/lib64/vendor.qti.hardware.radio.qtiradio@2.4.so",
+          "sha256": "f2f084f4d585576dfb21679e8027c12e762315e75fa801b859935e54624d73af"
+        }
+      ],
+      "registration_imports": {
+        "vendor/lib64/libril-qc-hal-qmi.so": [
+          "vendor::qti::hardware::radio::qtiradio::V2_4::IQtiRadio::registerAsService(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> > const&)",
+          "vendor::qti::hardware::radio::qtiradio::V2_3::IQtiRadio::registerAsService(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> > const&)",
+          "vendor::qti::hardware::radio::qtiradio::V2_2::IQtiRadio::registerAsService(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> > const&)",
+          "vendor::qti::hardware::radio::qtiradio::V2_1::IQtiRadio::registerAsService(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> > const&)",
+          "vendor::qti::hardware::radio::qtiradio::V2_0::IQtiRadio::registerAsService(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> > const&)",
+          "vendor::qti::hardware::radio::qtiradio::V1_0::IQtiRadio::registerAsService(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> > const&)"
+        ]
+      },
+      "scope": "Static process/implementation mapping; runtime registration, linker/policy and service behavior untested."
+    },
+    {
+      "reference_record": 43,
+      "name": "vendor.qti.hardware.radio.uim",
+      "process": "vendor.qcrild",
+      "declaration_origin": "Unchanged interface/version/instances from the matching Lineage device reference manifest.",
+      "evidence": [
+        {
+          "path": "vendor/bin/hw/qcrild",
+          "sha256": "62a89e9f72dc16eed55109366174401e2c0037185cba51274248436c6c90380f"
+        },
+        {
+          "path": "vendor/etc/init/qcrild.rc",
+          "sha256": "b20c9beac2933934bf12427c38f4127ae16ace3ac39fe04175b5dd45d181ed88"
+        },
+        {
+          "path": "vendor/lib64/libril-qc-hal-qmi.so",
+          "sha256": "2ad2f72fa7f19f15eb3103860a2b997bf65c5b083d402b07f2e3f8b8e04220df"
+        },
+        {
+          "path": "vendor/lib64/vendor.qti.hardware.radio.uim@1.0.so",
+          "sha256": "4b0e85dd7dbc309f767acb4341251f41d5cd973d654f27600760f88049108a73"
+        },
+        {
+          "path": "vendor/lib64/vendor.qti.hardware.radio.uim@1.1.so",
+          "sha256": "4b4c7070c8ca8833f0d9009f8746f55cdd4db84c091e9acff5fc86b0c4c3f101"
+        },
+        {
+          "path": "vendor/lib64/vendor.qti.hardware.radio.uim@1.2.so",
+          "sha256": "92ba7f069f248da1f19cece5e9a45ad27fb8406a90ec6913f8d5e5b5d39742cf"
+        },
+        {
+          "path": "vendor/lib64/vendor.qti.hardware.radio.uim_remote_client@1.0.so",
+          "sha256": "3842bd8c01547fff25bf7ac886920f534d2dc7c783e6f5dc55682cf81d1c3b6f"
+        },
+        {
+          "path": "vendor/lib64/vendor.qti.hardware.radio.uim_remote_client@1.1.so",
+          "sha256": "4a969fc17d1123e82d5bc29231caae1f5b107ebdbe5f182d72ba6edd4db9d123"
+        },
+        {
+          "path": "vendor/lib64/vendor.qti.hardware.radio.uim_remote_client@1.2.so",
+          "sha256": "d5a56865be7d1c01e99edee6e9c2b3a3af235cf8cffeccbc39cb89cfceb4ecdf"
+        },
+        {
+          "path": "vendor/lib64/vendor.qti.hardware.radio.uim_remote_server@1.0.so",
+          "sha256": "e5d0ead71569db74af651fc3fc667eeaafcf4a5859ef0b36c8bac6c2dbf54a0c"
+        }
+      ],
+      "registration_imports": {
+        "vendor/lib64/libril-qc-hal-qmi.so": [
+          "vendor::qti::hardware::radio::uim::V1_2::IUim::registerAsService(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> > const&)"
+        ]
+      },
+      "scope": "Static process/implementation mapping; runtime registration, linker/policy and service behavior untested."
+    },
+    {
+      "reference_record": 44,
+      "name": "vendor.qti.hardware.radio.uim_remote_client",
+      "process": "vendor.qcrild",
+      "declaration_origin": "Unchanged interface/version/instances from the matching Lineage device reference manifest.",
+      "evidence": [
+        {
+          "path": "vendor/bin/hw/qcrild",
+          "sha256": "62a89e9f72dc16eed55109366174401e2c0037185cba51274248436c6c90380f"
+        },
+        {
+          "path": "vendor/etc/init/qcrild.rc",
+          "sha256": "b20c9beac2933934bf12427c38f4127ae16ace3ac39fe04175b5dd45d181ed88"
+        },
+        {
+          "path": "vendor/lib64/libril-qc-hal-qmi.so",
+          "sha256": "2ad2f72fa7f19f15eb3103860a2b997bf65c5b083d402b07f2e3f8b8e04220df"
+        },
+        {
+          "path": "vendor/lib64/vendor.qti.hardware.radio.uim_remote_client@1.0.so",
+          "sha256": "3842bd8c01547fff25bf7ac886920f534d2dc7c783e6f5dc55682cf81d1c3b6f"
+        },
+        {
+          "path": "vendor/lib64/vendor.qti.hardware.radio.uim_remote_client@1.1.so",
+          "sha256": "4a969fc17d1123e82d5bc29231caae1f5b107ebdbe5f182d72ba6edd4db9d123"
+        },
+        {
+          "path": "vendor/lib64/vendor.qti.hardware.radio.uim_remote_client@1.2.so",
+          "sha256": "d5a56865be7d1c01e99edee6e9c2b3a3af235cf8cffeccbc39cb89cfceb4ecdf"
+        }
+      ],
+      "registration_imports": {
+        "vendor/lib64/libril-qc-hal-qmi.so": [
+          "vendor::qti::hardware::radio::uim_remote_client::V1_0::IUimRemoteServiceClient::registerAsService(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> > const&)"
+        ]
+      },
+      "scope": "Static process/implementation mapping; runtime registration, linker/policy and service behavior untested."
+    },
+    {
+      "reference_record": 45,
+      "name": "vendor.qti.hardware.radio.uim_remote_server",
+      "process": "vendor.qcrild",
+      "declaration_origin": "Unchanged interface/version/instances from the matching Lineage device reference manifest.",
+      "evidence": [
+        {
+          "path": "vendor/bin/hw/qcrild",
+          "sha256": "62a89e9f72dc16eed55109366174401e2c0037185cba51274248436c6c90380f"
+        },
+        {
+          "path": "vendor/etc/init/qcrild.rc",
+          "sha256": "b20c9beac2933934bf12427c38f4127ae16ace3ac39fe04175b5dd45d181ed88"
+        },
+        {
+          "path": "vendor/lib64/libril-qc-hal-qmi.so",
+          "sha256": "2ad2f72fa7f19f15eb3103860a2b997bf65c5b083d402b07f2e3f8b8e04220df"
+        },
+        {
+          "path": "vendor/lib64/vendor.qti.hardware.radio.uim_remote_server@1.0.so",
+          "sha256": "e5d0ead71569db74af651fc3fc667eeaafcf4a5859ef0b36c8bac6c2dbf54a0c"
+        }
+      ],
+      "registration_imports": {
+        "vendor/lib64/libril-qc-hal-qmi.so": [
+          "vendor::qti::hardware::radio::uim_remote_server::V1_0::IUimRemoteServiceServer::registerAsService(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> > const&)"
+        ]
+      },
+      "scope": "Static process/implementation mapping; runtime registration, linker/policy and service behavior untested."
+    },
+    {
+      "reference_record": 46,
+      "name": "vendor.qti.hardware.sensorscalibrate",
+      "process": "sensorscal-hal-1-0",
+      "declaration_origin": "Unchanged interface/version/instances from the matching Lineage device reference manifest.",
+      "evidence": [
+        {
+          "path": "vendor/bin/hw/vendor.qti.hardware.sensorscalibrate@1.0-service",
+          "sha256": "70bde614cb31ea56a16aed2d88b2f095d1156105344fdcefe9e5bc81c5ce2413"
+        },
+        {
+          "path": "vendor/etc/init/vendor.qti.hardware.sensorscalibrate@1.0-service.rc",
+          "sha256": "e3179404f6caa31774a2b6c5a4e82eb3ebc791a5870b21c09e6a5a9a64ad341a"
+        },
+        {
+          "path": "vendor/lib64/vendor.qti.hardware.sensorscalibrate@1.0.so",
+          "sha256": "9c0f65d64b548d9f6bcf015e6c906ed1c74aa3d3a9906d4deb89ca417a37feaa"
+        }
+      ],
+      "registration_imports": {},
+      "scope": "Static process/implementation mapping; runtime registration, linker/policy and service behavior untested."
+    },
+    {
+      "reference_record": 47,
+      "name": "vendor.qti.hardware.soter",
+      "process": "soter-1-0",
+      "declaration_origin": "Unchanged interface/version/instances from the matching Lineage device reference manifest.",
+      "evidence": [
+        {
+          "path": "vendor/bin/hw/vendor.qti.hardware.soter@1.0-service",
+          "sha256": "fdd549e7cc01ceb998016cb3f5a14b490f3e92a438a4fcf537cc09c8a4320905"
+        },
+        {
+          "path": "vendor/etc/init/vendor.qti.hardware.soter@1.0-service.rc",
+          "sha256": "de0c771beebd9643fd58b39cae33ca435867af8b0f84a56b663edad95cbec145"
+        },
+        {
+          "path": "vendor/lib64/vendor.qti.hardware.soter@1.0.so",
+          "sha256": "e5551c36e4b79fec87c606762c560d90d646a1d6099a6d1ba54f47572c0afef3"
+        }
+      ],
+      "registration_imports": {
+        "vendor/bin/hw/vendor.qti.hardware.soter@1.0-service": [
+          "vendor::qti::hardware::soter::V1_0::ISoter::registerAsService(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> > const&)"
+        ]
+      },
+      "scope": "Static process/implementation mapping; runtime registration, linker/policy and service behavior untested."
+    },
+    {
+      "reference_record": 48,
+      "name": "vendor.qti.hardware.wifidisplaysession",
+      "process": "wifidisplayhalservice",
+      "declaration_origin": "Unchanged interface/version/instances from the matching Lineage device reference manifest.",
+      "evidence": [
+        {
+          "path": "vendor/bin/wifidisplayhalservice",
+          "sha256": "0c2e483125d3ab427ecdea661453a087c6df746cc03a2c19b62689ad77ae0e59"
+        },
+        {
+          "path": "vendor/etc/init/com.qualcomm.qti.wifidisplayhal@1.0-service.rc",
+          "sha256": "a8ac68e72fbce5e2382515961a12a82e2fe2c9dd4ad7dff05e7dcf166d28051b"
+        },
+        {
+          "path": "vendor/lib/libwfdsessionmodule.so",
+          "sha256": "66a6c49e06a0965355f2575724f63fbc27145237e0761536595c6b1f002266cd"
+        },
+        {
+          "path": "vendor/lib/vendor.qti.hardware.wifidisplaysession@1.0.so",
+          "sha256": "4c04fe32bb4b6d807e319f04893dfd365b3f25b58295b6a6dd2abfb64703ffec"
+        },
+        {
+          "path": "vendor/lib/vendor.qti.hardware.wifidisplaysessionl@1.0-halimpl.so",
+          "sha256": "a499df552b14d9df6e912d8bbd512de92c4b63185baab257f1f138fafdf1bbb9"
+        }
+      ],
+      "registration_imports": {
+        "vendor/bin/wifidisplayhalservice": [
+          "vendor::qti::hardware::wifidisplaysession::V1_0::IWifiDisplaySession::registerAsService(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> > const&)",
+          "vendor::qti::hardware::wifidisplaysession::V1_0::IWifiDisplaySessionAudioTrack::registerAsService(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> > const&)",
+          "vendor::qti::hardware::wifidisplaysession::V1_0::IWifiDisplaySessionImageTrack::registerAsService(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> > const&)",
+          "vendor::qti::hardware::wifidisplaysession::V1_0::IWifiDisplaySessionVideoTrack::registerAsService(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> > const&)"
+        ]
+      },
+      "scope": "Static process/implementation mapping; runtime registration, linker/policy and service behavior untested."
+    },
+    {
+      "reference_record": 49,
+      "name": "vendor.qti.ims.callinfo",
+      "process": "vendor.imsrcsservice",
+      "declaration_origin": "Unchanged interface/version/instances from the matching Lineage device reference manifest.",
+      "evidence": [
+        {
+          "path": "vendor/bin/imsrcsd",
+          "sha256": "960b147969cdc06a6fc24583fe070ddb278b056f4cedde2b391a07e704915fb5"
+        },
+        {
+          "path": "vendor/etc/init/imsrcsd.rc",
+          "sha256": "446252650bd8932228b3a09de919182ee1ccd1773a9f5bdf838d000d48ac1eaa"
+        },
+        {
+          "path": "vendor/lib64/lib-imsrcs-v2.so",
+          "sha256": "a7c874d93f8c83c74815fdbb3cd731c2c87310dabc0df7946e7c7fcdc0b96e13"
+        },
+        {
+          "path": "vendor/lib64/lib-imsrcsbaseimpl.so",
+          "sha256": "b1fc83dfaabcbac4b964ae86fb2818fc051d5fe94afe6587cf2f6a056b6614ad"
+        },
+        {
+          "path": "vendor/lib64/lib-uceservice.so",
+          "sha256": "c5df3f0d07b802a318a1d41a38abf08c9502e584c4866ab388520a0ed766e10c"
+        }
+      ],
+      "registration_imports": {
+        "vendor/lib64/lib-imsrcsbaseimpl.so": [
+          "vendor::qti::ims::callinfo::V1_0::IService::registerAsService(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> > const&)"
+        ],
+        "vendor/lib64/lib-imsrcs-v2.so": [
+          "vendor::qti::ims::callinfo::V1_0::IService::registerAsService(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> > const&)"
+        ]
+      },
+      "scope": "Static process/implementation mapping; runtime registration, linker/policy and service behavior untested."
+    },
+    {
+      "reference_record": 50,
+      "name": "vendor.qti.ims.factory",
+      "process": "vendor.imsrcsservice",
+      "declaration_origin": "Unchanged interface/version/instances from the matching Lineage device reference manifest.",
+      "evidence": [
+        {
+          "path": "vendor/bin/imsrcsd",
+          "sha256": "960b147969cdc06a6fc24583fe070ddb278b056f4cedde2b391a07e704915fb5"
+        },
+        {
+          "path": "vendor/etc/init/imsrcsd.rc",
+          "sha256": "446252650bd8932228b3a09de919182ee1ccd1773a9f5bdf838d000d48ac1eaa"
+        },
+        {
+          "path": "vendor/lib64/lib-imsrcs-v2.so",
+          "sha256": "a7c874d93f8c83c74815fdbb3cd731c2c87310dabc0df7946e7c7fcdc0b96e13"
+        },
+        {
+          "path": "vendor/lib64/lib-imsrcsbaseimpl.so",
+          "sha256": "b1fc83dfaabcbac4b964ae86fb2818fc051d5fe94afe6587cf2f6a056b6614ad"
+        },
+        {
+          "path": "vendor/lib64/lib-uceservice.so",
+          "sha256": "c5df3f0d07b802a318a1d41a38abf08c9502e584c4866ab388520a0ed766e10c"
+        }
+      ],
+      "registration_imports": {
+        "vendor/lib64/lib-rcsconfig.so": [
+          "vendor::qti::ims::factory::V1_1::IImsFactory::registerAsService(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> > const&)",
+          "vendor::qti::ims::factory::V1_0::IImsFactory::registerAsService(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> > const&)"
+        ],
+        "vendor/lib64/lib-imsrcsbaseimpl.so": [
+          "vendor::qti::ims::factory::V1_1::IImsFactory::registerAsService(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> > const&)",
+          "vendor::qti::ims::factory::V1_0::IImsFactory::registerAsService(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> > const&)"
+        ]
+      },
+      "scope": "Static process/implementation mapping; runtime registration, linker/policy and service behavior untested."
+    },
+    {
+      "reference_record": 51,
+      "name": "vendor.qti.imsrtpservice",
+      "process": "vendor.ims_rtp_daemon",
+      "declaration_origin": "Unchanged interface/version/instances from the matching Lineage device reference manifest.",
+      "evidence": [
+        {
+          "path": "system_ext/lib64/vendor.qti.imsrtpservice@3.0.so",
+          "sha256": "2aae710bc528455ac8f9c452606b3a16dc8ef220dd4d48d07dc7780cb9379891"
+        },
+        {
+          "path": "vendor/bin/ims_rtp_daemon",
+          "sha256": "c7a8aa1698b0e54554a4ec22a08db783605ec900dd79ce96b928dc72739cf12b"
+        },
+        {
+          "path": "vendor/etc/init/ims_rtp_daemon.rc",
+          "sha256": "499ad743ee0b263af7c3f354604dcb98e0d637a05557409c89e0eae61dfa8f53"
+        },
+        {
+          "path": "vendor/lib64/lib-imsvtcore.so",
+          "sha256": "bf94d804b8dd990a9f29e8ac0f1526af30c20641cd52af9a25ef728efb82f06d"
+        },
+        {
+          "path": "vendor/lib64/vendor.qti.imsrtpservice@3.0-service-Impl.so",
+          "sha256": "2b8b191c29e0e11ee41ec0487410c769db8d33126237ab2e8511e610a60dde09"
+        },
+        {
+          "path": "vendor/lib64/vendor.qti.imsrtpservice@3.0.so",
+          "sha256": "780003597fa4487f9326c446170cc07c6f1baec4f172657919466948961873db"
+        }
+      ],
+      "registration_imports": {
+        "vendor/bin/ims_rtp_daemon": [
+          "vendor::qti::imsrtpservice::V3_0::IRTPService::registerAsService(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> > const&)"
+        ]
+      },
+      "scope": "Static process/implementation mapping; runtime registration, linker/policy and service behavior untested."
+    }
+  ],
+  "pending_records": [
+    {
+      "index": 10,
+      "record": {
+        "format": "hidl",
+        "name": "android.hardware.tetheroffload.config",
+        "versions": [
+          "1.0"
+        ],
+        "fqnames": [],
+        "interfaces": [
+          {
+            "name": "IOffloadConfig",
+            "instances": [
+              "default"
+            ]
+          }
+        ]
+      },
+      "reason": "No selected IPACM provider yet; PA legacy HAL version must be reconciled."
+    },
+    {
+      "index": 11,
+      "record": {
+        "format": "hidl",
+        "name": "android.hardware.tetheroffload.control",
+        "versions": [
+          "1.1"
+        ],
+        "fqnames": [],
+        "interfaces": [
+          {
+            "name": "IOffloadControl",
+            "instances": [
+              "default"
+            ]
+          }
+        ]
+      },
+      "reason": "PA legacy offload implements control 1.0; reference needs 1.1."
+    },
+    {
+      "index": 19,
+      "record": {
+        "format": "hidl",
+        "name": "vendor.oplus.hardware.subsys_radio",
+        "versions": [
+          "1.0"
+        ],
+        "fqnames": [],
+        "interfaces": [
+          {
+            "name": "ISubsysRadio",
+            "instances": [
+              "slot1",
+              "slot2"
+            ]
+          }
+        ]
+      },
+      "reason": "No matching service/implementation found in supplied inputs."
+    },
+    {
+      "index": 23,
+      "record": {
+        "format": "hidl",
+        "name": "vendor.qti.hardware.bluetooth_audio",
+        "versions": [
+          "2.0"
+        ],
+        "fqnames": [],
+        "interfaces": [
+          {
+            "name": "IBluetoothAudioProvidersFactory",
+            "instances": [
+              "default"
+            ]
+          }
+        ]
+      },
+      "reason": "PA audio service does not register the QTI Bluetooth audio factory; narrow registration patch needed."
+    },
+    {
+      "index": 31,
+      "record": {
+        "format": "hidl",
+        "name": "vendor.qti.hardware.dsp",
+        "versions": [
+          "1.0"
+        ],
+        "fqnames": [],
+        "interfaces": [
+          {
+            "name": "IDspService",
+            "instances": [
+              "dspservice"
+            ]
+          }
+        ]
+      },
+      "reason": "DSP clients are present but a DSP server is not included in the supplied vendor inputs."
+    }
+  ]
+}
