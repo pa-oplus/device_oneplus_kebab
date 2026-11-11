@@ -89,6 +89,10 @@
     {
       "path": "vendor/aospa/interfaces/qcom/perf/2.3/Android.bp",
       "module": "vendor.qti.hardware.perf@2.3"
+    },
+    {
+      "path": "vendor/qcom/opensource/interfaces/bluetooth_audio/2.0/Android.bp",
+      "module": "vendor.qti.hardware.bluetooth_audio@2.0"
     }
   ],
   "required_files": [
@@ -108,5 +112,14 @@
     "IMS Java/native framework and vendor compatibility",
     "remaining VINTF registrations, matrices and complete policy",
     "complete product configuration, build and hardware tests"
+  ],
+  "required_source_edits": [
+    {
+      "path": "hardware/interfaces/audio/common/all-versions/default/service/service.cpp",
+      "contains": "vendor.qti.hardware.bluetooth_audio@2.0::IBluetoothAudioProvidersFactory",
+      "patch": "patches/hardware-interfaces/0001-audio-register-legacy-qti-bluetooth-factory.patch",
+      "reference_input_sha256": "f69340f963431898687d8204cdbed9441b1a97833febf71ebc2cae94c9293153",
+      "expected_output_sha256": "f021b9f1f322a365d8ddbdbe403c05ba12120b10c95ef33177f67f6f6c85e9a6"
+    }
   ]
 }

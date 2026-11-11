@@ -47,6 +47,10 @@ def main():
         path = source / provider["path"]
         if not path.is_file() or not module_present(path, provider["module"]):
             gaps.append(f"provider {provider['module']} at {provider['path']}")
+    for edit in requirements.get("required_source_edits", []):
+        path = source / edit["path"]
+        if not path.is_file() or edit["contains"] not in path.read_text():
+            gaps.append(f"source adaptation {edit['path']} ({edit['patch']})")
     for path in requirements["required_files"]:
         if not (source / path).is_file():
             gaps.append(f"required source file {path}")

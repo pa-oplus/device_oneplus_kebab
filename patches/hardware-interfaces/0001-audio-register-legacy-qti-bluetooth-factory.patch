@@ -1,0 +1,13 @@
+--- a/audio/common/all-versions/default/service/service.cpp
++++ b/audio/common/all-versions/default/service/service.cpp
+@@ -140,6 +140,10 @@
+             "android.hardware.soundtrigger@2.0::ISoundTriggerHw",
+         },
+         {
++            "Qualcomm Bluetooth Audio API",
++            "vendor.qti.hardware.bluetooth_audio@2.0::IBluetoothAudioProvidersFactory",
++        },
++        {
+             "Bluetooth Audio API",
+             "android.hardware.bluetooth.audio@2.2::IBluetoothAudioProvidersFactory",
+             "android.hardware.bluetooth.audio@2.1::IBluetoothAudioProvidersFactory",
