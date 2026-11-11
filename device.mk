@@ -29,13 +29,9 @@ TARGET_KERNEL_VERSION := 4.19
 
 # QTI gatekeeper/keymaster are OnePlus vendor outputs; their manifest is local.
 TARGET_COMMON_QTI_COMPONENTS := \
-    adreno \
-    alarm \
-    av \
     bt \
     init \
-    overlay \
-    wfd
+    overlay
 
 # Shipping API
 PRODUCT_SHIPPING_API_LEVEL := 30
@@ -618,3 +614,26 @@ PRODUCT_PACKAGES += \
     libshims_fingerprint.oplus \
     libcamera_metadata_shim \
     libcrypto_shim.vendor
+
+# The unified vendor owns Adreno, alarm and stock WFD/media blobs. Importing
+# generic common components would duplicate these installed modules and files.
+PRODUCT_COPY_FILES += \
+    frameworks/native/data/etc/android.hardware.opengles.aep.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.opengles.aep.xml \
+    frameworks/native/data/etc/android.hardware.vulkan.level-1.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.vulkan.level-1.xml \
+    frameworks/native/data/etc/android.hardware.vulkan.version-1_1.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.vulkan.version-1_1.xml \
+    frameworks/native/data/etc/android.hardware.vulkan.compute-0.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.vulkan.compute-0.xml \
+    frameworks/native/data/etc/android.software.opengles.deqp.level-2020-03-01.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.software.opengles.deqp.level.xml \
+    frameworks/native/data/etc/android.software.vulkan.deqp.level-2020-03-01.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.software.vulkan.deqp.level.xml
+
+PRODUCT_VENDOR_PROPERTIES += \
+    ro.hardware.egl=adreno \
+    ro.hardware.vulkan=adreno \
+    ro.opengles.version=196610 \
+    graphics.gpu.profiler.support=true
+
+# WfdCommon's boot-jar entry is supplied by the unified generated vendor recipe.
+TARGET_WFD_COMPONENT_VARIANT := wfd
+PRODUCT_SYSTEM_EXT_PROPERTIES += \
+    debug.sf.enable_hwc_vds=0 \
+    persist.debug.wfd.enable=1 \
+    persist.sys.wfd.virtual=0
