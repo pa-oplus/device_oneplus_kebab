@@ -302,6 +302,17 @@ PRODUCT_VENDOR_PROPERTIES += \
 # The reviewed PA clients fall back to HIDL 2.2 for API 30 when perf2 is absent.
 # Keep their AIDL library dependencies; runtime service/linker validation is pending.
 
+# Install only the servicetracker AIDL service, manifest and init script;
+# do not inherit perf-vendor.mk wholesale because that also brings incompatible generic perf2.
+PRODUCT_SOONG_NAMESPACES += vendor/qcom/common/vendor/perf
+PRODUCT_PACKAGES += \
+    vendor.qti.hardware.servicetrackeraidl-impl \
+    vendor.qti.hardware.servicetrackeraidl-service \
+    vendor.qti.hardware.servicetrackeraidl-service.xml
+
+PRODUCT_COPY_FILES += \
+    vendor/qcom/common/vendor/perf/proprietary/vendor/etc/init/vendor.qti.hardware.servicetrackeraidl-service.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/vendor.qti.hardware.servicetrackeraidl-service.rc
+
 # OnePlus display properties and framework calibration overlay.
 # Include the common recipes once, locally, so device properties can replace
 # generic source defaults before the PA product inheritance is resolved.
