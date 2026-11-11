@@ -1,0 +1,8 @@
+# Copyright (C) 2026 Paranoid Android
+# SPDX-License-Identifier: Apache-2.0
+
+# init.aospa.perf.soc.rc applies the schedutil rate limits at boot. Without
+# this the writes fail with EACCES and the governor keeps the stock post_boot
+# values (up/down rate limit 0).
+allow vendor_init sysfs_devices_system_cpu:dir r_dir_perms;
+allow vendor_init sysfs_devices_system_cpu:file w_file_perms;
