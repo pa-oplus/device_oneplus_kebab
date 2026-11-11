@@ -637,3 +637,9 @@ PRODUCT_SYSTEM_EXT_PROPERTIES += \
     debug.sf.enable_hwc_vds=0 \
     persist.debug.wfd.enable=1 \
     persist.sys.wfd.virtual=0
+
+# Legacy tether offload requires the selected HIDL control 1.1 source provider.
+PRODUCT_SOONG_NAMESPACES += vendor/qcom/opensource/data-ipa-cfg-mgr-legacy
+PRODUCT_PACKAGES += \
+    ipacm \
+    IPACM_cfg.xml

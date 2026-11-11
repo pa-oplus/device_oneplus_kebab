@@ -10,4 +10,6 @@
   <project path="vendor/qcom/opensource/audio-hal/primary-hal" name="pa-sanji/android_hardware_qcom_audio" remote="kebab-github" revision="calcite" />
   <project path="hardware/oplus" name="clo-oscaro/hardware_oplus" remote="kebab-github" revision="calcite" />
   <project path="hardware/qcom/thermal" name="pa-sanji/android_hardware_qcom_thermal" remote="kebab-github" revision="calcite" />
+  <remove-project name="AOSPA/android_vendor_qcom_opensource_data-ipa-cfg-mgr" path="vendor/qcom/opensource/data-ipa-cfg-mgr-legacy" optional="true" />
+  <project path="vendor/qcom/opensource/data-ipa-cfg-mgr-legacy" name="LineageOS/android_vendor_qcom_opensource_data-ipa-cfg-mgr" remote="kebab-github" revision="a17b3e29dcbef0ebf49cbd8e9e5f5eda1e2bc72c" />
 </manifest>

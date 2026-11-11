@@ -93,6 +93,18 @@
     {
       "path": "vendor/qcom/opensource/interfaces/bluetooth_audio/2.0/Android.bp",
       "module": "vendor.qti.hardware.bluetooth_audio@2.0"
+    },
+    {
+      "path": "vendor/qcom/opensource/data-ipa-cfg-mgr-legacy/ipacm/Android.bp",
+      "module": "ipacm"
+    },
+    {
+      "path": "vendor/qcom/opensource/data-ipa-cfg-mgr-legacy/ipacm/Android.bp",
+      "module": "IPACM_cfg.xml"
+    },
+    {
+      "path": "vendor/qcom/opensource/data-ipa-cfg-mgr-legacy/hal/Android.bp",
+      "module": "liboffloadhal"
     }
   ],
   "required_files": [
@@ -111,7 +123,8 @@
     "display-config/power interface versions and final perf/Picard ABI",
     "IMS Java/native framework and vendor compatibility",
     "remaining VINTF registrations, matrices and complete policy",
-    "complete product configuration, build and hardware tests"
+    "complete product configuration, build and hardware tests",
+    "IPACM quota-warning ioctl/header ABI and warning/limit behavior with the actual OnePlus 4.19 kernel"
   ],
   "required_source_edits": [
     {
@@ -120,6 +133,16 @@
       "patch": "patches/hardware-interfaces/0001-audio-register-legacy-qti-bluetooth-factory.patch",
       "reference_input_sha256": "f69340f963431898687d8204cdbed9441b1a97833febf71ebc2cae94c9293153",
       "expected_output_sha256": "f021b9f1f322a365d8ddbdbe403c05ba12120b10c95ef33177f67f6f6c85e9a6"
+    },
+    {
+      "path": "vendor/qcom/opensource/data-ipa-cfg-mgr-legacy/hal/inc/HAL.h",
+      "contains": "<android/hardware/tetheroffload/control/1.1/IOffloadControl.h>",
+      "patch": "Select pinned Lineage IPACM source from manifests/kebab-source-integration.xml"
+    },
+    {
+      "path": "vendor/qcom/opensource/data-ipa-cfg-mgr-legacy/hal/src/HAL.cpp",
+      "contains": "mIPA->setQuotaWarning",
+      "patch": "Select pinned Lineage IPACM source from manifests/kebab-source-integration.xml"
     }
   ]
 }

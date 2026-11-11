@@ -1220,46 +1220,6 @@
   ],
   "pending_records": [
     {
-      "index": 10,
-      "record": {
-        "format": "hidl",
-        "name": "android.hardware.tetheroffload.config",
-        "versions": [
-          "1.0"
-        ],
-        "fqnames": [],
-        "interfaces": [
-          {
-            "name": "IOffloadConfig",
-            "instances": [
-              "default"
-            ]
-          }
-        ]
-      },
-      "reason": "No selected IPACM provider yet; PA legacy HAL version must be reconciled."
-    },
-    {
-      "index": 11,
-      "record": {
-        "format": "hidl",
-        "name": "android.hardware.tetheroffload.control",
-        "versions": [
-          "1.1"
-        ],
-        "fqnames": [],
-        "interfaces": [
-          {
-            "name": "IOffloadControl",
-            "instances": [
-              "default"
-            ]
-          }
-        ]
-      },
-      "reason": "PA legacy offload implements control 1.0; reference needs 1.1."
-    },
-    {
       "index": 19,
       "record": {
         "format": "hidl",
@@ -1310,6 +1270,19 @@
       "patch": "patches/hardware-interfaces/0001-audio-register-legacy-qti-bluetooth-factory.patch",
       "state": "Required source patch staged and checked against saved PA source; not applied to a live PA checkout.",
       "policy_owner": "hal_audio_default / hal_audio_hwservice (existing QTI audio context)"
+    },
+    {
+      "reference_records": [
+        10,
+        11
+      ],
+      "provider": "ipacm / liboffloadhal",
+      "repository": "LineageOS/android_vendor_qcom_opensource_data-ipa-cfg-mgr",
+      "branch": "lineage-24.0-caf-sm8450",
+      "commit": "a17b3e29dcbef0ebf49cbd8e9e5f5eda1e2bc72c",
+      "state": "Independent reference clone in pa-kona/pa-reviewed; pinned source selection and product packages prepared. No full PA checkout or kernel build yet.",
+      "registration": "hal/src/HAL.cpp registers IOffloadControl 1.1 and IOffloadConfig 1.0. setDataWarningAndLimit delegates to setQuotaWarning.",
+      "kernel_gate": "Requires actual WAN_IOC_SET_DATA_QUOTA_WARNING headers/ioctl support and runtime validation; source namespace is not proof of OnePlus kernel compatibility."
     }
   ]
 }
