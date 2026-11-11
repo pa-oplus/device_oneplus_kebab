@@ -2705,3 +2705,7 @@ odm/etc/sensor/sensor_config.json
 
 # WiFi
 odm/etc/wifi/bdwlan.elf
+
+# DSP server supplement from the reviewed PA common DSP reference snapshot
+vendor/bin/dspservice|081468b9bc63cab921ac1e37a95eb93bd16e23f9
+vendor/etc/init/vendor.qti.hardware.dsp@1.0-service.rc|fbf2bb38ca6bdddf98c7123da9e1f263a4eec55f
