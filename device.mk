@@ -604,3 +604,6 @@ PRODUCT_PACKAGES += KebabSystemUIRes
 
 # OnePlus 8T initial Settings device name; user-renamed devices retain their value.
 PRODUCT_PACKAGES += KebabSettingsProviderRes
+
+# One unified, required proprietary output.
+$(call inherit-product, vendor/oneplus/kebab/kebab-vendor.mk)
