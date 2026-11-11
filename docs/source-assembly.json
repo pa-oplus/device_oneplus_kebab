@@ -42,6 +42,13 @@
       "repository": "pa-sanji/android_hardware_qcom_thermal",
       "branch": "calcite",
       "commit": "339ecff03f7509351035c6d33cef2b5768c86f6d"
+    },
+    {
+      "path": "vendor/qcom/opensource/data-ipa-cfg-mgr-legacy",
+      "repository": "LineageOS/android_vendor_qcom_opensource_data-ipa-cfg-mgr",
+      "branch": "lineage-24.0-caf-sm8450",
+      "commit": "a17b3e29dcbef0ebf49cbd8e9e5f5eda1e2bc72c",
+      "state": "Prepared independent clone under pa-kona/pa-reviewed; kernel quota-warning ABI unvalidated."
     }
   ],
   "system_core": {
@@ -97,5 +104,6 @@
     "tree": "517fd7638a18a3e91620c8c1882af978c77d84d9",
     "method": "Reconstructed exact commit from saved original files; tree and commit hashes verified.",
     "additional_patches": []
-  }
+  },
+  "additional_required_patch": "patches/hardware-interfaces/0001-audio-register-legacy-qti-bluetooth-factory.patch"
 }

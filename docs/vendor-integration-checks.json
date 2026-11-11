@@ -1,8 +1,10 @@
 {
-  "files": 2550,
-  "allowed_pins": 32,
+  "files": 2552,
+  "allowed_pins": 34,
   "reference_content_matches": 2550,
-  "unique_vendor_modules": 777,
+  "supplemental_hash_matches": 2,
+  "supplemental_source_compared": true,
+  "unique_vendor_modules": 778,
   "local_vendor_module_collisions": 0,
   "explicit_copy_collisions": 0,
   "generated_build_files_identical": 4,
@@ -26,17 +28,19 @@
   },
   "limits": "Static explicit contracts only: no full module graph/variant/symbol-version, product build, ABI, policy or device validation.",
   "vintf_reference_merge": {
-    "inputs": 31,
-    "unique_instances": 50,
+    "inputs": 34,
+    "unique_instances": 109,
     "reviewed_overrides": 1,
-    "legacy_reference_records_covered": 10,
-    "legacy_reference_records_unresolved": 42,
+    "legacy_reference_records_covered": 51,
+    "legacy_reference_records_not_selected": 1,
+    "legacy_reference_records_unresolved": 0,
+    "strict_resolution": "passed including source verification of optional retired interface",
     "assemble_vintf": "passed using DES host tool with BOARD_SEPOLICY_VERS=202504",
-    "scope": "Local declarations plus reference-source fragments and current unified vendor fragments; not a live PA product compatibility check.",
+    "scope": "Recorded local/reference-source/vendor fragments only. Source selections/required patches are not installed in a full PA checkout. This is not product matrix/policy/runtime validation.",
     "input_provenance": [
       {
         "path": "pa-kona/device_oneplus_kebab/configs/vintf/manifest-audio.xml",
-        "sha256": "65e91a64e45317543cb782e081bb70450365a74973b0fdab79f1790a51e5bd02"
+        "sha256": "7de4c3b2c4f84f59191a9d35c7986048eefd2a4822ef11cdffdecb46789d6bb1"
       },
       {
         "path": "pa-kona/device_oneplus_kebab/configs/vintf/manifest-bluetooth.xml",
@@ -45,6 +49,14 @@
       {
         "path": "pa-kona/device_oneplus_kebab/configs/vintf/manifest-camera.xml",
         "sha256": "287d1315a8495eb9dddd5dee2c44c2e80b9b568359f176ac5132de27fed5c286"
+      },
+      {
+        "path": "pa-kona/device_oneplus_kebab/configs/vintf/manifest-dsp.xml",
+        "sha256": "76d846e3ff3adb8918dcb000217740a9742b1be74977dfc7d68d09aca40a32c5"
+      },
+      {
+        "path": "pa-kona/device_oneplus_kebab/configs/vintf/manifest-oneplus-vendor.xml",
+        "sha256": "8abb3e0aa4a48e9a6089699d34f6c5fcb7fd0e6c094cc278c65b7b05dd3790d5"
       },
       {
         "path": "pa-kona/device_oneplus_kebab/configs/vintf/manifest-perf.xml",
@@ -61,6 +73,10 @@
       {
         "path": "pa-kona/device_oneplus_kebab/configs/vintf/manifest-security.xml",
         "sha256": "7677f307f1b03917b63812becaafa0c245d88ae17a4cd5777ab8217ca57224a7"
+      },
+      {
+        "path": "pa-kona/device_oneplus_kebab/configs/vintf/manifest-tetheroffload.xml",
+        "sha256": "e64b201677c0276553b12151684d88a8431a33845a71eb415b413b58ac82ce52"
       },
       {
         "path": "aospa-trees/vendor/qcom/opensource/power/power-v6.xml",
@@ -160,11 +176,12 @@
       }
     ]
   },
-  "fingerprint_host_check": "Both property APIs: two substitutions and unrelated-property forwarding passed; target linker symbol-version/interposition behavior still needs device validation.",
   "perf_system_client_review": {
     "contract": "docs/perf-client-contract.json",
-    "checker": "tools/check-perf-contract.py",
-    "result": "Exact reference arm/arm64 clients support HIDL fallback; API 30 selects 2.2 when perf2 is not declared. No unavoidable protocol mismatch established.",
+    "result": "Exact reference arm/arm64 dual-protocol clients and interfaces match; shipping API 30 and recorded HIDL-only service selection pass.",
     "runtime_validated": false
-  }
+  },
+  "dsp_service_interface_symbols_resolved_by_name": 21,
+  "fingerprint_host_check": "Both property APIs: verified-boot substitutions and unrelated-property forwarding passed earlier; unchanged source. Target symbol-version/interposition untested.",
+  "common_namespace_overlap_review": "docs/common-vendor-collisions.json; 51 conflicting names in excluded common namespaces; this is not a complete product graph."
 }

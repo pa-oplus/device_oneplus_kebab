@@ -33,6 +33,8 @@ def main():
                         help="PA hardware/lineage/compat source directory")
     parser.add_argument("--reference-root", type=Path,
                         help="directory containing both original TheMuppets vendor clones")
+    parser.add_argument("--supplemental-root", type=Path,
+                        help="workspace root for direct supplemental input comparisons")
     parser.add_argument("--report", type=Path)
     args = parser.parse_args()
     vendor = args.vendor_root.resolve()
@@ -45,6 +47,10 @@ def main():
     seen = set()
     pins = 0
     reference_matches = 0
+    supplemental_matches = 0
+    supplemental_file = vendor / "SUPPLEMENTAL_INPUTS.json"
+    supplemental = {x["path"]: x for x in json.loads(supplemental_file.read_text())["files"]} \
+        if supplemental_file.is_file() else {}
     for file in files.files:
         if file.dst in seen:
             raise ValueError(f"Duplicate metadata destination: {file.dst}")
@@ -62,9 +68,20 @@ def main():
             candidates = [args.reference_root / name / "proprietary" / file.dst for name in (
                 "proprietary_vendor_oneplus_kebab", "proprietary_vendor_oneplus_sm8250-common")]
             candidates = [p for p in candidates if p.is_file()]
-            if len(candidates) != 1 or sha(candidates[0]) != digest:
-                raise ValueError(f"Reference content/ownership mismatch: {file.dst}")
-            reference_matches += 1
+            if file.dst in supplemental:
+                expected_extra = supplemental[file.dst]
+                if candidates or sha(blob, "sha256") != expected_extra["sha256"] or \
+                        digest != expected_extra["sha1"]:
+                    raise ValueError(f"Supplemental content/ownership mismatch: {file.dst}")
+                if args.supplemental_root:
+                    original = args.supplemental_root / expected_extra["source_path"]
+                    if sha(original, "sha256") != expected_extra["sha256"]:
+                        raise ValueError(f"Supplemental source mismatch: {file.dst}")
+                supplemental_matches += 1
+            else:
+                if len(candidates) != 1 or sha(candidates[0]) != digest:
+                    raise ValueError(f"Reference content/ownership mismatch: {file.dst}")
+                reference_matches += 1
     provenance = json.loads((vendor / "SOURCE_PROVENANCE.json").read_text())
     if len(seen) != provenance["files"] or sha(ROOT / "proprietary-files.txt", "sha256") != \
             provenance["merged_list_sha256"]:
@@ -103,6 +120,9 @@ def main():
         raise ValueError("Duplicate vendor/local Blueprint modules")
     device_mk = (ROOT / "device.mk").read_text()
     vendor_mk = (vendor / "kebab-vendor.mk").read_text()
+    components = re.search(r'^TARGET_COMMON_QTI_COMPONENTS\s*:=((?:[^\n]*\\\n)*[^\n]*)', device_mk, re.M)
+    if not components or set(components[1].replace("\\", " ").split()) & {"adreno", "alarm", "av", "perf", "wfd"}:
+        raise ValueError("A competing generic common proprietary component is selected")
     copies = re.compile(r'^\s*(\S+):(\$\(TARGET_COPY_OUT_[A-Z_]+\)/\S+)\s*\\?$', re.M)
     owners = {}
     for owner, text in (("device.mk", device_mk), ("kebab-vendor.mk", vendor_mk)):
@@ -138,6 +158,8 @@ def main():
             raise ValueError(f"Missing Power HAL perf entrypoints: {libdir}")
     report = {
         "files": len(seen), "allowed_pins": pins, "reference_content_matches": reference_matches,
+        "supplemental_hash_matches": supplemental_matches,
+        "supplemental_source_compared": bool(args.supplemental_root),
         "unique_vendor_modules": len(names), "local_vendor_module_collisions": 0,
         "explicit_copy_collisions": 0, "generated_build_files_identical": 4,
         "compatibility_provider_definitions": ["libcamera_metadata_shim", "libcrypto_shim"],

@@ -33,3 +33,12 @@ historical; they do not establish the state of any new checkout.
 The live source-provider/init/VINTF checks must be rerun after source restoration.
 Full product build, kernel/header integration, vendor activation/ABI, policy and
 hardware validation remain pending.
+
+
+The manifest now also selects a pinned Lineage IPACM control-1.1 provider at
+vendor/qcom/opensource/data-ipa-cfg-mgr-legacy. An independent source clone is
+staged under pa-kona/pa-reviewed. This is a narrow legacy HAL source selection,
+not a PenguinOS/platform replacement; quota-warning kernel/header compatibility
+remains unvalidated. The new required source adaptation is the audio-service
+QTI Bluetooth factory patch in patches/hardware-interfaces. Current remaining
+gates are summarized in INTEGRATION_STATUS.md.

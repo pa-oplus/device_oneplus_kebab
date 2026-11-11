@@ -3,6 +3,7 @@
 # SPDX-License-Identifier: Apache-2.0
 """Check declared instance ownership; report unresolved reference contracts."""
 import argparse
+import hashlib
 import json
 from pathlib import Path
 import re
@@ -89,7 +90,8 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--source-root", type=Path, help="also check recorded source-service fragments")
     parser.add_argument("--extra-manifest", type=Path, action="append", default=[])
-    parser.add_argument("--require-reference-coverage", action="store_true")
+    parser.add_argument("--require-reference-coverage", "--require-reference-resolution",
+                        dest="require_reference_coverage", action="store_true")
     args = parser.parse_args()
     data = json.loads((ROOT / "docs/vintf-ownership.json").read_text())
     paths = sorted((ROOT / "configs/vintf").glob("manifest-*.xml"))
@@ -125,15 +127,39 @@ def main():
                     raise ValueError(f"Duplicate HAL instance {key}: {owners[key]} and {path}")
                 owners[key] = str(path)
                 provided_versions[key] = version_floors(record)[key]
-    unresolved = [r for r in data["reference_hal_records"] if not covered(r, provided_versions)]
+    retired = {}
+    unverified_retirements = []
+    for item in data.get("retired_reference_records", []):
+        reference = data["reference_hal_records"][item["index"]]
+        if reference["name"] != item["name"]:
+            raise ValueError(f"Retired reference index/name mismatch: {item}")
+        if args.source_root:
+            matrix_path = args.source_root / item["matrix_path"]
+            if hashlib.sha256(matrix_path.read_bytes()).hexdigest() != item["matrix_sha256"]:
+                raise ValueError(f"Optional matrix source changed; review retirement: {matrix_path}")
+            candidates = [records(hal) for hal in ET.parse(matrix_path).getroot().findall("hal")
+                          if hal.findtext("name") == item["name"]
+                          and hal.get("format", "hidl") == reference["format"]
+                          and hal.get("optional") == "true"]
+            if not any(covered(reference, version_floors(record)) for record in candidates):
+                raise ValueError(f"Retired interface is not optional in source: {item['name']}")
+        else:
+            unverified_retirements.append(item["name"])
+        retired[item["index"]] = item
+    unresolved = [record for index, record in enumerate(data["reference_hal_records"])
+                  if index not in retired and not covered(record, provided_versions)]
     print(f"Checked {len(paths)} manifest inputs; {len(owners)} unique declared instances.")
-    print(f"Reference records: {len(data['reference_hal_records']) - len(unresolved)} covered; "
-          f"{len(unresolved)} unresolved (vendor/WFD/common-provider reconciliation pending).")
+    print(f"Reference records: {len(data['reference_hal_records']) - len(unresolved) - len(retired)} covered; "
+          f"{len(retired)} explicitly not selected; {len(unresolved)} unresolved.")
+    for item in retired.values():
+        print(f"Not selected: {item['name']}: {item['reason']}")
+    if unverified_retirements:
+        print("Optional-matrix retirement evidence needs --source-root verification.")
     for provider in data["unresolved_providers"]:
         print(f"Unresolved provider: {provider['module']}: {provider['reason']}")
     print(f"Reviewed vendor override declarations: {override_count} (input order matters).")
     print("This checks recorded declarations, not the complete product or runtime registration.")
-    if args.require_reference_coverage and (unresolved or data["unresolved_providers"]):
+    if args.require_reference_coverage and (unresolved or data["unresolved_providers"] or unverified_retirements):
         return 1
     return 0
 

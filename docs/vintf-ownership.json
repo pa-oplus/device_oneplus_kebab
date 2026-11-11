@@ -942,5 +942,15 @@
         }
       ]
     }
+  ],
+  "retired_reference_records": [
+    {
+      "index": 19,
+      "name": "vendor.oplus.hardware.subsys_radio",
+      "reason": "Not supplied by the selected OnePlus input service set. The selected PA Oplus matrix marks this legacy interface optional. Omit the unsupported legacy declaration; do not fabricate a service.",
+      "matrix_path": "hardware/oplus/vintf/device_framework_matrix.xml",
+      "matrix_sha256": "197e4aae3f9ec2019aaf9decdd94f5d12806fc4a6260101cb48af12c3aef035e",
+      "state": "explicitly not selected; not a working HAL claim"
+    }
   ]
 }

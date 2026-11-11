@@ -200,3 +200,6 @@ DEVICE_MANIFEST_FILE += $(DEVICE_PATH)/configs/vintf/manifest-oneplus-vendor.xml
 
 # The selected IPACM registers config 1.0/control 1.1 without a bundled fragment.
 DEVICE_MANIFEST_FILE += $(DEVICE_PATH)/configs/vintf/manifest-tetheroffload.xml
+
+# The supplemental DSP server registers the legacy dspservice instance.
+DEVICE_MANIFEST_FILE += $(DEVICE_PATH)/configs/vintf/manifest-dsp.xml

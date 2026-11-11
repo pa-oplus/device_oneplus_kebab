@@ -1218,49 +1218,7 @@
       "scope": "Static process/implementation mapping; runtime registration, linker/policy and service behavior untested."
     }
   ],
-  "pending_records": [
-    {
-      "index": 19,
-      "record": {
-        "format": "hidl",
-        "name": "vendor.oplus.hardware.subsys_radio",
-        "versions": [
-          "1.0"
-        ],
-        "fqnames": [],
-        "interfaces": [
-          {
-            "name": "ISubsysRadio",
-            "instances": [
-              "slot1",
-              "slot2"
-            ]
-          }
-        ]
-      },
-      "reason": "No matching service/implementation found in supplied inputs."
-    },
-    {
-      "index": 31,
-      "record": {
-        "format": "hidl",
-        "name": "vendor.qti.hardware.dsp",
-        "versions": [
-          "1.0"
-        ],
-        "fqnames": [],
-        "interfaces": [
-          {
-            "name": "IDspService",
-            "instances": [
-              "dspservice"
-            ]
-          }
-        ]
-      },
-      "reason": "DSP clients are present but a DSP server is not included in the supplied vendor inputs."
-    }
-  ],
+  "pending_records": [],
   "source_adaptations": [
     {
       "reference_record": 23,
@@ -1284,5 +1242,31 @@
       "registration": "hal/src/HAL.cpp registers IOffloadControl 1.1 and IOffloadConfig 1.0. setDataWarningAndLimit delegates to setQuotaWarning.",
       "kernel_gate": "Requires actual WAN_IOC_SET_DATA_QUOTA_WARNING headers/ioctl support and runtime validation; source namespace is not proof of OnePlus kernel compatibility."
     }
-  ]
+  ],
+  "supplemental_providers": [
+    {
+      "reference_record": 31,
+      "name": "vendor.qti.hardware.dsp",
+      "binary": "vendor/bin/dspservice",
+      "rc": "vendor/etc/init/vendor.qti.hardware.dsp@1.0-service.rc",
+      "provenance": "vendor repository SUPPLEMENTAL_INPUTS.json",
+      "state": "Pinned PA common DSP server supplements the missing service; original RPC libraries remain unchanged. Target/kernel/runtime validation pending."
+    }
+  ],
+  "not_selected_optional_records": [
+    {
+      "reference_record": 19,
+      "name": "vendor.oplus.hardware.subsys_radio",
+      "reason": "Selected PA Oplus matrix explicitly marks it optional; no corresponding executable or implementation found in matching input baseline. No declaration or synthetic service added.",
+      "evidence": "docs/vintf-ownership.json retired_reference_records",
+      "runtime_support": "not implemented/selected"
+    }
+  ],
+  "resolution_summary": {
+    "reference_records": 52,
+    "covered_declarations": 51,
+    "explicit_optional_omission": 1,
+    "unresolved_static_inventory": 0,
+    "runtime_or_product_complete": false
+  }
 }

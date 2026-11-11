@@ -1,0 +1,12 @@
+<!-- Copyright (C) 2026 Paranoid Android; SPDX-License-Identifier: Apache-2.0 -->
+<manifest version="1.0" type="device">
+    <hal format="hidl">
+        <name>vendor.qti.hardware.dsp</name>
+        <transport>hwbinder</transport>
+        <version>1.0</version>
+        <interface>
+            <name>IDspService</name>
+            <instance>dspservice</instance>
+        </interface>
+    </hal>
+</manifest>

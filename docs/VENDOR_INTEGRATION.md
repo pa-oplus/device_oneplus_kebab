@@ -68,7 +68,30 @@ ownership checker accepts only this recorded override shape; other duplicates or
 unreviewed overrides fail. Reference source fragments are processed before vendor
 then ODM fragments, matching the relevant override direction.
 
-`assemble_vintf` merges 31 recorded local/reference/vendor fragments into 50
-unique instances. Ten legacy reference records are covered and 42 remain open,
-including vendor/WFD/common-provider reconciliation. This is not complete product
-matrix compatibility, runtime registration or enforcement validation.
+`assemble_vintf` merges 34 recorded local/reference/vendor fragments into 109
+unique instances. Fifty-one legacy records are declared and one unsupported
+optional subsystem-radio interface is explicitly not selected. The selected Oplus
+matrix verifies its optional status. No service was fabricated for that entry.
+Source/provider evidence is in vendor-hal-evidence.json. This is not complete
+product matrix compatibility, runtime registration or enforcement validation.
+
+## Legacy provider completion
+
+The provider-backed OnePlus vendor declarations are in manifest-oneplus-vendor.xml.
+QCRIL/IMS, CNE, Bluetooth, security, calibration, camera postprocessing and WFD
+retain the interface/instance definitions from the matching Lineage manifest.
+The evidence ties entries to installed RCs, binaries or loaded implementations;
+registration imports are recorded where available. Runtime behavior remains open.
+
+PA's audio service lacked QTI Bluetooth factory registration. A narrow source patch
+adds the existing vendor 2.0 passthrough factory to its optional list. This patch
+is staged and source-readiness requires it; it is not applied to a live PA tree.
+
+The source manifest pins a Lineage IPACM implementation with control 1.1 and real
+quota-warning forwarding. It replaces only the old PA legacy IPACM source path.
+Its kernel/header quota-warning compatibility and runtime behavior remain gates.
+
+The missing DSP server binary and RC are pinned supplements from the local PA
+common reference snapshot, recorded in vendor SUPPLEMENTAL_INPUTS.json. All 21
+DSP interface imports resolve by symbol name against the original stock DSP 1.0
+library. This does not establish complete target ABI/runtime compatibility.

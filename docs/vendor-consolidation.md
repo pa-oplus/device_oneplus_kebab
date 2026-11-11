@@ -1,57 +1,50 @@
 # Unified kebab vendor integration
 
-The single vendor repository is
-https://github.com/pa-oplus/proprietary_vendor_oneplus_kebab, branch calcite.
-Its published baseline is 52d6e8e. It was generated from the matching TheMuppets
-lineage-24.0 inputs, preserving 2,550 already-processed blob files.
+The vendor repository is https://github.com/pa-oplus/proprietary_vendor_oneplus_kebab,
+branch calcite. One proprietary list and one producer generate vendor/oneplus/kebab,
+strictly required by the device product and board configuration.
 
-| Input | Commit | Entries |
+| Inputs | Provenance | Files |
 |---|---|---:|
-| proprietary_vendor_oneplus_kebab | 9ecfe6349188e4f961aa7fc878e478e23cc3a6aa | 107 |
-| proprietary_vendor_oneplus_sm8250-common | e3f6fd86ad47653897753cc2a7a22e80c1b46a18 | 2443 |
+| TheMuppets kebab, lineage-24.0 | 9ecfe6349188e4f961aa7fc878e478e23cc3a6aa | 107 |
+| TheMuppets sm8250-common, lineage-24.0 | e3f6fd86ad47653897753cc2a7a22e80c1b46a18 | 2443 |
+| PA common DSP server binary/init supplement | Local reference snapshot; original commit unavailable; exact SHA1/SHA256 pins in vendor SUPPLEMENTAL_INPUTS.json | 2 |
 
-## Five implementation commits
+The original 2,550 blob contents are unchanged. The two additional DSP inputs
+supply a service needed by the existing DSP clients without importing a conflicting
+common RPC stack. The resulting 2,552 entries regenerate four identical build files
+and 778 unique named vendor modules. All 34 pins pass; supplemental source bytes
+are compared directly with the saved PA reference. No binary/config/APK fixups were
+replayed. Fresh stock-dump extraction remains a separate unvalidated workflow.
 
-- [x] Unify the proprietary list and extractor into one kebab producer.
-- [x] Require the single vendor product/board outputs through strict includes.
-- [x] Add the fingerprint shim and select PA camera/crypto compatibility providers.
-- [x] Assign vendor perf ownership and declare its VINTF instance; preserve the
-  intentional fingerprint override. The reviewed PA system clients support HIDL fallback; runtime validation remains open.
-- [x] Audit regeneration, input bytes/pins, explicit copies, module names and
-  recorded VINTF composition; record the results and integration limits.
+## Current checks
 
-The actual extractor regenerates all four vendor build files byte-for-byte.
-There are 777 unique named vendor modules, no local/vendor name collisions and
-no collisions among explicit device/vendor copy declarations. All 32 allowed
-pins match; all 2,550 blobs match the original vendor clones. No binary/config/APK
-fixup pass was replayed. The source powerhint.xml copy was removed in favor of
-the stock OnePlus file already supplied by vendor.
+The fingerprint shim passed host property substitution/forwarding checks. PA's
+camera/crypto vendor provider contracts are selected. The stock perf client
+exports the four PA Power HAL entrypoints in both architectures. Exact PA system
+clients have a HIDL 2.2 fallback for API 30, so no adapter was needed.
 
-The fingerprint shim's property substitutions/forwarding pass a host check. PA
-camera/crypto provider definitions and required function names were checked.
-The original PA Power HAL's four perf client entrypoints are exported in both
-stock client architectures. Target library variants, full symbol resolution and
-actual Power HAL behavior still require compilation/runtime validation.
+Generic common Adreno/alarm/AV/WFD components had 51 overlapping module names
+with the unified stock output and are excluded. Their needed device settings are
+local. The explicit source powerhint.xml copy was removed in favor of stock vendor.
+No duplicate local/vendor module names or explicit device/vendor copy destinations
+are found; this is not a complete product-wide install-graph check.
 
-Recorded local/reference-source/vendor VINTF composition passes both the ownership
-checker and assemble_vintf: 31 inputs, 50 instances, one reviewed fingerprint
-override. Forty-two legacy reference records remain unresolved. Input hashes and
-check results are in vendor-integration-checks.json; vendor-consolidation-audit.json
-preserves the original input/staging audit and links the current integration.
+The recorded local/reference-source/vendor VINTF merge passes ownership checks,
+minor-version checks, strict reference resolution and assemble_vintf: 34 inputs,
+109 unique instances and one preserved fingerprint override. Of 52 legacy records,
+51 are declared and one optional subsystem-radio record is explicitly not selected.
+Its optional status is verified against the selected PA Oplus matrix. There are
+zero unclassified static records, not zero remaining build/runtime tasks.
 
-## Remaining gates
+Detailed provider evidence and test input hashes are in vendor-hal-evidence.json
+and vendor-integration-checks.json. The original source/staging audit remains in
+vendor-consolidation-audit.json, with a separate current integration summary.
 
-- [ ] Locate the current complete PA checkout; the former pa/ directory is absent.
-- [ ] Apply reviewed sources, install device/vendor trees and preserve the init hook.
-- [x] Verify that the exact PA system clients support HIDL 2.2 fallback at shipping API 30.
-- [ ] Validate fallback dispatch, linker variants, policy and hint/resource behavior on device.
-- [ ] Complete source/blob module variants, headers, symbol versions and ABI checks.
-- [ ] Reconcile the 42 legacy vendor/WFD contracts and full matrices/SELinux policy.
-- [ ] Integrate kernel/config/headers, build the product and test on device.
-- [ ] Publish the local integration commits when GitHub write access succeeds.
+## Unfinished build and runtime gates
 
-Extraction from a fresh stock dump needs a separately reviewed fixup pipeline.
-The previous scan's 201 external DT_NEEDED names are source/platform-provider
-obligations, not 201 proven missing libraries. This work does not close that graph.
-See VENDOR_INTEGRATION.md for exact service/provider boundaries and extraction.md
-for the processed-input workflow. No full-build or boot-readiness claim is made.
+See INTEGRATION_STATUS.md. The full PA checkout is missing. The Bluetooth-audio
+registration patch, selected IPACM source, kernel warning-quota ABI and all target
+variants/headers/ELF symbols/IMS/policy/matrices require actual product validation.
+Complete build and device tests have not been run. The earlier 201 external
+DT_NEEDED names are provider obligations, not 201 confirmed missing libraries.

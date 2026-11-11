@@ -1,3 +1,5 @@
+> Current state: see [INTEGRATION_STATUS.md](INTEGRATION_STATUS.md). The milestones below include historical checks against the former PA checkout, which is now absent.
+
 # Foundation decisions
 
 This is an incremental configuration, not a buildable product yet. The local

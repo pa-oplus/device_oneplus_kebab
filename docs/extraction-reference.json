@@ -55,9 +55,10 @@
   ],
   "active_list": {
     "list": "proprietary-files.txt",
-    "sha256": "57ee2f7473acde7064ccc8829cc0fd239df1ba5622faf4bf6f69a2fb8672e6fc",
-    "files": 2550,
+    "sha256": "326442fbaad44149fee6a925a72970fd91d463e0c698b91a9f9c044ddf353220",
+    "files": 2552,
     "output": "vendor/oneplus/kebab",
     "origin": "Merged historical device/common entries with comments, flags and pins preserved"
-  }
+  },
+  "supplemental_inputs": "Vendor repository SUPPLEMENTAL_INPUTS.json: two pinned DSP service input files from local PA common snapshot; original commit metadata unavailable."
 }

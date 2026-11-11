@@ -105,6 +105,10 @@
     {
       "path": "vendor/qcom/opensource/data-ipa-cfg-mgr-legacy/hal/Android.bp",
       "module": "liboffloadhal"
+    },
+    {
+      "path": "frameworks/av/media/module/minijail/Android.bp",
+      "module": "libavservices_minijail"
     }
   ],
   "required_files": [

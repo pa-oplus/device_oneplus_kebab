@@ -1,63 +1,29 @@
 # OnePlus 8T (kebab) — Paranoid Android CLO
 
-Standalone device configuration for the OnePlus 8T, intended for
-`device/oneplus/kebab` in a Paranoid Android source checkout.
+Standalone configuration for `device/oneplus/kebab`, product `aospa_kebab`.
+Device/vendor integration is prepared; a full PA product build and device tests
+have not been completed. The former PA checkout is unavailable.
 
-## Status
+The unified vendor output is required through strict product/board includes.
+Static checks verify its 2,552 files, 34 pins, 778 unique vendor modules and exact
+regeneration of four build files. The recorded VINTF merge passes for 34 inputs
+and 109 instances: 51 legacy records declared, one optional interface not selected.
+These checks do not establish complete product, ABI, policy or boot compatibility.
 
-Initial board and product foundation. This repository registers `aospa_kebab`
-and contains board/device configuration, a baseline recovery fstab, firmware
-symlink modules and Qualcomm image-generation integration. OnePlus variant
-libinit, boot/init scripts, fstab installation and OTA postinstall configuration
-are defined. Device-owned source audio configuration is in [docs/audio.md](docs/audio.md).
-Power, display, optical fingerprint and legacy camera configuration are also
-defined. Alert slider calibration/PA key handling, the PA Oplus sensor multihal,
-OnePlus Codec2 configuration and QTI kona thermal reporting are now selected.
-QTI AIDL health/recovery, PA Oplus vibrator, OnePlus Bluetooth settings, qcwcn
-Wi-Fi and the ODM GNSS configuration are also defined. Fingerprint/vibrator and ODM-script policy, VINTF ownership
-audit tools, and single-producer extraction metadata are included. A staged PA
-init-hook patch and critical source-readiness checker support later integration. NFC/secure element,
-OnePlus USB compositions, A/B boot control, radio/carrier overlays and DRM service
-ownership are configured. Local audio/security manifests and OnePlus Wi-Fi,
-Settings and SystemUI overlays are included. The kebab power profile, initial
-device defaults, Oplus framework matrix and initial slider/power/sensor policy
-are also defined. Fingerprint/vibrator and ODM-script policy, VINTF ownership
-audit tools, and single-producer extraction metadata are included. A staged PA
-init-hook patch and critical source-readiness checker support later integration.
-Remaining hardware integration, complete manifests/policy and proprietary
-dependencies are pending, so the product is not buildable yet.
+Start with [current status and remaining gates](docs/INTEGRATION_STATUS.md).
+See [vendor integration](docs/VENDOR_INTEGRATION.md),
+[vendor provenance/checks](docs/vendor-consolidation.md),
+[source selection](docs/source-assembly.md),
+[extraction workflow](docs/extraction.md), and
+[reference sources](docs/REFERENCE_SOURCES.md).
 
-See [BRINGUP.md](docs/BRINGUP.md) for source comparisons, checks and remaining work,
-[INIT_OWNERSHIP.md](docs/INIT_OWNERSHIP.md) for boot/init ownership,
-[PA_SOURCE_REQUIREMENTS.md](docs/PA_SOURCE_REQUIREMENTS.md) for the staged PA init-hook patch,
-[STORAGE_USB.md](docs/STORAGE_USB.md) for storage and USB review findings,
-and [VENDOR_INTEGRATION.md](docs/VENDOR_INTEGRATION.md) for deferred vendor interfaces.
+Hardware configuration uses the matching OnePlus Lineage device/common references,
+PA Oplus from aospa-trees, and reviewed Kona sources from the alioth CLO reference.
+The tree includes variant libinit, recovery/init, source audio/power/display,
+optical fingerprint, camera, slider, sensors, thermal/health, Bluetooth/Wi-Fi/NFC,
+USB/boot control, radio/IMS, DRM and overlays. Detailed historical milestones are
+in [BRINGUP.md](docs/BRINGUP.md); its earlier source checks are historical.
 
-The local PA source assembly is recorded in [source-assembly.md](docs/source-assembly.md).
-The unified vendor output is required by the device product and board configuration.
-Checks, provenance and remaining perf/ABI/VINTF gates are recorded in
-[vendor-consolidation.md](docs/vendor-consolidation.md). A full PA checkout, kernel
-integration, complete build/policy and hardware validation remain pending.
-
-## Reference sources
-
-See [REFERENCE_SOURCES.md](docs/REFERENCE_SOURCES.md) for exact source snapshots,
-including the PA Oplus tree in `aospa-trees/hardware/oplus`.
-
-- LineageOS `android_device_oneplus_kebab`, branch `lineage-24.0`.
-- LineageOS `android_device_oneplus_sm8250-common`, branch `lineage-24.0`.
-- CLO `device_xiaomi_aliothCLO`, branch `calcite`, reviewed at commit
-  `80408ea4537a7f625e37cb27d0dcd15809656c72`.
-
-OnePlus references supply device-specific hardware configuration. The alioth
-reference supplies examples of PA/CLO integration. Each subsystem will be adapted
-to kebab with its dependencies and configuration ownership reviewed explicitly.
-
-## Development record
-
-The workspace-level `../ROADMAP.md` tracks implementation and validation.
-`../ALIOTH_FILE_REVIEW.md` records the reviewed alioth snapshot file by file.
-These planning documents live outside this repository.
-
-Preserve applicable source copyright and license notices when importing or
-adapting implementation files.
+Apply the required init/audio source patches and the reviewed source manifest to
+a full PA checkout before building. Kernel/header integration, full install/linker
+and policy/matrix checks, product compilation and hardware validation remain open.

@@ -1,7 +1,7 @@
 # Unified vendor extraction
 
 `extract-files.py` registers one `kebab` module. The sole active input is
-`proprietary-files.txt`: 2,550 merged device/common entries generating
+`proprietary-files.txt`: 2,552 merged entries (2,550 original device/common files plus two pinned DSP inputs) generating
 `vendor/oneplus/kebab`. The old common list and producer are removed.
 
 Both TheMuppets lineage-24.0 inputs are already processed. Their existing hashes,
@@ -26,6 +26,8 @@ python3 tools/check-vendor-integration.py \
 
 The optional reference-root contains the two original
 `proprietary_vendor_oneplus_kebab` and `proprietary_vendor_oneplus_sm8250-common`
-clones. With it, the audit compares all 2,550 blob contents. Otherwise it checks
+clones. With it, the audit compares all 2,550 original blob contents and verifies the DSP
+supplement hashes. Add `--supplemental-root /path/to/workspace` to compare those
+two files directly with the recorded local PA input paths. Otherwise it checks
 presence and all allowed metadata pins. Generated-module, explicit-copy and
 provider checks are static and do not establish complete product/ABI compatibility.
