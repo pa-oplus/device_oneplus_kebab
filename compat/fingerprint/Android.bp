@@ -1,0 +1,10 @@
+// Copyright (C) 2026 Paranoid Android
+// SPDX-License-Identifier: Apache-2.0
+
+cc_library_shared {
+    name: "libshims_fingerprint.oplus",
+    srcs: ["BiometricsFingerprintShim.cpp"],
+    shared_libs: ["libcutils", "liblog", "libdl"],
+    vendor: true,
+    compile_multilib: "both",
+}

@@ -65,6 +65,14 @@
     {
       "path": "hardware/nxp/nfc/snxxx/Android.bp",
       "module": "android.hardware.nfc-service.nxp"
+    },
+    {
+      "path": "hardware/lineage/compat/Android.bp",
+      "module": "libcamera_metadata_shim"
+    },
+    {
+      "path": "hardware/lineage/compat/Android.bp",
+      "module": "libcrypto_shim"
     }
   ],
   "required_files": [
