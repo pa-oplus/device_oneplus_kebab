@@ -639,6 +639,12 @@ PRODUCT_VENDOR_PROPERTIES += \
     ro.opengles.version=196610 \
     graphics.gpu.profiler.support=true
 
+# ADPF hint sessions for SurfaceFlinger and HWUI (50% CPU frame budget)
+PRODUCT_PRODUCT_PROPERTIES += \
+    debug.sf.enable_adpf_cpu_hint=true \
+    debug.hwui.use_hint_manager=true \
+    debug.hwui.target_cpu_time_percent=50
+
 # WfdCommon's boot-jar entry is supplied by the unified generated vendor recipe.
 TARGET_WFD_COMPONENT_VARIANT := wfd
 PRODUCT_SYSTEM_EXT_PROPERTIES += \
