@@ -295,7 +295,8 @@ PRODUCT_PACKAGES += \
 
 # OnePlus owns vendor perf: service, client libraries and six stock config files.
 # Keep framework-side perf clients separate; do not inherit common vendor perf.
-include device/qcom/common/system/perf/qti-perf.mk
+QCOM_COMMON_PATH := device/qcom/common
+include $(QCOM_COMMON_PATH)/system/perf/qti-perf.mk
 PRODUCT_VENDOR_PROPERTIES += \
     ro.vendor.perf-hal.ver=2.2 \
     ro.vendor.extension_library=libqti-perfd-client.so
