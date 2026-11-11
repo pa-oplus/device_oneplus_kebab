@@ -7,3 +7,6 @@ allow system_server vendor_kebab_slider_state:file r_file_perms;
 
 # Allow system_server to use Qualcomm SnapdragonServices HAL (QSPM performance hints).
 hal_client_domain(system_server, vendor_hal_snapx_service_qti)
+
+# PowerInsightService samples raw battery supply nodes for battery health UI.
+allow system_server vendor_sysfs_battery_supply:file r_file_perms;
