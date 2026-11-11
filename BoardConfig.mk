@@ -197,3 +197,6 @@ DEVICE_MANIFEST_FILE += $(DEVICE_PATH)/configs/vintf/manifest-perf.xml
 
 # Provider-backed legacy OnePlus services not carrying packaged fragments.
 DEVICE_MANIFEST_FILE += $(DEVICE_PATH)/configs/vintf/manifest-oneplus-vendor.xml
+
+# The selected IPACM registers config 1.0/control 1.1 without a bundled fragment.
+DEVICE_MANIFEST_FILE += $(DEVICE_PATH)/configs/vintf/manifest-tetheroffload.xml
