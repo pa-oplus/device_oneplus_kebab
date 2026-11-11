@@ -483,7 +483,6 @@ PRODUCT_PACKAGES += \
     libwifi-hal-ctrl \
     libwifi-hal-qcom \
     wpa_supplicant \
-    KebabWpaSupplicantConf \
     KebabWifiRes
 
 PRODUCT_COPY_FILES += \
