@@ -295,8 +295,7 @@ PRODUCT_PACKAGES += \
     android.hardware.power-service \
     init.kebab.power.rc
 
-PRODUCT_COPY_FILES += \
-    vendor/qcom/opensource/power/config/kona/powerhint.xml:$(TARGET_COPY_OUT_VENDOR)/etc/powerhint.xml
+# The unified vendor output supplies OnePlus powerhint.xml.
 
 # OnePlus owns vendor perf: service, client libraries and six stock config files.
 # Keep framework-side perf clients separate; do not inherit common vendor perf.
