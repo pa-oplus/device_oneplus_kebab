@@ -303,7 +303,8 @@ include device/qcom/common/system/perf/qti-perf.mk
 PRODUCT_VENDOR_PROPERTIES += \
     ro.vendor.perf-hal.ver=2.2 \
     ro.vendor.extension_library=libqti-perfd-client.so
-# Compatibility of PA's system perf2 clients with HIDL 2.2 remains a runtime gate.
+# The reviewed PA clients fall back to HIDL 2.2 for API 30 when perf2 is absent.
+# Keep their AIDL library dependencies; runtime service/linker validation is pending.
 
 # OnePlus display properties and framework calibration overlay.
 # Include the common recipes once, locally, so device properties can replace

@@ -160,5 +160,11 @@
       }
     ]
   },
-  "fingerprint_host_check": "Both property APIs: two substitutions and unrelated-property forwarding passed; target linker symbol-version/interposition behavior still needs device validation."
+  "fingerprint_host_check": "Both property APIs: two substitutions and unrelated-property forwarding passed; target linker symbol-version/interposition behavior still needs device validation.",
+  "perf_system_client_review": {
+    "contract": "docs/perf-client-contract.json",
+    "checker": "tools/check-perf-contract.py",
+    "result": "Exact reference arm/arm64 clients support HIDL fallback; API 30 selects 2.2 when perf2 is not declared. No unavoidable protocol mismatch established.",
+    "runtime_validated": false
+  }
 }

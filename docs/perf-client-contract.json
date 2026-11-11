@@ -1,0 +1,70 @@
+{
+  "shipping_api_level": 30,
+  "vendor_backend": "vendor.qti.hardware.perf@2.2::IPerf/default",
+  "system_client_module": "libqti-perfd-client_system",
+  "review_kind": "Static reverse engineering of exact reference binaries; not a target execution test.",
+  "conclusion": "Both reference clients support AIDL detection and a HIDL 2.2 path. No unavoidable AIDL/HIDL protocol mismatch is established.",
+  "clients": [
+    {
+      "path": "proprietary/system_ext/lib/libqti-perfd-client_system.so",
+      "sha256": "f3372381853d45d9425c673767d251db753d835fa3d6dad50d2e681dd287f545",
+      "bits": 32
+    },
+    {
+      "path": "proprietary/system_ext/lib64/libqti-perfd-client_system.so",
+      "sha256": "dabc13ffc2c05335304ffd4158fac953303857d22060b62c237c2efcd5b32239",
+      "bits": 64
+    }
+  ],
+  "interfaces": [
+    {
+      "path": "2.0/Android.bp",
+      "sha256": "f07eab83205225f6d8eba356f1c4ebe0f8a90b5a01fdc64f0c14489118e7d469"
+    },
+    {
+      "path": "2.0/IPerf.hal",
+      "sha256": "517008020b188864935535fa5c9ab30c686d01a4e7559659658d61b78fcd7cd1"
+    },
+    {
+      "path": "2.1/Android.bp",
+      "sha256": "55171b7de329c7d495a3bcd9c73e9ba2c4a4f85f79e4727369198434a0b6f0b8"
+    },
+    {
+      "path": "2.1/IPerf.hal",
+      "sha256": "429bbf6c78faecc882e6d39ea05329be9519b3ae547448ec3cc5c2393b918740"
+    },
+    {
+      "path": "2.2/Android.bp",
+      "sha256": "c1687b310228eaccf45f57f751f0145222c1f21d2d3671d74ca276a3a1cf0ecc"
+    },
+    {
+      "path": "2.2/IPerf.hal",
+      "sha256": "dd76694de5ef346703b450dc96e6c96e274caacb52fba60ad52cb69352467040"
+    },
+    {
+      "path": "2.3/Android.bp",
+      "sha256": "2d8b91deb567b4cbd6b449b17608c7a4210b8d49ed30208d70dc028e5044d17c"
+    },
+    {
+      "path": "2.3/IPerf.hal",
+      "sha256": "ca3830177c6813da7219ffa8fd4bf2ffc161f9d10bcbb08b334a93838974f852"
+    }
+  ],
+  "remaining": [
+    "Run on the actual device to confirm published ro.board.first_api_level=30, HIDL registration, linker variants and SELinux access.",
+    "Verify framework/JNI/perfservice hint behavior and resource IDs with the stock backend.",
+    "Check all optional system-perf components against the stock services; the central client fallback does not prove every component compatible."
+  ],
+  "arm64_review": {
+    "isHalTypeAidl_trampoline": "0x15fc0 -> 0xa4e4",
+    "declaration_test": "0xa5dc calls AServiceManager_isDeclared; false selects state 2 and returns false at 0xa638; true may fall back if the AIDL service cannot be obtained.",
+    "common_dispatch_example": "0xaf0c calls isHalTypeAidl; false branches to 0xaf20, which calls the HIDL acquisition function at 0xb818.",
+    "hidl_acquisition": "0xb954 calls vendor::qti::hardware::perf::V2_2::IPerf::tryGetService; service name string at 0x452a is default.",
+    "version_selection": "get_perf_hal_ver 0x15f30 -> 0x12594; ro.board.first_api_level at 0x4532; compare to 30 at 0x12618; <=30 selects double 2.2 at 0x3ec0, >30 selects 2.3."
+  },
+  "arm_review": {
+    "isHalTypeAidl_trampoline": "Thumb 0x107b4 -> 0x7ab0",
+    "declaration_test": "0x7b58 calls the isDeclared PLT entry; 0x7b60..0x7b68 sets state 2 when absent, 0x7b96 returns false.",
+    "version_selection": "get_perf_hal_ver Thumb 0x1076c -> 0xd560; compares API to 30 at 0xd5ca and selects doubles 2.2 at 0xd600 or 2.3 at 0xd608."
+  }
+}

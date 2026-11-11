@@ -16,7 +16,7 @@ lineage-24.0 inputs, preserving 2,550 already-processed blob files.
 - [x] Require the single vendor product/board outputs through strict includes.
 - [x] Add the fingerprint shim and select PA camera/crypto compatibility providers.
 - [x] Assign vendor perf ownership and declare its VINTF instance; preserve the
-  intentional fingerprint override. System perf client protocol remains open.
+  intentional fingerprint override. The reviewed PA system clients support HIDL fallback; runtime validation remains open.
 - [x] Audit regeneration, input bytes/pins, explicit copies, module names and
   recorded VINTF composition; record the results and integration limits.
 
@@ -43,7 +43,8 @@ preserves the original input/staging audit and links the current integration.
 
 - [ ] Locate the current complete PA checkout; the former pa/ directory is absent.
 - [ ] Apply reviewed sources, install device/vendor trees and preserve the init hook.
-- [ ] Reconcile PA's AIDL perf2 system clients with the OnePlus HIDL 2.2 backend.
+- [x] Verify that the exact PA system clients support HIDL 2.2 fallback at shipping API 30.
+- [ ] Validate fallback dispatch, linker variants, policy and hint/resource behavior on device.
 - [ ] Complete source/blob module variants, headers, symbol versions and ABI checks.
 - [ ] Reconcile the 42 legacy vendor/WFD contracts and full matrices/SELinux policy.
 - [ ] Integrate kernel/config/headers, build the product and test on device.

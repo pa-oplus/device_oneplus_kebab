@@ -73,6 +73,22 @@
     {
       "path": "hardware/lineage/compat/Android.bp",
       "module": "libcrypto_shim"
+    },
+    {
+      "path": "vendor/aospa/interfaces/qcom/perf/2.0/Android.bp",
+      "module": "vendor.qti.hardware.perf@2.0"
+    },
+    {
+      "path": "vendor/aospa/interfaces/qcom/perf/2.1/Android.bp",
+      "module": "vendor.qti.hardware.perf@2.1"
+    },
+    {
+      "path": "vendor/aospa/interfaces/qcom/perf/2.2/Android.bp",
+      "module": "vendor.qti.hardware.perf@2.2"
+    },
+    {
+      "path": "vendor/aospa/interfaces/qcom/perf/2.3/Android.bp",
+      "module": "vendor.qti.hardware.perf@2.3"
     }
   ],
   "required_files": [

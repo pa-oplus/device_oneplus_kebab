@@ -42,10 +42,18 @@ The source Power HAL and kebab double-tap mode extension remain selected. The
 vendor output supplies OnePlus powerhint.xml, avoiding the previous source/vendor
 copy collision. Runtime hint behavior and enum/resource compatibility are untested.
 
-**Open contract:** PA's system perf client binaries reference AIDL perf2, while the
-stock vendor service registers HIDL 2.2. Preserving their packaging does not bridge
-those protocols. This needs a compatible framework client/adapter selection and
-runtime validation; no system perf compatibility claim is made here.
+**Reviewed client dispatch:** the PA system client supports both protocols.
+The earlier inference that its AIDL dependency established a protocol mismatch
+was incorrect. For the exact reviewed arm/arm64 binaries, isHalTypeAidl checks
+whether the perf2 instance is declared, then permits HIDL fallback. With no AIDL
+perf2 service declared and the shipping API at 30, the reviewed path selects
+HIDL 2.2. No bridge or replacement client is selected.
+
+HIDL 2.0/2.1/2.2/2.3 interface providers are explicitly recorded as source
+requirements. The 2.3 and AIDL libraries must remain available at load time even
+when dispatch selects 2.2. The source/interface variants and actual device policy,
+registration, hint/resource behavior and optional system-perf components still
+need validation. See perf-client-review.md for byte-identifiable evidence.
 
 ## VINTF
 
