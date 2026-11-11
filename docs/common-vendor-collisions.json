@@ -1,0 +1,90 @@
+{
+  "scope": "Selected common proprietary namespaces compared against unified vendor module names. Excluded components also carried duplicate files/recipes; this is not a full product install graph.",
+  "namespaces": [
+    {
+      "namespace": "vendor/qcom/common/vendor/adreno/r",
+      "same_module_names": [
+        "eglSubDriverAndroid",
+        "libC2D2",
+        "libCB",
+        "libEGL_adreno",
+        "libGLESv1_CM_adreno",
+        "libGLESv2_adreno",
+        "libOpenCL",
+        "libVkLayer_q3dtools",
+        "libadreno_utils",
+        "libc2d30_bltlib",
+        "libgpudataproducer",
+        "libgsl",
+        "libllvm-glnext",
+        "libllvm-qcom",
+        "libq3dtools_adreno",
+        "libq3dtools_esx",
+        "vendor_lib64_libEGL_adreno_so",
+        "vendor_lib64_libGLESv2_adreno_so",
+        "vendor_lib64_libq3dtools_adreno_so",
+        "vendor_lib_libEGL_adreno_so",
+        "vendor_lib_libGLESv2_adreno_so",
+        "vendor_lib_libq3dtools_adreno_so",
+        "vulkan.adreno"
+      ],
+      "selection": "excluded"
+    },
+    {
+      "namespace": "vendor/qcom/common/system/alarm",
+      "same_module_names": [
+        "PowerOffAlarm"
+      ],
+      "selection": "excluded"
+    },
+    {
+      "namespace": "vendor/qcom/common/system/av",
+      "same_module_names": [
+        "libmmosal",
+        "libmmparser_lite"
+      ],
+      "selection": "excluded"
+    },
+    {
+      "namespace": "vendor/qcom/common/system/wfd",
+      "same_module_names": [
+        "WfdCommon",
+        "WfdService",
+        "libmmrtpdecoder",
+        "libmmrtpencoder",
+        "libwfdavenhancements",
+        "libwfdclient",
+        "libwfdcommonutils",
+        "libwfdconfigutils",
+        "libwfddisplayconfig",
+        "libwfdmminterface",
+        "libwfdmmsink",
+        "libwfdmmsrc_system",
+        "libwfdnative",
+        "libwfdrtsp",
+        "libwfdservice",
+        "libwfdsinksm",
+        "libwfduibcinterface",
+        "libwfduibcsink",
+        "libwfduibcsinkinterface",
+        "libwfduibcsrc",
+        "libwfduibcsrcinterface",
+        "system_ext_priv-app_WfdService_lib_arm64_libwfdnative_so",
+        "vendor.qti.hardware.wifidisplaysession@1.0",
+        "vendor.qti.hardware.wifidisplaysession_aidl-V2-ndk",
+        "wfdservice"
+      ],
+      "selection": "excluded"
+    },
+    {
+      "namespace": "vendor/qcom/common/system/bt",
+      "same_module_names": [],
+      "selection": "retained"
+    },
+    {
+      "namespace": "vendor/qcom/common/system/perf",
+      "same_module_names": [],
+      "selection": "retained"
+    }
+  ]
+}
