@@ -68,8 +68,10 @@ BOARD_RAMDISK_USE_LZ4 := true
 # Kernel source and configuration
 TARGET_KERNEL_VERSION := 4.19
 TARGET_KERNEL_SOURCE := kernel/oneplus/sm8250
+TARGET_KERNEL_CONFIG := vendor/kebab-perf_defconfig
 KERNEL_DEFCONFIG := vendor/kebab-perf_defconfig
 KERNEL_LLVM_SUPPORT := true
+KERNEL_CLANG_VERSION := r563880c
 
 # Metadata
 BOARD_USES_METADATA_PARTITION := true

@@ -13,6 +13,10 @@ LOCAL_PATH := $(call my-dir)
 ifeq ($(strip $(BOARD_KERNEL_SEPARATED_DTBO)),true)
 MKDTIMG := $(HOST_OUT_EXECUTABLES)/mkdtimg$(HOST_EXECUTABLE_SUFFIX)
 
+ifndef BOARD_PREBUILT_DTBOIMAGE
+BOARD_PREBUILT_DTBOIMAGE := $(PRODUCT_OUT)/prebuilt_dtbo.img
+endif
+
 $(BOARD_PREBUILT_DTBOIMAGE): $(MKDTIMG) $(PRODUCT_OUT)/kernel
 	$(hide) $(MKDTIMG) create $@ \
 	    --page_size=$(BOARD_KERNEL_PAGESIZE) \
