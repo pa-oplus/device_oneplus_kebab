@@ -65,11 +65,10 @@ BOARD_KERNEL_SEPARATED_DTBO := true
 BOARD_MKBOOTIMG_ARGS += --header_version $(BOARD_BOOT_HEADER_VERSION)
 BOARD_RAMDISK_USE_LZ4 := true
 
-# Kernel source and configuration integration are provisional until kernel bring-up.
-# Lineage also applies vendor/oplus.config; its CLO merge must be resolved before building.
+# Kernel source and configuration
 TARGET_KERNEL_VERSION := 4.19
 TARGET_KERNEL_SOURCE := kernel/oneplus/sm8250
-KERNEL_DEFCONFIG := vendor/kona-perf_defconfig
+KERNEL_DEFCONFIG := vendor/kebab-perf_defconfig
 KERNEL_LLVM_SUPPORT := true
 
 # Metadata
