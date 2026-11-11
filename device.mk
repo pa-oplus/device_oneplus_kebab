@@ -84,12 +84,6 @@ PRODUCT_PACKAGES += \
     android.hardware.boot-service.qti \
     android.hardware.boot-service.qti.recovery
 
-# Firmware mount directories used by the OnePlus fstab.
-PRODUCT_PACKAGES += \
-    vendor_bt_firmware_mountpoint \
-    vendor_dsp_mountpoint \
-    vendor_firmware_mnt_mountpoint
-
 # Device-owned source audio configuration.
 KEBAB_AUDIO_CONFIG_PATH := device/oneplus/kebab/configs/audio
 KEBAB_AUDIO_HAL_PATH := vendor/qcom/opensource/audio-hal/primary-hal
