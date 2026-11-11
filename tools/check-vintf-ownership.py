@@ -51,6 +51,40 @@ def instances(record):
     return found
 
 
+def version_floors(record):
+    """Required/provided minor for HIDL, interface version for AIDL."""
+    values = {}
+    for fqname in record["fqnames"]:
+        if record["format"] == "hidl":
+            match = re.fullmatch(r"@(\d+)\.(\d+)::([^/]+)/(.+)", fqname)
+            if not match:
+                raise ValueError(f"Malformed HIDL instance: {fqname}")
+            major, minor, interface, instance = match.groups()
+            key = ("hidl", record["name"], major, interface, instance)
+            values[key] = max(values.get(key, -1), int(minor))
+        else:
+            interface, instance = fqname.split("/", 1)
+            key = ("aidl", record["name"], "aidl", interface, instance)
+            values[key] = max(int(v) for v in record["versions"] or ["1"])
+    for interface in record["interfaces"]:
+        for version in record["versions"] or (["1"] if record["format"] == "aidl" else []):
+            if record["format"] == "hidl":
+                major, minor = version.split(".", 1)
+                floor = int(minor)
+            else:
+                major, floor = "aidl", int(version)
+            for instance in interface["instances"]:
+                key = (record["format"], record["name"], major, interface["name"], instance)
+                values[key] = max(values.get(key, -1), floor)
+    if values.keys() != instances(record):
+        raise ValueError(f"Versionless or malformed record: {record}")
+    return values
+
+
+def covered(record, provided):
+    return all(provided.get(key, -1) >= floor for key, floor in version_floors(record).items())
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--source-root", type=Path, help="also check recorded source-service fragments")
@@ -63,6 +97,7 @@ def main():
         paths += [args.source_root / p["path"] for p in data["source_fragments"]]
     paths += args.extra_manifest
     owners = {}
+    provided_versions = {}
     override_count = 0
     for path in paths:
         root = ET.parse(path).getroot()
@@ -83,12 +118,14 @@ def main():
                 for key in list(owners):
                     if key[:3] in groups:
                         del owners[key]
+                        del provided_versions[key]
                 override_count += 1
             for key in instances(record):
                 if key in owners:
                     raise ValueError(f"Duplicate HAL instance {key}: {owners[key]} and {path}")
                 owners[key] = str(path)
-    unresolved = [r for r in data["reference_hal_records"] if not instances(r) <= owners.keys()]
+                provided_versions[key] = version_floors(record)[key]
+    unresolved = [r for r in data["reference_hal_records"] if not covered(r, provided_versions)]
     print(f"Checked {len(paths)} manifest inputs; {len(owners)} unique declared instances.")
     print(f"Reference records: {len(data['reference_hal_records']) - len(unresolved)} covered; "
           f"{len(unresolved)} unresolved (vendor/WFD/common-provider reconciliation pending).")
