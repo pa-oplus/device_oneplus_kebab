@@ -213,3 +213,6 @@ DEVICE_MANIFEST_FILE += $(DEVICE_PATH)/configs/vintf/manifest-dsp.xml
 
 # Vendor media codec and Widevine DRM services.
 DEVICE_MANIFEST_FILE += $(DEVICE_PATH)/configs/vintf/manifest-media.xml
+
+# Explicit framework opt-in for the Qualcomm DAX 3.6 effect contract.
+$(call soong_config_set_bool,audio,legacy_dap_integration,true)
