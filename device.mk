@@ -306,12 +306,9 @@ PRODUCT_VENDOR_PROPERTIES += \
 # Servicetracker omitted; unified vendor provides stock perf.
 
 # OnePlus display properties and framework calibration overlay.
-# Include the common recipes once, locally, so device properties can replace
-# generic source defaults before the PA product inheritance is resolved.
-QCOM_COMMON_PATH := device/qcom/common
 TARGET_USE_AIDL_QTI_MEMTRACK := true
-include $(QCOM_COMMON_PATH)/system/display/qti-display.mk
-# include $(QCOM_COMMON_PATH)/vendor/display/qti-display.mk
+# Display HAL and color services are provided by vendor/oneplus/kebab.
+# Do not inherit common system/vendor display to prevent symbol/namespace collisions.
 
 PRODUCT_PACKAGES += KebabFrameworksRes
 
