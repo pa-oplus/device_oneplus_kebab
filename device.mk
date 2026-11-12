@@ -59,7 +59,9 @@ PRODUCT_PACKAGES += \
 # Recovery receives the same source through TARGET_RECOVERY_FSTAB.
 PRODUCT_PACKAGES += \
     fstab.qcom \
-    fstab.qcom.ramdisk
+    fstab.qcom.ramdisk \
+    fstab.default \
+    fstab.default.ramdisk
 
 # OTA postinstall: keep filesystem types aligned with BoardConfig and fstab.
 AB_OTA_POSTINSTALL_CONFIG += \
@@ -635,7 +637,8 @@ PRODUCT_VENDOR_PROPERTIES += \
     ro.hardware.vulkan=adreno \
     ro.opengles.version=196610 \
     graphics.gpu.profiler.support=true \
-    ro.surface_flinger.supports_background_blur=1
+    ro.surface_flinger.supports_background_blur=1 \
+    ro.surface_flinger.max_frame_buffer_acquired_buffers=3
 
 # ADPF hint sessions for SurfaceFlinger and HWUI (50% CPU frame budget)
 PRODUCT_PRODUCT_PROPERTIES += \
@@ -654,4 +657,5 @@ PRODUCT_SYSTEM_EXT_PROPERTIES += \
 PRODUCT_SOONG_NAMESPACES += vendor/qcom/opensource/data-ipa-cfg-mgr-legacy
 PRODUCT_PACKAGES += \
     ipacm \
-    IPACM_cfg.xml
+    IPACM_cfg.xml \
+    TelephonyOverlayCommon

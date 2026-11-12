@@ -60,6 +60,13 @@ prebuilt_etc {
 }
 
 prebuilt_etc {
+    name: "fstab.default",
+    src: "fstab.qcom",
+    vendor: true,
+    ramdisk_available: true,
+}
+
+prebuilt_etc {
     name: "init.kebab.power.rc",
     src: "init.kebab.power.rc",
     sub_dir: "init",

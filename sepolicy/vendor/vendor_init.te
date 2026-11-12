@@ -6,3 +6,8 @@
 # values (up/down rate limit 0).
 allow vendor_init sysfs_devices_system_cpu:dir r_dir_perms;
 allow vendor_init sysfs_devices_system_cpu:file w_file_perms;
+
+# vendor_init writes persist.vendor.camera.* from /vendor/build.prop.
+set_prop(vendor_init, vendor_camera_prop)
+# persist.vendor.camera.privapp.list is labelled vendor_persist_camera_prop
+set_prop(vendor_init, vendor_persist_camera_prop)
